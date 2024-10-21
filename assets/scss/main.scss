@@ -3,10 +3,10 @@
 // IMPORT 
 
 // ПЕРЕМЕННЫЕ 
-$color1: #000;
-$color2: #000;
-$color3: #3E77AA;
-$fontColor: #797878;
+$basicColor: #1A1A1A;
+$contrastColor: #000;
+$accentColor: #3E77AA;
+$fontColor: #747474;
 $font1: 'Montserrat';
 $font_size: 1.1vw;
 $mfont_size: 5vw;
@@ -30,7 +30,7 @@ $mfont_size: 5vw;
 
 @mixin box($width: 100%, $padding: 0%, $height: auto, $margin_top: 0) {
   & {
-    width: math.div($width - $padding * 2, 1); 
+    width: $width; 
     padding-left: $padding;
     padding-right: $padding;
     margin-top: $margin_top;
@@ -181,7 +181,6 @@ $mfont_size: 5vw;
   font-weight: inherit;
   font-family: inherit;
   color: inherit;
-  box-sizing: content-box;
 }
 
 strong {
@@ -252,4 +251,31 @@ nav {
 
 /* BASIC */
 
+.header__logo__name{
+  text-transform: uppercase;
+  @include text(150%, 800, #FFF);
+}
 
+.header__line__block{
+  background-color: $basicColor;
+  padding: 0.5vw 2.5%;
+
+  @include box(100%, 2.5%);
+}
+
+.header__menu__box{
+  list-style: none;
+  margin: 0;
+  gap: 2vw;
+
+  @include box(100%, 2.5%);
+  @include flex__box(row, center, flex-end);
+
+  & li{
+    @include text(100%, 600, $fontColor);
+  }
+
+  & .active__menu__item{
+    color: #FFF;
+  }
+}

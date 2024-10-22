@@ -21,7 +21,7 @@ $mfont_size: 5vw;
     color: $color;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 767px) {
     & {
       font-size: math.div($mfont_size, 100%) * $font_size; 
     }
@@ -37,7 +37,7 @@ $mfont_size: 5vw;
     height: $height;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 767px) {
     & {
       width: 100%;
       padding: 0;
@@ -59,7 +59,7 @@ $mfont_size: 5vw;
     }
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 767px) {
     & {
       width: 100%;
       height: auto;
@@ -92,7 +92,7 @@ $mfont_size: 5vw;
     background-size: 100% auto;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 767px) {
     & {
       background-size: auto 100%;
     }
@@ -124,7 +124,7 @@ $mfont_size: 5vw;
     background-position: center;
     background-repeat: no-repeat;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 767px) {
       & {
         width: math.div(10, 1) * 1vw; 
         height: math.div(10, 1) * 1vw; 
@@ -189,6 +189,7 @@ strong {
 
 body {
   max-width: 100vw;
+  min-height: 80vw;
   overflow: hidden;
   overflow-y: auto;
   background-color: #FFF;
@@ -254,13 +255,25 @@ nav {
 .header__logo__name{
   text-transform: uppercase;
   @include text(150%, 800, #FFF);
+
+  @media screen and (max-width: 776px){
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .header__line__block{
   background-color: $basicColor;
   padding: 0.5vw 2.5%;
+  position: fixed;
+  transform: translateY(-100px);
+  transition: .4s;
 
   @include box(100%, 2.5%);
+
+  @media screen and (max-width: 776px){
+    padding: 5vw 2.5%;
+  }
 }
 
 .header__menu__box{
@@ -270,6 +283,10 @@ nav {
 
   @include box(100%, 2.5%);
   @include flex__box(row, center, flex-end);
+
+  @media screen and (max-width: 767px){
+    @include flex__box(column, center);
+  }
 
   & li{
     @include text(100%, 600, $fontColor);

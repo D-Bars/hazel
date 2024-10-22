@@ -36,6 +36,7 @@ strong {
 
 body {
   max-width: 100vw;
+  min-height: 80vw;
   overflow: hidden;
   overflow-y: auto;
   background-color: #FFF;
@@ -106,15 +107,24 @@ nav {
   font-weight: 800;
   color: #FFF;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .header__logo__name {
     font-size: 7.5vw;
+  }
+}
+@media screen and (max-width: 776px) {
+  .header__logo__name {
+    width: 100%;
+    text-align: center;
   }
 }
 
 .header__line__block {
   background-color: #1A1A1A;
   padding: 0.5vw 2.5%;
+  position: fixed;
+  transform: translateY(-100px);
+  transition: 0.4s;
 }
 .header__line__block {
   width: 100%;
@@ -123,10 +133,15 @@ nav {
   margin-top: 0;
   height: auto;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .header__line__block {
     width: 100%;
     padding: 0;
+  }
+}
+@media screen and (max-width: 776px) {
+  .header__line__block {
+    padding: 5vw 2.5%;
   }
 }
 
@@ -142,7 +157,7 @@ nav {
   margin-top: 0;
   height: auto;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .header__menu__box {
     width: 100%;
     padding: 0;
@@ -154,13 +169,21 @@ nav {
   align-items: center;
   justify-content: flex-end;
 }
+@media screen and (max-width: 767px) {
+  .header__menu__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+  }
+}
 .header__menu__box li {
   font-size: 100%;
   font-family: "Montserrat";
   font-weight: 600;
   color: #747474;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .header__menu__box li {
     font-size: 5vw;
   }

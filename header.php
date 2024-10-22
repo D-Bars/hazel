@@ -11,9 +11,9 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <header>
-        <div class="container-fluid header__line__block">
+        <div class="container-fluid header__line__block" id="header__line">
             <div class="row">
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                     <a href="/" class="header__logo__wrapper">
                         <?php if (the_custom_logo()): ?>
                             <?php the_custom_logo(); ?>
@@ -24,7 +24,7 @@
                 </div>
 
 
-                <nav class="col-8">
+                <nav class="col-12 col-md-8">
                     <ul class="header__menu__box">
                         <li><a href="#" class="header__menu__item active__menu__item"><?php _e('Home', 'hazel'); ?></a></li>
                         <li><a href="#" class="header__menu__item"><?php _e('About', 'hazel'); ?></a></li>

@@ -97,6 +97,10 @@ nav {
   justify-content: center;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* BASIC */
 .header__logo__name {
   text-transform: uppercase;
@@ -125,6 +129,7 @@ nav {
   position: fixed;
   transform: translateY(-100px);
   transition: 0.4s;
+  z-index: 999;
 }
 .header__line__block {
   width: 100%;
@@ -142,6 +147,7 @@ nav {
 @media screen and (max-width: 776px) {
   .header__line__block {
     padding: 5vw 2.5%;
+    transform: translateY(0);
   }
 }
 

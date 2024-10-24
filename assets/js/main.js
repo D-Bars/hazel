@@ -15,21 +15,36 @@
 //     threshold: 0.5 
 // };
 
-const observer = new IntersectionObserver(observerCallback, observerOptions);
+// const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-observer.observe(target);
+// observer.observe(target);
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     var lastScroll = 0;
     const headerLine = $('#header__line');
 
-    window.addEventListener('scroll', () => {
+    const toggleScrollHandler = (mql) => {
+        if (mql.matches) {
+            window.addEventListener('scroll', handleScroll);
+        } else {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    };
+
+
+    const handleScroll = () => {
         let scrollTop = window.scrollY;
-        if( scrollTop > lastScroll){
+        if (scrollTop > lastScroll) {
             headerLine.css('transform', 'translateY(0)');
-        }else{
+        } else {
             headerLine.css('transform', 'translateY(-100px)');
         }
-    })
+    };
+
+    const mql = window.matchMedia("(min-width: 768px)");
+
+    toggleScrollHandler(mql);
+
+    mql.addListener(toggleScrollHandler);
 });
 

@@ -36,4 +36,11 @@
                 </nav>
             </div>
         </div>
+        <div class="header__content__block">
+            <div class="header__content__company__box">
+                <h1 class="header__company__title"><?php _e('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, vel.', 'hazel'); ?></h1>
+                <div class="header__company__description"><?php _e('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, vel. A fuga eveniet minima sunt placeat odit atque labore. Ad explicabo ducimus quibusdam laborum a reprehenderit, inventore impedit modi beatae.', 'hazel'); ?></div>
+                <div class="header__company__btn"><?php _e('Contact us here', 'hazel'); ?></div>
+            </div>
+        </div>
     </header>

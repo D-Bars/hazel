@@ -4,12 +4,12 @@
 
 // ПЕРЕМЕННЫЕ 
 $basicColor: #1A1A1A;
-$contrastColor: #000;
-$accentColor: #3E77AA;
+$contrastColor: #333333;
+$accentColor: #08E7C5;
 $fontColor: #747474;
 $font1: 'Montserrat';
 $font_size: 1.1vw;
-$mfont_size: 5vw;
+$mfont_size: 4vw;
 // ПЕРЕМЕННЫЕ 
 
 // МИКСИНЫ
@@ -76,20 +76,19 @@ $mfont_size: 5vw;
     $rgba_color2: rgba(red($maskColor2), green($maskColor2), blue($maskColor2), $opacity);
 
     & {
-      background: linear-gradient($rgba_color1, $rgba_color2), url($url);
+      background-image: linear-gradient($rgba_color1, $rgba_color2), url($url);
     }
   }
 }
 
 @mixin background_img($url, $gradientMask: false, $maskColor1: #000, $maskColor2: #000, $opacity: 0.45) {
   & {
-    background: url($url);
-
-    @include background($gradientMask, $url, $maskColor1, $maskColor2, $opacity);
-    
+    background-image: url($url);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% auto;
+    
+    @include background($gradientMask, $url, $maskColor1, $maskColor2, $opacity);
   }
 
   @media screen and (max-width: 767px) {
@@ -260,7 +259,7 @@ html {
   text-transform: uppercase;
   @include text(150%, 800, #FFF);
 
-  @media screen and (max-width: 776px){
+  @media screen and (max-width: 767px){
     width: 100%;
     text-align: center;
   }
@@ -276,7 +275,8 @@ html {
 
   @include box(100%, 2.5%);
 
-  @media screen and (max-width: 776px){
+  @media screen and (max-width: 767px){
+    position: relative;
     padding: 5vw 2.5%;
     transform: translateY(0);
   }
@@ -300,5 +300,66 @@ html {
 
   & .active__menu__item{
     color: #FFF;
+  }
+}
+
+.header__content__block{
+  padding: 5vw 2.5%;
+  border-bottom: 5px solid #0001;
+  min-height: 40vw;
+  background-attachment: fixed;
+
+  @include background_img('../img/header.jpg', true, #000, #000, 0.5);
+  @include box(100%, 2.5%);
+  @include flex__box(column, flex-start, center);
+
+  @media screen and (max-width: 767px){
+    padding: 10vw 2.5%;
+  }
+}
+
+.header__content__company__box{
+  gap: 1vw;
+
+  @include box(50%);
+  @include flex__box(column, flex-end);
+
+  @media screen and (max-width: 767px){
+    align-items: center;
+    gap: 4vw;
+  }
+
+  & .header__company__title{
+    text-transform: uppercase;
+    text-shadow: 0px 0px 5px $basicColor;
+
+    @include text(160%, 800, #FFF);
+  }
+
+  & .header__company__description{
+    text-shadow: 0px 0px 1px #FFF7;
+
+    @include text(120%, 600, #FFF9);
+  }
+
+  & .header__company__btn{
+    padding: 0.5vw 1vw;
+    background-color: $contrastColor;
+    border-radius: 20px;
+    box-shadow: 5px 5px 0px $basicColor;
+    transition: .4s;
+    cursor: pointer;
+
+    @include text(140%, 600, #FFF);
+    
+    &:hover{
+      box-shadow: unset;
+      color: $accentColor;
+    }
+    
+    @media screen and (max-width: 767px){
+      padding: 2vw 3vw;
+      box-shadow: 10px 10px 0px $basicColor;
+    }
   }
 }

@@ -22,6 +22,7 @@
 jQuery(document).ready(function ($) {
     var lastScroll = 0;
     const headerLine = $('#header__line');
+    const mql = window.matchMedia("(min-width: 768px)");
 
     const toggleScrollHandler = (mql) => {
         if (mql.matches) {
@@ -41,10 +42,61 @@ jQuery(document).ready(function ($) {
         }
     };
 
-    const mql = window.matchMedia("(min-width: 768px)");
-
     toggleScrollHandler(mql);
 
     mql.addListener(toggleScrollHandler);
+
+    //advantages
+    class Advantages {
+        constructor(obj) {
+            this.circleBox = obj;
+            this.advantageTitle = this.circleBox.find('[title]');
+            this.advantageDescription = this.circleBox.find('[description]');
+            this.advatagesCollection = this.circleBox.find('.advantages__item');
+            this.addHover();
+            this.setContent();
+            setInterval(() => this.switchActive(), 5000);
+        }
+
+        addActive(obj){
+            obj.addClass('adv__active');
+        }
+
+        removeActive(obj){
+            obj.removeClass('adv__active');
+        }
+        
+        addHover() {
+            this.advatagesCollection.on('mouseover', (event) => {
+                this.removeActive(this.advatagesCollection);
+                this.addActive($(event.currentTarget));
+                this.setContent();
+            });
+        }
+
+        searchActive(){
+           return this.advatagesCollection.filter('.adv__active');
+        }
+
+        switchActive(){
+            const activeClass = this.searchActive();
+            this.removeActive(activeClass);
+            const nextItem = activeClass.next('.advantages__item').length ? activeClass.next('.advantages__item') : this.advatagesCollection.first();
+            this.addActive(nextItem);
+            this.setContent();
+        }
+
+        getContent(){
+            this.title = this.searchActive().data('title');
+            this.description = this.searchActive().data('description');
+        }
+        
+        setContent(){
+            this.getContent();
+            this.advantageTitle.html(this.title);
+            this.advantageDescription.html(this.description);
+        }
+    }
+    const advantages = new Advantages($('.advantages__circle__box'));
 });
 

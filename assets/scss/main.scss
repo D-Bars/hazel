@@ -144,6 +144,13 @@ $mfont_size: 4vw;
     justify-content: $justify_content;
   }
 }
+
+@mixin h2_decor($colorShadow, $color){
+  text-shadow: 2px 2px 3px $colorShadow;
+  text-transform: uppercase;
+
+  @include text(200%, 600, $color);
+}
 // МИКСИНЫ
 
 /* BASIC */
@@ -255,6 +262,9 @@ html {
 
 /* BASIC */
 
+
+// ******************************** HEADER ******************************** \\
+
 .header__logo__name{
   text-transform: uppercase;
   @include text(150%, 800, #FFF);
@@ -363,3 +373,147 @@ html {
     }
   }
 }
+
+// ******************************** HEADER ******************************** \\
+
+// ******************************** ABOUT__US ******************************** \\
+
+.about__us__block{
+  gap: 5%;
+  padding: 4vw 7.5%;
+
+  @include flex__box(row, stretch);
+  @include box(100%, 7.5%);
+}
+
+.about__us__content{
+  gap: 2vw;
+  padding-bottom: 7.5vw;
+
+  @include box(47.5%);
+  @include flex__box(column);
+
+  & span{
+    text-transform: uppercase;
+    
+    @include text(120%, 600, $accentColor);
+  }
+}
+
+.about__us__wrapper__img{
+  @include box(3vw);
+
+  & i{
+    font-size: 3vw;
+    color: #0003;
+  }
+}
+
+.about__us__title{
+  @include h2_decor(#000, #000);
+}
+
+.about__us__description{
+  @include text(110%, 400, $fontColor);
+}
+
+.advantages__circle__box{
+  position: relative;
+
+  @include box(47.5%);
+  @include flex__box(row, center, center);
+}
+
+.advantages__circle{
+  position: relative;
+  padding: 4vw 0;
+  background-color: #FFF;
+  gap: 1vw;
+  border-radius: 50%;
+  border: 3px solid #0003;
+  
+  @include flex__box(column, center, center);
+  @include box(26vw, 0, 25vw);
+}
+
+.advantages__circle__content{
+  background-color: $basicColor;
+  border-radius: 50%;
+
+  @include flex__box(column, center, center);
+  @include box(16vw, 0, 15vw);
+}
+
+.advantages__title{
+  text-align: center;
+  transition: 1s;
+
+  @include box(95%);
+  @include text(120%, 800, $accentColor);
+}
+
+.advantages__description{
+  text-align: center;
+  transition: 1s;
+
+  @include box(90%);
+  @include text(100%, 600, #FFF);
+}
+
+@keyframes advantages {
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+.adv__active{
+  animation: advantages 3s linear infinite;
+  background-color: #D6D6D6 !important;
+}
+
+
+.advantages__item {
+  position: absolute;
+  padding: 0.5vw;
+  border-radius: 50%;
+  background-color: $basicColor;
+  cursor: pointer;
+  transition: .3s;
+  
+  & i{
+    font-size: 0.8vw;
+    color: #FFF;
+  }
+}
+
+.x-line{
+  top: 47%;
+}
+.y-line{
+  left: 47%;
+}
+
+.adv__left{
+  left: -1vw;
+}
+
+.adv__right{
+  right: -1vw;
+}
+.adv__top{
+  top: -1vw;
+}
+.adv__bott{
+  bottom: -1vw;
+}
+
+// ******************************** ABOUT__US ******************************** \\

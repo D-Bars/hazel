@@ -16,9 +16,9 @@
                 <div class="advantages__description" description></div>
             </div>
             <div class="advantages__item x-line adv__left adv__active" data-title="New Technology" data-description="Phosfluorescently redefine plug-and-play best practices."><i class="fa-solid fa-umbrella"></i></div>
-            <div class="advantages__item y-line adv__top" data-title="Ultimate Solution" data-description="Nam coegit alto unda austro liberioris effigiem?"><i class="fa-solid fa-umbrella"></i></div>
-            <div class="advantages__item x-line adv__right" data-title="Brand New Features" data-description="Competently transform proactive internal or “organic”."><i class="fa-solid fa-umbrella"></i></div>
-            <div class="advantages__item y-line adv__bott" data-title="Done Awesomely" data-description="Quicquam fratrum declivia gravitate. Nam coegit alto unda."><i class="fa-solid fa-umbrella"></i></div>
+            <div class="advantages__item y-line adv__top" data-title="Ultimate Solution" data-description="Nam coegit alto unda austro liberioris effigiem?"><i class="fa-solid fa-house"></i></div>
+            <div class="advantages__item x-line adv__right" data-title="Brand New Features" data-description="Competently transform proactive internal or “organic”."><i class="fa-solid fa-headphones"></i></div>
+            <div class="advantages__item y-line adv__bott" data-title="Done Awesomely" data-description="Quicquam fratrum declivia gravitate. Nam coegit alto unda."><i class="fa-solid fa-gears"></i></div>
         </div>
     </div>
 </div>

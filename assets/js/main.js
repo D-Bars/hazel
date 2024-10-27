@@ -49,36 +49,52 @@ jQuery(document).ready(function ($) {
     //advantages
     class Advantages {
         constructor(obj) {
-            this.circleBox = obj;
-            this.advantageTitle = this.circleBox.find('[title]');
-            this.advantageDescription = this.circleBox.find('[description]');
-            this.advatagesCollection = this.circleBox.find('.advantages__item');
-            this.addHover();
+            this.circle = obj;
+            this.advantageTitle = this.circle.find('[title]');
+            this.advantageDescription = this.circle.find('[description]');
+            this.advatagesCollection = this.circle.find('.advantages__item');
+            this.addHoverIco();
             this.setContent();
-            setInterval(() => this.switchActive(), 5000);
+            this.advantageInterval = setInterval(() => this.switchActive(), 5000);
+            this.intervalAfterHover();
+            this.addHoverCircle();
         }
 
-        addActive(obj){
+        addActive(obj) {
             obj.addClass('adv__active');
         }
 
-        removeActive(obj){
+        removeActive(obj) {
             obj.removeClass('adv__active');
         }
-        
-        addHover() {
+
+        addHoverIco() {
             this.advatagesCollection.on('mouseover', (event) => {
                 this.removeActive(this.advatagesCollection);
                 this.addActive($(event.currentTarget));
                 this.setContent();
+                clearInterval(this.advantageInterval);
             });
         }
 
-        searchActive(){
-           return this.advatagesCollection.filter('.adv__active');
+        addHoverCircle() {
+            this.circle.on('mouseover', () => {
+                clearInterval(this.advantageInterval);
+            });
         }
 
-        switchActive(){
+        intervalAfterHover() {
+            this.circle.on('mouseleave', () => {
+                clearInterval(this.advantageInterval);
+                this.advantageInterval = setInterval(() => this.switchActive(), 5000);
+            });
+        }
+
+        searchActive() {
+            return this.advatagesCollection.filter('.adv__active');
+        }
+
+        switchActive() {
             const activeClass = this.searchActive();
             this.removeActive(activeClass);
             const nextItem = activeClass.next('.advantages__item').length ? activeClass.next('.advantages__item') : this.advatagesCollection.first();
@@ -86,17 +102,17 @@ jQuery(document).ready(function ($) {
             this.setContent();
         }
 
-        getContent(){
+        getContent() {
             this.title = this.searchActive().data('title');
             this.description = this.searchActive().data('description');
         }
-        
-        setContent(){
+
+        setContent() {
             this.getContent();
             this.advantageTitle.html(this.title);
             this.advantageDescription.html(this.description);
         }
     }
-    const advantages = new Advantages($('.advantages__circle__box'));
+    const advantages = new Advantages($('.advantages__circle'));
 });
 

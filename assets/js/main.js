@@ -20,6 +20,8 @@
 // observer.observe(target);
 
 jQuery(document).ready(function ($) {
+
+    //header line
     var lastScroll = 0;
     const headerLine = $('#header__line');
     const mql = window.matchMedia("(min-width: 768px)");
@@ -114,5 +116,23 @@ jQuery(document).ready(function ($) {
         }
     }
     const advantages = new Advantages($('.advantages__circle'));
+
+    //why us parallax
+    window.addEventListener('scroll', function () {
+        const parallaxElement = document.getElementById('wrapper__parallax');
+        
+        const elementPositionTop = parallaxElement.getBoundingClientRect().top + window.scrollY;
+        
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+    
+        const parallaxStrength = 0.009;
+    
+        if (scrollPosition + windowHeight > elementPositionTop && scrollPosition < elementPositionTop + parallaxElement.offsetHeight) {
+            const offset = 10 + (scrollPosition - elementPositionTop) * parallaxStrength;
+            console.log(offset);
+            parallaxElement.style.setProperty('background-position', `10% ${offset}%`, 'important');
+        }
+    });
 });
 

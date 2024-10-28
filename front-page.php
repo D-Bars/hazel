@@ -23,4 +23,8 @@
     </div>
 </div>
 
+<div class="why__us__block">
+    <div class="why__us__background__wrapper"><div class="why__us__background" id="wrapper__parallax"></div></div>
+</div>
+
 <?php get_footer(); ?>

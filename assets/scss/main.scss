@@ -195,7 +195,7 @@ strong {
 
 body {
   max-width: 100vw;
-  min-height: 80vw;
+  min-height: 500vw;
   overflow: hidden;
   overflow-y: auto;
   background-color: #FFF;
@@ -517,3 +517,36 @@ html {
 }
 
 // ******************************** ABOUT__US ******************************** \\
+
+
+// ******************************** WHY__US ******************************** \\
+
+.why__us__block{
+  position: relative;
+  min-height: 40vw;
+  overflow: hidden;
+
+  @include flex__box(column, center);
+  @include box(100%);
+}
+
+.why__us__background__wrapper{
+  position: absolute;
+  background-size: cover;
+  transition: transform .2s ease-out;
+  width: 100%;
+  height: 100%;
+}
+
+.why__us__background{
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/why_us.jpg');
+  transform: translateZ(-1px);
+  
+  @include background_img('../img/why_us.jpg', true , #000 , #000 , 0.5);
+}
+
+
+// ******************************** WHY__US ******************************** \\
+

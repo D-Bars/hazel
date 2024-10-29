@@ -550,7 +550,7 @@ html {
   width: 100%;
   height: 100%;
   background-image: url('../img/why_us.jpg');
-  background-position: 10% 20% !important;
+  background-position: 30% 20% !important;
   transform: translateZ(-1px);
 
   @include background_img('../img/why_us.jpg', true, #000, #000, 0.5);

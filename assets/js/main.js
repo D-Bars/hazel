@@ -148,10 +148,10 @@ jQuery(document).ready(function ($) {
         const scrollPosition = window.scrollY;
         const windowHeight = window.innerHeight;
 
-        const parallaxStrength = 0.009;
+        const parallaxStrength = 0.020;
 
         if (scrollPosition + windowHeight > elementPositionTop && scrollPosition < elementPositionTop + parallaxElement.offsetHeight) {
-            const offset = 20 + (scrollPosition - elementPositionTop) * parallaxStrength;
+            const offset = 30 + (scrollPosition - elementPositionTop) * parallaxStrength;
             parallaxElement.style.setProperty('background-position', `10% ${offset}%`, 'important');
         }
     });

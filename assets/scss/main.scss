@@ -634,3 +634,81 @@ html {
 
 
 // ******************************** WHY__US ******************************** \\
+
+// ******************************** SERVICES ******************************** \\
+
+.services__item{
+  padding: 0;
+  gap: 8vw;
+
+  @include flex__box(row);
+}
+
+.services__content{
+  padding-top: 7vw;
+  gap: 0.5vw;
+
+  @include box(35%);
+  @include flex__box(column);
+
+  & > span{
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 5px #DBDBDA;
+
+    @include text(130%, 600, #DBDBDA, 'ROBOTTO');
+  }
+}
+
+.services__content__title{
+  text-transform: uppercase;
+
+  @include text(135%, 800, $basicColor);
+
+  & span{
+    text-shadow: 0px 0px 1px $basicColor;
+
+    @include text(120%, 800, $basicColor);
+  }
+}
+
+.services__content__description{
+  margin: 2vw 0;
+
+  @include text(110%, 600, $fontColor);
+}
+
+.services__wrapper__img{
+  @include img_box(50%, 50vw);
+
+  & img{
+    filter: grayscale(90%);
+  }
+}
+
+.services__btn{
+  text-transform: uppercase;
+  box-shadow: 10px 5px 5px $basicColor;
+  padding: 0.5vw 1.5vw;
+  background-color: $basicColor;
+  transition: .4s;
+  cursor: pointer;
+
+  @include box(20%);
+  @include text(110%, 600, #FFF);
+
+  &:hover{
+    color: $accentColor;
+    box-shadow: unset;
+  }
+}
+
+.reverse{
+  flex-direction: row-reverse;
+
+  & .services__content{
+    text-align: right;
+    align-items: flex-end;
+  }
+}
+
+// ******************************** SERVICES ******************************** \\

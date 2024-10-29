@@ -129,4 +129,13 @@
     </div>
 </div>
 
+<div class="portfolio__block">
+    <div class="portfolio__box">
+        <div class="separator__line"></div>
+        <span>WE BUILD GOOD STUFF</span>
+        <h2 class="portfolio__title">OUR PORTFOLIO</h2>
+        <div class="portfolio__subtitle">Assertively impact bricks-and-clicks outsourcing after mission-critical ROI. Monotonectally underwhelm cost effective convergence without granular alignments. Progressively create client-based platforms.</div>
+    </div>
+</div>
+
 <?php get_footer(); ?>

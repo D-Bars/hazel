@@ -92,7 +92,7 @@
 
 <div class="services__block container-fluid">
     <div class="services__box row">
-        <div class="services__item col-12">
+        <div class="services__item col-12"  id="TriggerObserv__left" PosLeft>
             <div class="services__wrapper__img"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/img/services1.jpg" alt="Services"></div>
             <div class="services__content">
@@ -106,7 +106,7 @@
                 <button class="services__btn">Buy Hazel</button>
             </div>
         </div>
-        <div class="services__item reverse col-12">
+        <div class="services__item reverse col-12"  id="TriggerObserv__right" PosRight>
             <div class="services__wrapper__img"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/img/services2.jpg" alt="Services"></div>
             <div class="services__content">
@@ -121,5 +121,12 @@
     </div>
 </div>
 
+<div class="questions__block">
+    <div class="questions__content">
+        <div class="questions__title">Pre<span>-</span>Sale Questions</div>
+        <div class="questions__subtitle">Prospective functionalities for interactive commun generate economically sound infrastructures before process.</div>
+        <button class="questions__btn">contact us</button>
+    </div>
+</div>
 
 <?php get_footer(); ?>

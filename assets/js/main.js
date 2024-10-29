@@ -1,23 +1,45 @@
-// const target = document.getElementById('black__block');
+const targetServicePosLeft = document.getElementById('TriggerObserv__left');
+const targetServicePosRight = document.getElementById('TriggerObserv__right');
 
-// const observerCallback = (entries, observer) => {
-//     entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//             entry.target.style.opacity = '1'; 
-//             observer.unobserve(entry.target);
-//         }
-//     });
-// };
+const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const target = entry.target;
+            if(target.hasAttribute('PosLeft')){
+                target.animate([
+                    { left: '-100vw', opacity: 0 }, 
+                    { left: 0, opacity: 1  }
+                ], {
+                    duration: 2500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards' 
+                }); 
+            }
+            if(target.hasAttribute('PosRight')){
+                target.animate([
+                    { left: '100vw', opacity: 0 }, 
+                    { left: 0, opacity: 1  }
+                ], {
+                    duration: 3000,
+                    easing: 'ease-in-out',
+                    fill: 'forwards' 
+                }); 
+            }
+            observer.unobserve(entry.target);
+        }
+    });
+};
 
-// const observerOptions = {
-//     root: null,
-//     rootMargin: '0px',
-//     threshold: 0.5 
-// };
+const observerOptions = {
+    root: null,
+    rootMargin: '110%',
+    threshold: 0.5 
+};
 
-// const observer = new IntersectionObserver(observerCallback, observerOptions);
+const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-// observer.observe(target);
+observer.observe(targetServicePosLeft);
+observer.observe(targetServicePosRight);
 
 jQuery(document).ready(function ($) {
 

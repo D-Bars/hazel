@@ -638,7 +638,7 @@ html {
 
 // ******************************** SERVICES ******************************** \\
 
-.services__item{
+.services__item {
   position: relative;
   left: -100vw;
   padding: 0;
@@ -647,14 +647,14 @@ html {
   @include flex__box(row);
 }
 
-.services__content{
+.services__content {
   padding-top: 7vw;
   gap: 0.5vw;
 
   @include box(35%);
   @include flex__box(column);
 
-  & > span{
+  &>span {
     letter-spacing: 5px;
     text-shadow: 2px 2px 5px #DBDBDA;
 
@@ -662,33 +662,33 @@ html {
   }
 }
 
-.services__content__title{
+.services__content__title {
   text-transform: uppercase;
 
   @include text(135%, 800, $basicColor);
 
-  & span{
+  & span {
     text-shadow: 0px 0px 1px $basicColor;
 
     @include text(120%, 800, $basicColor);
   }
 }
 
-.services__content__description{
+.services__content__description {
   margin: 2vw 0;
 
   @include text(110%, 600, $fontColor);
 }
 
-.services__wrapper__img{
+.services__wrapper__img {
   @include img_box(50%, 50vw);
 
-  & img{
+  & img {
     filter: grayscale(90%);
   }
 }
 
-.services__btn{
+.services__btn {
   text-transform: uppercase;
   box-shadow: 10px 5px 5px $basicColor;
   padding: 0.5vw 1.5vw;
@@ -699,18 +699,18 @@ html {
   @include box(20%);
   @include text(110%, 600, #FFF);
 
-  &:hover{
+  &:hover {
     color: $accentColor;
     box-shadow: unset;
   }
 }
 
-.reverse{
+.reverse {
   position: relative;
   left: 100vw;
   flex-direction: row-reverse;
 
-  & .services__content{
+  & .services__content {
     text-align: right;
     align-items: flex-end;
   }
@@ -720,7 +720,7 @@ html {
 
 // ******************************** QUESTIONS ******************************** \\
 
-.questions__block{
+.questions__block {
   background-color: #000;
   padding: 6vw 0;
 
@@ -728,44 +728,44 @@ html {
   @include box(100%);
 }
 
-.questions__content{
+.questions__content {
   gap: 1vw;
 
   @include box(35%);
   @include flex__box(column, center);
 }
 
-.questions__title{
+.questions__title {
   text-transform: uppercase;
   letter-spacing: 10px;
   text-shadow: 0px 0px 3px #FFF;
 
   @include text(140%, 600, #FFF);
 
-  & span{
+  & span {
     font-size: 0.7vw;
   }
 }
 
-.questions__subtitle{
+.questions__subtitle {
   text-align: center;
   text-shadow: 0px 0px 2px #FFF9;
 
   @include text(110%, 400, #fff9);
 }
 
-.questions__btn{
+.questions__btn {
   margin-top: 1vw;
   padding: 0.3vw 0.5vw;
   border: 3px solid #FFF;
   background-color: unset;
-  text-transform:uppercase;
+  text-transform: uppercase;
   letter-spacing: 2px;
   transition: .4s;
 
   @include text(95%, 800, #FFF);
 
-  &:hover{
+  &:hover {
     background-color: #FFF;
     color: #000;
   }
@@ -777,44 +777,125 @@ html {
 
 // ******************************** PORTFOLIO ******************************** \\
 
-.portfolio__block{
+.portfolio__block {
   @include box(100%, 0, auto, 4vw);
   @include flex__box(column, center);
 }
 
-.portfolio__box{
+.portfolio__heade__box {
   gap: 1vw;
 
   @include flex__box(column, center);
   @include box(50%);
-  
-  & > span{
+
+  &>span {
     text-transform: uppercase;
     letter-spacing: 5px;
     margin-top: 2vw;
     text-shadow: 0px 0px 2px #DBDBDA;
-  
+
     @include text(120%, 600, #DBDBDA, 'ROBOTTO');
   }
 }
 
-.separator__line{
+.separator__line {
   width: 2px;
   height: 55px;
   background-color: $fontColor;
 }
 
-.portfolio__title{
+.portfolio__title {
   text-transform: uppercase;
-  
+
   @include h2__decor(#000, #000);
 }
 
-.portfolio__subtitle{
+.portfolio__subtitle {
   text-align: center;
   margin-top: 1vw;
 
   @include text(100%, 600, $fontColor);
+}
+
+.portfolio__categories__box {
+  gap: 3vw;
+
+  @include flex__box(column, center);
+  @include box(100%, 0, auto, 3vw);
+}
+
+.category__line {
+  gap: 1vw;
+
+  @include flex__box(row, center);
+}
+
+.category__item__title {
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .4s;
+
+  @include text(110%, 800, $fontColor);
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.category__active {
+  color: #000;
+}
+
+.category__content__box{
+  flex-wrap: wrap;
+
+  @include flex__box(row, center);
+  @include box(100%);
+}
+
+.category__product{
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  @include box(25%);
+
+  &:hover .category__product__content__box{
+    bottom: 0;
+  }
+
+  &:hover .category__product__wrapper__img{
+    top: -3vw;
+  }
+}
+
+.category__product__wrapper__img{
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: 0.4s;
+
+  @include img_box(100%, 20vw);
+}
+
+.category__product__content__box{
+  position: absolute;
+  left: 0;
+  bottom: -3vw;
+  padding: 0.5vw 2.5%;
+  background-color: #000;
+  transition: 0.4s;
+
+  @include box(100%, 2.5%, 3vw);
+  @include flex__box(column, center, center);
+}
+
+.category__product__title{
+  @include text(100%, 800, #FFF);
+}
+
+.category__product__subtitle{
+  @include text(90%, 600, $fontColor);
 }
 
 // ******************************** PORTFOLIO ******************************** \\

@@ -92,7 +92,7 @@
 
 <div class="services__block container-fluid">
     <div class="services__box row">
-        <div class="services__item col-12"  id="TriggerObserv__left" PosLeft>
+        <div class="services__item col-12" id="TriggerObserv__left" PosLeft>
             <div class="services__wrapper__img"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/img/services1.jpg" alt="Services"></div>
             <div class="services__content">
@@ -106,7 +106,7 @@
                 <button class="services__btn">Buy Hazel</button>
             </div>
         </div>
-        <div class="services__item reverse col-12"  id="TriggerObserv__right" PosRight>
+        <div class="services__item reverse col-12" id="TriggerObserv__right" PosRight>
             <div class="services__wrapper__img"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/img/services2.jpg" alt="Services"></div>
             <div class="services__content">
@@ -114,7 +114,9 @@
                 <div class="services__content__title">BUILD AN AWESOME <br /><span>
                         WEBSITE WITH HAZEL</span>
                 </div>
-                <div class="services__content__description">Globally evisculate synergistic niche markets whereas timely e-markets. Distinctively formulate timely web-readiness with long-term high-impact infrastructures.</div>
+                <div class="services__content__description">Globally evisculate synergistic niche markets whereas timely
+                    e-markets. Distinctively formulate timely web-readiness with long-term high-impact infrastructures.
+                </div>
                 <button class="services__btn">see features</button>
             </div>
         </div>
@@ -124,18 +126,75 @@
 <div class="questions__block">
     <div class="questions__content">
         <div class="questions__title">Pre<span>-</span>Sale Questions</div>
-        <div class="questions__subtitle">Prospective functionalities for interactive commun generate economically sound infrastructures before process.</div>
+        <div class="questions__subtitle">Prospective functionalities for interactive commun generate economically sound
+            infrastructures before process.</div>
         <button class="questions__btn">contact us</button>
     </div>
 </div>
 
 <div class="portfolio__block">
-    <div class="portfolio__box">
+    <div class="portfolio__heade__box">
         <div class="separator__line"></div>
         <span>WE BUILD GOOD STUFF</span>
         <h2 class="portfolio__title">OUR PORTFOLIO</h2>
-        <div class="portfolio__subtitle">Assertively impact bricks-and-clicks outsourcing after mission-critical ROI. Monotonectally underwhelm cost effective convergence without granular alignments. Progressively create client-based platforms.</div>
+        <div class="portfolio__subtitle">Assertively impact bricks-and-clicks outsourcing after mission-critical ROI.
+            Monotonectally underwhelm cost effective convergence without granular alignments. Progressively create
+            client-based platforms.</div>
     </div>
-</div>
+    <div class="portfolio__categories__box">
+        <div class="category__line">
+            <?php
+            $categories = get_categories(array(
+                'hide_empty' => false,
+                'exclude' => 1
+            ));
+            ?>
+            <?php if (!empty($categories) && !is_wp_error($categories)): ?>
+                <?php foreach ($categories as $category): ?>
+                    <?php $category_name = $category->name; ?>
+                    <h3 class="category__item__title" data-category="<?php echo $category_name; ?>" <?php echo !$category->parent ? 'parent' : ''; ?>>
+                        <?php echo $category_name; ?>
+                    </h3>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div><!-- ./category__line -->
+        <div class="category__content__box">
+            <?php
+            $items = new WP_Query(array(
+                'post_type' => 'products',
+                'posts_per_page' => -1
+            ));
+            if ($items->have_posts()) {
+                while ($items->have_posts()) {
+                    $items->the_post();
+
+                    $item_image = get_the_post_thumbnail();
+                    $item_title = get_the_title();
+                    $item_subtitle = get_field('description__field');
+                    $category_items = get_the_terms(get_the_ID(), 'category');
+
+                    if (!empty($category_items) && !is_wp_error($category_items)) {
+                        $category_names = wp_list_pluck($category_items, 'name');
+
+                        $category_name_string = implode(', ', $category_names);
+                    } else {
+                        $category_name_string = '';
+                    }
+            ?>
+                    <div class="category__product" data-category="<?php echo esc_attr($category_name_string); ?>">
+                        <div class="category__product__wrapper__img"><?php echo $item_image; ?></div>
+                        <div class="category__product__content__box">
+                            <div class="category__product__title"><?php echo $item_title; ?></div>
+                            <div class="category__product__subtitle"><?php echo $item_subtitle; ?></div>
+                        </div>
+                    </div>
+            <?php 
+                }
+                wp_reset_postdata();
+            }
+            ?>
+        </div><!-- ./category__content__box -->
+    </div><!-- ./portfolio__categories__box -->
+</div><!-- ./portfolio__block -->
 
 <?php get_footer(); ?>

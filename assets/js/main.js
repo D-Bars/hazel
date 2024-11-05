@@ -156,6 +156,17 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    
+    //portfolio
+    class Categories{
+        constructor(obj){
+            this.categoryObj = obj;
+            this.categoryName = this.categoryObj.getAttribute('data-category');
+            this.parentCategory = this.categoryObj.hasAttribute('parent');
+            console.log(this.categoryName);
+        }
+    }
+    $('.category__item__title').on('click', function(){
+        const category = new Categories(this); 
+    })
 });
 

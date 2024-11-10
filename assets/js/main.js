@@ -5,25 +5,25 @@ const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const target = entry.target;
-            if(target.hasAttribute('PosLeft')){
+            if (target.hasAttribute('PosLeft')) {
                 target.animate([
-                    { left: '-100vw', opacity: 0 }, 
-                    { left: 0, opacity: 1  }
+                    { left: '-100vw', opacity: 0 },
+                    { left: 0, opacity: 1 }
                 ], {
                     duration: 2500,
                     easing: 'ease-in-out',
-                    fill: 'forwards' 
-                }); 
+                    fill: 'forwards'
+                });
             }
-            if(target.hasAttribute('PosRight')){
+            if (target.hasAttribute('PosRight')) {
                 target.animate([
-                    { left: '100vw', opacity: 0 }, 
-                    { left: 0, opacity: 1  }
+                    { left: '100vw', opacity: 0 },
+                    { left: 0, opacity: 1 }
                 ], {
                     duration: 3000,
                     easing: 'ease-in-out',
-                    fill: 'forwards' 
-                }); 
+                    fill: 'forwards'
+                });
             }
             observer.unobserve(entry.target);
         }
@@ -33,7 +33,7 @@ const observerCallback = (entries, observer) => {
 const observerOptions = {
     root: null,
     rootMargin: '110%',
-    threshold: 0.5 
+    threshold: 0.5
 };
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -157,16 +157,63 @@ jQuery(document).ready(function ($) {
     });
 
     //portfolio
-    class Categories{
-        constructor(obj){
+    class Filter {
+        constructor(obj) {
             this.categoryObj = obj;
-            this.categoryName = this.categoryObj.getAttribute('data-category');
-            this.parentCategory = this.categoryObj.hasAttribute('parent');
-            console.log(this.categoryName);
+            this.categoryName = this.categoryObj.attr('data-category');
+            this.categoryParent = this.categoryObj.is('[parent]');
+            this.categoryLine = this.categoryObj.closest('.category__line');
+            
+            this.productBox = $('.category__content__box');
+            this.productCollection = this.productBox.find('.category__product');
+            this.setHeightProductBox();
+            this.setActive();
+            this.productSwitch();
+
+        }
+
+        setActive() {
+            this.removeActive();
+            this.categoryObj.addClass('category__active');
+        }
+
+        removeActive() {
+            this.categoryLine.find('.category__active').removeClass('category__active');
+        }
+
+        productSwitch() {
+            this.findCurrentProducts();
+            if (this.currentProducts.length) {
+                this.productCollection.css('display', 'none');
+                this.currentProducts.css({
+                    display: 'flex',
+                    opacity: 0,
+                }).animate({
+                    opacity: 1
+                }, 500);
+            }
+            if (this.categoryParent) {
+                this.productCollection.css('display', 'none');
+                this.productCollection.css({
+                    display: 'flex',
+                    opacity: 0,
+                }).animate({
+                    opacity: 1
+                }, 500);
+            }
+        }
+
+        findCurrentProducts() {
+            this.currentProducts = this.productBox.find('[data-category=' + this.categoryName + ']');
+        }
+
+        setHeightProductBox(){
+            this.boxHeight = this.productBox.outerHeight(true);
+            this.productBox.css('min-height', this.boxHeight);
         }
     }
-    $('.category__item__title').on('click', function(){
-        const category = new Categories(this); 
+    $('.category__item__title').on('click', function () {
+        const category = new Filter($(this));
     })
 });
 

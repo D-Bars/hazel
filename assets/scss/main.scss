@@ -849,7 +849,7 @@ html {
 .category__content__box{
   flex-wrap: wrap;
 
-  @include flex__box(row, center);
+  @include flex__box(row);
   @include box(100%);
 }
 
@@ -858,7 +858,7 @@ html {
   overflow: hidden;
   cursor: pointer;
 
-  @include box(25%);
+  @include box(25%, 0, 20vw);
 
   &:hover .category__product__content__box{
     bottom: 0;
@@ -875,7 +875,7 @@ html {
   left: 0;
   transition: 0.4s;
 
-  @include img_box(100%, 20vw);
+  @include img_box(100%);
 }
 
 .category__product__content__box{

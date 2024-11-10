@@ -1300,7 +1300,7 @@ html {
 .category__content__box {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: unset;
   justify-content: unset;
 }
 .category__content__box {
@@ -1324,10 +1324,10 @@ html {
 }
 .category__product {
   width: 25%;
-  padding-left: 0%;
-  padding-right: 0%;
+  padding-left: 0;
+  padding-right: 0;
   margin-top: 0;
-  height: auto;
+  height: 20vw;
 }
 @media screen and (max-width: 767px) {
   .category__product {
@@ -1350,7 +1350,7 @@ html {
 }
 .category__product__wrapper__img {
   width: 100%;
-  height: 20vw;
+  height: auto;
   outline: unset;
   outline-offset: -2px;
 }

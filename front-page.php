@@ -150,9 +150,25 @@
             ));
             ?>
             <?php if (!empty($categories) && !is_wp_error($categories)): ?>
-                <?php foreach ($categories as $category): ?>
-                    <?php $category_name = $category->name; ?>
-                    <h3 class="category__item__title" data-category="<?php echo $category_name; ?>" <?php echo !$category->parent ? 'parent' : ''; ?>>
+                <?php
+                $category_parent = [];
+                foreach ($categories as $category) {
+                    if (!$category->parent) {
+                        $category_parent[$category->term_id] = $category->name;
+                    }
+                }
+                foreach ($categories as $category):
+                    $parent_name = '';
+
+                    if ($category->parent) {
+                        // Если у категории есть родитель, ищем его имя в массиве $category_parent
+                        $child_parent_id = $category->parent;
+                        $parent_name = isset($category_parent[$child_parent_id]) ? $category_parent[$child_parent_id] : '';
+                    }
+
+                    $category_name = $category->name;
+                    ?>
+                    <h3 class="category__item__title" data-category="<?php echo $category_name . ' ' . $parent_name; ?>" <?php echo !$category->parent ? 'parent' : ''; ?>>
                         <?php echo $category_name; ?>
                     </h3>
                 <?php endforeach; ?>
@@ -180,7 +196,7 @@
                     } else {
                         $category_name_string = '';
                     }
-            ?>
+                    ?>
                     <div class="category__product" data-category="<?php echo esc_attr($category_name_string); ?>">
                         <div class="category__product__wrapper__img"><?php echo $item_image; ?></div>
                         <div class="category__product__content__box">
@@ -188,7 +204,7 @@
                             <div class="category__product__subtitle"><?php echo $item_subtitle; ?></div>
                         </div>
                     </div>
-            <?php 
+                    <?php
                 }
                 wp_reset_postdata();
             }

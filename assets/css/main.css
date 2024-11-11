@@ -1350,7 +1350,7 @@ html {
 }
 .category__product__wrapper__img {
   width: 100%;
-  height: auto;
+  height: 100%;
   outline: unset;
   outline-offset: -2px;
 }

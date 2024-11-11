@@ -875,7 +875,7 @@ html {
   left: 0;
   transition: 0.4s;
 
-  @include img_box(100%);
+  @include img_box(100%, 100%);
 }
 
 .category__product__content__box{

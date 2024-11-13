@@ -161,15 +161,15 @@ jQuery(document).ready(function ($) {
         constructor(obj) {
             this.categoryObj = obj;
             this.categoryName = this.categoryObj.attr('data-category');
-            this.categoryParent = this.categoryObj.is('[parent]');
+            this.categoryParent = this.categoryObj.is('[data-children]');
+            this.categoriesChilds = this.categoryObj.data('children');
             this.categoryLine = this.categoryObj.closest('.category__line');
-            
+
             this.productBox = $('.category__content__box');
             this.productCollection = this.productBox.find('.category__product');
             this.setHeightProductBox();
             this.setActive();
-            this.productSwitch();
-
+            this.showProduct();
         }
 
         setActive() {
@@ -181,33 +181,48 @@ jQuery(document).ready(function ($) {
             this.categoryLine.find('.category__active').removeClass('category__active');
         }
 
-        productSwitch() {
-            this.findCurrentProducts();
-            if (this.currentProducts.length) {
-                this.productCollection.css('display', 'none');
-                this.currentProducts.css({
-                    display: 'flex',
-                    opacity: 0,
-                }).animate({
-                    opacity: 1
-                }, 500);
-            }
+        showProduct() {
             if (this.categoryParent) {
                 this.productCollection.css('display', 'none');
-                this.productCollection.css({
-                    display: 'flex',
-                    opacity: 0,
-                }).animate({
-                    opacity: 1
-                }, 500);
+                var currentChilds = this.findChilds(this.categoriesChilds);
+                currentChilds.each(function () {
+                    $(this).css({
+                        display: 'flex',
+                        opacity: 0,
+                    }).animate({
+                        opacity: 1
+                    }, 500);
+                });
+            } else {
+                this.findCurrentProduct();
+                if (this.currentProducts.length) {
+                    this.productCollection.css('display', 'none');
+                    this.currentProducts.css({
+                        display: 'flex',
+                        opacity: 0,
+                    }).animate({
+                        opacity: 1
+                    }, 500);
+                }
             }
         }
 
-        findCurrentProducts() {
+        findChilds(childs) {
+            var currentChilds = [];
+            this.productCollection.each(function () {
+                var category = $(this).attr('data-category');
+                if (category && childs.includes(category)) {
+                    currentChilds.push($(this));
+                }
+            });
+            return $(currentChilds);
+        }
+
+        findCurrentProduct() {
             this.currentProducts = this.productBox.find('[data-category=' + this.categoryName + ']');
         }
 
-        setHeightProductBox(){
+        setHeightProductBox() {
             this.boxHeight = this.productBox.outerHeight(true);
             this.productBox.css('min-height', this.boxHeight);
         }

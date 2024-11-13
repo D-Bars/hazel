@@ -151,24 +151,20 @@
             ?>
             <?php if (!empty($categories) && !is_wp_error($categories)): ?>
                 <?php
-                $category_parent = [];
+                $category_child = [];
                 foreach ($categories as $category) {
-                    if (!$category->parent) {
-                        $category_parent[$category->term_id] = $category->name;
-                    }
+                    if ($category->parent) {
+                        $category_child[$category->parent][] = $category->name;
+                    } 
                 }
                 foreach ($categories as $category):
-                    $parent_name = '';
-
-                    if ($category->parent) {
-                        // Если у категории есть родитель, ищем его имя в массиве $category_parent
-                        $child_parent_id = $category->parent;
-                        $parent_name = isset($category_parent[$child_parent_id]) ? $category_parent[$child_parent_id] : '';
-                    }
-
                     $category_name = $category->name;
+                    $data_children = '';
+                    if (array_key_exists($category->term_id, $category_child)) {
+                        $data_children = ' data-children="' . implode(' ', $category_child[$category->term_id]) . '"';
+                    }
                     ?>
-                    <h3 class="category__item__title" data-category="<?php echo $category_name . ' ' . $parent_name; ?>" <?php echo !$category->parent ? 'parent' : ''; ?>>
+                    <h3 class="category__item__title" data-category="<?php echo $category_name; ?>" <?php echo $data_children; ?>>
                         <?php echo $category_name; ?>
                     </h3>
                 <?php endforeach; ?>

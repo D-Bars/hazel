@@ -146,27 +146,45 @@
             <?php
             $categories = get_categories(array(
                 'hide_empty' => false,
-                'exclude' => 1
+                'exclude' => 1,
             ));
             ?>
+
+            <h3 class="category__item__title category__active" category-all><?php _e('ALL', 'hazel'); ?></h3>
+
             <?php if (!empty($categories) && !is_wp_error($categories)): ?>
                 <?php
-                $category_child = [];
+                $category_parent = []; 
+                $category_child = [];  
+            
                 foreach ($categories as $category) {
-                    if ($category->parent) {
-                        $category_child[$category->parent][] = $category->name;
-                    } 
+                    if ($category->parent == 0) {
+                        $category_parent[] = $category;
+                    } else {
+                        $category_child[$category->parent][] = $category;
+                    }
                 }
-                foreach ($categories as $category):
-                    $category_name = $category->name;
+
+                foreach ($category_parent as $parent):
+                    $category_name = $parent->name;
                     $data_children = '';
-                    if (array_key_exists($category->term_id, $category_child)) {
-                        $data_children = ' data-children="' . implode(' ', $category_child[$category->term_id]) . '"';
+                    if (array_key_exists($parent->term_id, $category_child)) {
+                        $data_children = ' data-children="' . implode(' ', array_map(function ($child) {
+                            return esc_attr($child->name);
+                        }, $category_child[$parent->term_id])) . '"';
                     }
                     ?>
-                    <h3 class="category__item__title" data-category="<?php echo $category_name; ?>" <?php echo $data_children; ?>>
-                        <?php echo $category_name; ?>
+                    <h3 class="category__item__title" data-category="<?php echo esc_attr($category_name); ?>" <?php echo $data_children; ?>>
+                        <?php _e($category_name); ?>
                     </h3>
+                <?php endforeach; ?>
+
+                <?php foreach ($category_child as $parent_id => $children): ?>
+                    <?php foreach ($children as $child): ?>
+                        <h3 class="category__item__title" data-category="<?php echo esc_attr($child->name); ?>">
+                            <?php _e($child->name); ?>
+                        </h3>
+                    <?php endforeach; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div><!-- ./category__line -->

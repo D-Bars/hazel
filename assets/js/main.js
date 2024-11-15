@@ -157,19 +157,29 @@ jQuery(document).ready(function ($) {
     });
 
     //portfolio
+    let animateCategoryBlock = false;
     class Filter {
         constructor(obj) {
-            this.categoryObj = obj;
-            this.categoryName = this.categoryObj.attr('data-category');
-            this.categoryParent = this.categoryObj.is('[data-children]');
-            this.categoriesChilds = this.categoryObj.data('children');
-            this.categoryLine = this.categoryObj.closest('.category__line');
+            if (! animateCategoryBlock) {
+                this.categoryObj = obj;
 
-            this.productBox = $('.category__content__box');
-            this.productCollection = this.productBox.find('.category__product');
-            this.setHeightProductBox();
-            this.setActive();
-            this.showProduct();
+                this.categoryLine = this.categoryObj.closest('.category__line');
+
+                this.productBox = $('.category__content__box');
+                this.productCollection = this.productBox.find('.category__product');
+
+                this.setActive();
+                this.setHeightProductBox();
+
+                if (this.categoryObj.is('[category-all]')) {
+                    this.showAllProducts();
+                } else {
+                    this.categoryName = this.categoryObj.attr('data-category');
+                    this.categoryParent = this.categoryObj.is('[data-children]');
+                    this.categoriesChilds = this.categoryObj.data('children');
+                    this.showProduct();
+                }
+            }
         }
 
         setActive() {
@@ -181,28 +191,18 @@ jQuery(document).ready(function ($) {
             this.categoryLine.find('.category__active').removeClass('category__active');
         }
 
+        showAllProducts() {
+            this.animateProduct(this.productCollection);
+        }
+
         showProduct() {
             if (this.categoryParent) {
-                this.productCollection.css('display', 'none');
                 var currentChilds = this.findChilds(this.categoriesChilds);
-                currentChilds.each(function () {
-                    $(this).css({
-                        display: 'flex',
-                        opacity: 0,
-                    }).animate({
-                        opacity: 1
-                    }, 500);
-                });
+                this.animateProduct(currentChilds);
             } else {
                 this.findCurrentProduct();
                 if (this.currentProducts.length) {
-                    this.productCollection.css('display', 'none');
-                    this.currentProducts.css({
-                        display: 'flex',
-                        opacity: 0,
-                    }).animate({
-                        opacity: 1
-                    }, 500);
+                    this.animateProduct(this.currentProducts);
                 }
             }
         }
@@ -220,6 +220,21 @@ jQuery(document).ready(function ($) {
 
         findCurrentProduct() {
             this.currentProducts = this.productBox.find('[data-category=' + this.categoryName + ']');
+        }
+
+        animateProduct(products) {
+            animateCategoryBlock = true;
+            this.productCollection.css('display', 'none');
+            products.each(function () {
+                $(this).css({
+                    display: 'flex',
+                    opacity: 0,
+                }).animate({
+                    opacity: 1
+                }, 500, function(){
+                    animateCategoryBlock = false;
+                });
+            });
         }
 
         setHeightProductBox() {

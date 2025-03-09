@@ -15,7 +15,7 @@
                 <h3 class="advantages__title" title></h3>
                 <div class="advantages__description" description></div>
             </div>
-            <div class="advantages__item x-line adv__left adv__active" data-title="New Technology"
+            <div class="advantages__item x-line adv__left adv__active" data-title="<?php _e('New Technology', 'hazel'); ?>'"
                 data-description="Phosfluorescently redefine plug-and-play best practices."><i
                     class="fa-solid fa-umbrella"></i></div>
             <div class="advantages__item y-line adv__top" data-title="Ultimate Solution"

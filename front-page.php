@@ -9,26 +9,44 @@
             <?php _e('Assertively impact bricks-and-clicks outsourcing after mission-critical ROI. Monotonectally underwhelm cost effective convergence without granular alignments. Progressively create client-based platforms.', 'hazel'); ?>
         </div>
     </div>
-    <div class="advantages__circle__box">
-        <div class="advantages__circle">
-            <div class="advantages__circle__content">
-                <h3 class="advantages__title" title></h3>
-                <div class="advantages__description" description></div>
+    <?php
+    global $post;
+    $advantages = get_posts(array(
+        'post_type' => 'advantages',
+        'numberposts' => 4
+    ));
+    ?>
+    <?php //if ($advantages): ?>
+        <div class="advantages__circle__box">
+            <div class="advantages__circle">
+                <div class="advantages__circle__content">
+                    <h3 class="advantages__title" title></h3>
+                    <div class="advantages__description" description></div>
+                </div>
+                <div class="advantages__items__box">
+                    <?php //foreach ($advantages as $advantage):
+                        //$advantageTitle = $advantage->post_title;
+                        //$advantageDescription = $advantage->post_content;
+
+                        ?>
+                        <div class="advantages__item adv__active" data-title="<?php _e("1", 'hazel'); ?>"
+                            data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i
+                                class="fa-solid fa-umbrella"></i>
+                        </div>
+                        <div class="advantages__item y-line adv__top" data-title="<?php _e("2", 'hazel'); ?>"
+                data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i class="fa-solid fa-house"></i>
             </div>
-            <div class="advantages__item x-line adv__left adv__active" data-title="<?php _e('New Technology', 'hazel'); ?>'"
-                data-description="Phosfluorescently redefine plug-and-play best practices."><i
-                    class="fa-solid fa-umbrella"></i></div>
-            <div class="advantages__item y-line adv__top" data-title="Ultimate Solution"
-                data-description="Nam coegit alto unda austro liberioris effigiem?"><i class="fa-solid fa-house"></i>
-            </div>
-            <div class="advantages__item x-line adv__right" data-title="Brand New Features"
-                data-description="Competently transform proactive internal or “organic”."><i
-                    class="fa-solid fa-headphones"></i></div>
-            <div class="advantages__item y-line adv__bott" data-title="Done Awesomely"
-                data-description="Quicquam fratrum declivia gravitate. Nam coegit alto unda."><i
-                    class="fa-solid fa-gears"></i></div>
+            <div class="advantages__item x-line adv__right" data-title="<?php _e("3", 'hazel'); ?>"
+            data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i class="fa-solid fa-headphones"></i>
         </div>
+        <div class="advantages__item y-line adv__bott" data-title="<?php _e("4", 'hazel'); ?>"
+        data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i class="fa-solid fa-gears"></i>
     </div>
+                    <?php //endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php //endif; ?>
 </div>
 
 <div class="why__us__block">
@@ -154,9 +172,9 @@
 
             <?php if (!empty($categories) && !is_wp_error($categories)): ?>
                 <?php
-                $category_parent = []; 
-                $category_child = [];  
-            
+                $category_parent = [];
+                $category_child = [];
+
                 foreach ($categories as $category) {
                     if ($category->parent == 0) {
                         $category_parent[] = $category;

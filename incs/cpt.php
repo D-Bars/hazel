@@ -50,4 +50,46 @@ add_action('init', function () {
         'show_admin_column' => true,
         'rest_base' => 'category',
     ));
+
+    register_post_type(
+        'advantages',
+        array(
+            'labels' => array(
+                'name' => '1Преимущества',
+                'singular_name' => '2Преимущество',
+                'add_new' => '3Добавить преимущество',
+                'add_new_item' => '4Добавить новое преимущество',
+                'edit_item' => '5Изменить преимущество',
+                'new_item' => '6Новое преимущество',
+                'view_item' => '7Просмотр преимущества',
+                'search_items' => '8Найти преимущество',
+                'not_found' => '9Преимуществ не найдено',
+                'not_found_in_trash' => '10В корзине нет преимуществ',
+                'parent_item_colon' => '11Родительское преимущество',
+                'all_items' => '12Все преимущества',
+                'archives' => '13Архивы преимуществ',
+                'menu_name' => '14Преимущества',
+                'name_admin_bar' => '15Преимущество',
+                'view_items' => '16Просмотр преимуществ',
+                'attributes' => '17Свойства преимущества',
+
+                'insert_into_item' => '18Вставить в преимущество',
+                'uploaded_to_this_item' => '19Загружено для этого преимущества',
+                'featured_image' => '20Изображение преимущества',
+                'set_featured_image' => '21Установить изображение преимущества',
+                'remove_featured_image' => '22Удалить изображение преимущества',
+                'use_featured_image' => '23Использовать как изображение преимущества',
+
+                'item_updated' => '24Преимущество обновлёно.',
+                'item_published' => '25Преимущество добавлено.',
+                'item_published_privately' => '26Преимущество добавлено приватно.',
+                'item_reverted_to_draft' => '27Преимущество сохранёно как черновик.',
+                'item_scheduled' => '28Публикация преимущества запланирована.',
+            ),
+            'public' => true,
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'menu_icon' => 'dashicons-star-filled',
+            'show_in_rest' => true,
+        )
+    );
 });

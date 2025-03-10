@@ -41,6 +41,15 @@ add_action('after_setup_theme', function(){
     add_theme_support('title-tag');
 });
 
+function the__localize__title($objId) {
+    $obj_title = get_the_title($objId);
+    echo __($obj_title, 'hazel');
+}
+function the__localize__content($objId) {
+    $obj_content = get_the_content($objId);
+    echo __($obj_content, 'hazel');
+}
+
 function hazel_dump( $data ) {
 	echo "<pre>" . print_r( $data, 1 ) . "</pre>";
 }

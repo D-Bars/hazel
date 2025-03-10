@@ -319,18 +319,18 @@ html {
   padding: 5vw 2.5%;
   border-bottom: 5px solid #0001;
   background-attachment: fixed;
-  
+
   @include background_img('../img/header.jpg', true, #000, #000, 0.5);
   @include box(100%, 2.5%, 100dvh);
   @include flex__box(column, flex-start, center);
-  
+
   @media screen and (max-width: 767px) {
     padding: 10vw 2.5%;
   }
 }
 
-.header__content__block{
-  background-size: auto 125%;
+.header__content__block {
+  background-size: auto 175%;
 }
 
 .header__content__company__box {
@@ -425,29 +425,41 @@ html {
 
 .advantages__circle__box {
   position: relative;
-
-  @include box(47.5%);
-  @include flex__box(row, center, center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .advantages__circle {
   position: relative;
   padding: 4vw 0;
+  max-width: 400px;
+  max-height: 400px;
+  min-width: 20vw;
+  min-height: 20vw;
+  outline: 1px solid #000;
   background-color: #FFF;
   gap: 1vw;
   border-radius: 50%;
-  border: 3px solid #0003;
 
   @include flex__box(column, center, center);
   @include box(26vw, 0, 25vw);
 }
 
+.advantages__items__box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .advantages__circle__content {
   background-color: $basicColor;
   border-radius: 50%;
+  aspect-ratio: 1 / 1;
 
   @include flex__box(column, center, center);
-  @include box(16vw, 0, 15vw);
+  @include box(16vw, 0);
 }
 
 .advantages__title {
@@ -506,30 +518,6 @@ html {
     font-size: 0.8vw;
     color: #FFF;
   }
-}
-
-.x-line {
-  top: 47%;
-}
-
-.y-line {
-  left: 47%;
-}
-
-.adv__left {
-  left: -1vw;
-}
-
-.adv__right {
-  right: -1vw;
-}
-
-.adv__top {
-  top: -1vw;
-}
-
-.adv__bott {
-  bottom: -1vw;
 }
 
 // ******************************** ABOUT__US ******************************** \\
@@ -758,7 +746,7 @@ html {
   text-align: center;
   text-shadow: 0px 0px 2px #FFF9;
 
-  @include box(60%); 
+  @include box(60%);
   @include text(110%, 400, #fff9);
 }
 

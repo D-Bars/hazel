@@ -76,12 +76,31 @@ jQuery(document).ready(function ($) {
             this.circle = obj;
             this.advantageTitle = this.circle.find('[title]');
             this.advantageDescription = this.circle.find('[description]');
-            this.advatagesCollection = this.circle.find('.advantages__item');
+            this.advantagesItemsBox = this.circle.find('.advantages__items__box');
+            this.advantagesCollection = this.advantagesItemsBox.find('.advantages__item');
+            
+            this.positionItems();
+            window.addEventListener('resize', ()=>{this.positionItems()});
             this.addHoverIco();
             this.setContent();
             this.advantageInterval = setInterval(() => this.switchActive(), 5000);
             this.intervalAfterHover();
             this.addHoverCircle();
+        }
+
+        positionItems() {
+            const radius = this.circle.width() / 2; 
+        
+            this.advantagesCollection.each((index, item) => {
+                let angle = (index / this.advantagesCollection.length) * (2 * Math.PI);
+                let x = Math.cos(angle) * radius;
+                let y = Math.sin(angle) * radius;
+        
+                $(item).css({
+                    left: `calc(50% + ${x}px - ${$(item).outerWidth() / 2}px)`,
+                    top: `calc(50% + ${y}px - ${$(item).outerHeight() / 2}px)`
+                });
+            });
         }
 
         addActive(obj) {
@@ -93,8 +112,8 @@ jQuery(document).ready(function ($) {
         }
 
         addHoverIco() {
-            this.advatagesCollection.on('mouseover', (event) => {
-                this.removeActive(this.advatagesCollection);
+            this.advantagesCollection.on('mouseover', (event) => {
+                this.removeActive(this.advantagesCollection);
                 this.addActive($(event.currentTarget));
                 this.setContent();
                 clearInterval(this.advantageInterval);
@@ -115,13 +134,13 @@ jQuery(document).ready(function ($) {
         }
 
         searchActive() {
-            return this.advatagesCollection.filter('.adv__active');
+            return this.advantagesCollection.filter('.adv__active');
         }
 
         switchActive() {
             const activeClass = this.searchActive();
             this.removeActive(activeClass);
-            const nextItem = activeClass.next('.advantages__item').length ? activeClass.next('.advantages__item') : this.advatagesCollection.first();
+            const nextItem = activeClass.next('.advantages__item').length ? activeClass.next('.advantages__item') : this.advantagesCollection.first();
             this.addActive(nextItem);
             this.setContent();
         }
@@ -160,7 +179,7 @@ jQuery(document).ready(function ($) {
     let animateCategoryBlock = false;
     class Filter {
         constructor(obj) {
-            if (! animateCategoryBlock) {
+            if (!animateCategoryBlock) {
                 this.categoryObj = obj;
 
                 this.categoryLine = this.categoryObj.closest('.category__line');
@@ -231,7 +250,7 @@ jQuery(document).ready(function ($) {
                     opacity: 0,
                 }).animate({
                     opacity: 1
-                }, 500, function(){
+                }, 500, function () {
                     animateCategoryBlock = false;
                 });
             });

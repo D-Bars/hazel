@@ -450,6 +450,19 @@ html {
   justify-content: center;
   border-radius: 50%;
 }
+.advantages__circle__box {
+  width: 47.5%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 767px) {
+  .advantages__circle__box {
+    width: 100%;
+    padding: 0;
+  }
+}
 
 .advantages__circle {
   position: relative;
@@ -588,7 +601,6 @@ html {
 }
 .adv__active {
   animation: advantages 3s linear infinite;
-  background-color: #D6D6D6 !important;
 }
 
 .advantages__item {
@@ -599,13 +611,13 @@ html {
   width: 3em;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background-color: #1A1A1A;
   cursor: pointer;
   transition: 0.3s;
 }
-.advantages__item i {
-  font-size: 0.8vw;
-  color: #FFF;
+.advantages__item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .why__us__block {

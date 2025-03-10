@@ -16,7 +16,7 @@
         'numberposts' => 4
     ));
     ?>
-    <?php //if ($advantages): ?>
+    <?php if ($advantages): ?>
         <div class="advantages__circle__box">
             <div class="advantages__circle">
                 <div class="advantages__circle__content">
@@ -24,29 +24,23 @@
                     <div class="advantages__description" description></div>
                 </div>
                 <div class="advantages__items__box">
-                    <?php //foreach ($advantages as $advantage):
-                        //$advantageTitle = $advantage->post_title;
-                        //$advantageDescription = $advantage->post_content;
-
+                    <?php
+                    $i = 0;
+                    foreach ($advantages as $advantage):
+                        $advantageTitle = $advantage->post_title;
+                        $advantageDescription = $advantage->post_content;
+                        $advantageImage = get_the_post_thumbnail($advantage);
                         ?>
-                        <div class="advantages__item adv__active" data-title="<?php _e("1", 'hazel'); ?>"
-                            data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i
-                                class="fa-solid fa-umbrella"></i>
+                        <div class="advantages__item <?php echo (!$i) ? 'adv__active' : '' ?>"
+                            data-title="<?php _e("$advantageTitle", 'hazel'); ?>"
+                            data-description="<?php _e("$advantageDescription", 'hazel'); ?>">
+                            <?php echo $advantageImage; ?>
                         </div>
-                        <div class="advantages__item y-line adv__top" data-title="<?php _e("2", 'hazel'); ?>"
-                data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i class="fa-solid fa-house"></i>
-            </div>
-            <div class="advantages__item x-line adv__right" data-title="<?php _e("3", 'hazel'); ?>"
-            data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i class="fa-solid fa-headphones"></i>
-        </div>
-        <div class="advantages__item y-line adv__bott" data-title="<?php _e("4", 'hazel'); ?>"
-        data-description="<?php //_e("$advantageDescription", 'hazel'); ?>"><i class="fa-solid fa-gears"></i>
-    </div>
-                    <?php //endforeach; ?>
+                        <?php $i += 1; endforeach; ?>
                 </div>
             </div>
         </div>
-    <?php //endif; ?>
+    <?php endif; ?>
 </div>
 
 <div class="why__us__block">

@@ -429,6 +429,8 @@ html {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+
+  @include box(47.5%);
 }
 
 .advantages__circle {
@@ -498,7 +500,6 @@ html {
 
 .adv__active {
   animation: advantages 3s linear infinite;
-  background-color: #D6D6D6 !important;
 }
 
 
@@ -510,13 +511,13 @@ html {
   width: 3em;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background-color: $basicColor;
   cursor: pointer;
   transition: .3s;
-
-  & i {
-    font-size: 0.8vw;
-    color: #FFF;
+  
+  & img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 }
 

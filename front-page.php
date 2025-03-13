@@ -15,6 +15,14 @@
         'post_type' => 'advantages',
         'numberposts' => 4
     ));
+    $advantagesFieldsArr = [];
+    foreach ($advantages as $advantage) {
+        $advantagesFieldsArr[] = [
+            'title' => __($advantage->post_title, 'hazel'),
+            'description' => __($advantage->post_content, 'hazel'),
+            'image' => get_the_post_thumbnail($advantage)
+        ];
+    }
     ?>
     <?php if ($advantages): ?>
         <div class="advantages__circle__box">
@@ -26,18 +34,23 @@
                 <div class="advantages__items__box">
                     <?php
                     $i = 0;
-                    foreach ($advantages as $advantage):
-                        $advantageTitle = $advantage->post_title;
-                        $advantageDescription = $advantage->post_content;
-                        $advantageImage = get_the_post_thumbnail($advantage);
+                    foreach ($advantagesFieldsArr as $advantage):
                         ?>
                         <div class="advantages__item <?php echo (!$i) ? 'adv__active' : '' ?>"
-                            data-title="<?php _e("$advantageTitle", 'hazel'); ?>"
-                            data-description="<?php _e("$advantageDescription", 'hazel'); ?>">
-                            <?php echo $advantageImage; ?>
+                            data-title="<?php echo $advantage['title'] ?>"  
+                            data-description="<?php echo $advantage['description'] ?>">
+                            <?php echo $advantage['image']; ?>
                         </div>
                         <?php $i += 1; endforeach; ?>
                 </div>
+            </div>
+            <div class="advantages__mobile">
+                <?php
+                foreach ($advantagesFieldsArr as $advantage):
+                ?>
+                <div class="title"><?php echo _e($advantage['title'], 'hazel'); ?></div>
+                <div class="description"><?php echo _e($advantage['description'], 'hazel'); ?></div>
+                <?php endforeach; ?>
             </div>
         </div>
     <?php endif; ?>

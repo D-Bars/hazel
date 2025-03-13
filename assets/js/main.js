@@ -1,3 +1,5 @@
+const mql = window.matchMedia("(min-width: 800px)");
+
 const targetServicePosLeft = document.getElementById('TriggerObserv__left');
 const targetServicePosRight = document.getElementById('TriggerObserv__right');
 
@@ -43,10 +45,17 @@ observer.observe(targetServicePosRight);
 
 jQuery(document).ready(function ($) {
 
+    const burger = $('.burger__menu');
+    const menu = $('.menu__nav');
+    burger.on('click', () => {
+        burger.toggleClass('activeCloser');
+        menu.toggleClass('activeMenu');
+    })
+
     //header line
     var lastScroll = 0;
     const headerLine = $('#header__line');
-    const mql = window.matchMedia("(min-width: 768px)");
+    const mql = window.matchMedia("(min-width: 800px)");
 
     const toggleScrollHandler = (mql) => {
         if (mql.matches) {
@@ -60,9 +69,9 @@ jQuery(document).ready(function ($) {
     const handleScroll = () => {
         let scrollTop = window.scrollY;
         if (scrollTop > lastScroll) {
-            headerLine.css('transform', 'translateY(0)');
+            headerLine.css('top', '0');
         } else {
-            headerLine.css('transform', 'translateY(-100px)');
+            headerLine.css('top', '-100px');
         }
     };
 
@@ -156,7 +165,10 @@ jQuery(document).ready(function ($) {
             this.advantageDescription.html(this.description);
         }
     }
-    const advantages = new Advantages($('.advantages__circle'));
+    if(mql.matches){
+        const advantages = new Advantages($('.advantages__circle'));
+        console.log(1);
+    }
 
     //why us parallax
     window.addEventListener('scroll', function () {

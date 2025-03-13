@@ -21,7 +21,7 @@ $mfont_size: 4vw;
     color: $color;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     & {
       font-size: math.div($mfont_size, 100%) * $font_size;
     }
@@ -37,7 +37,7 @@ $mfont_size: 4vw;
     height: $height;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     & {
       width: 100%;
       padding: 0;
@@ -59,7 +59,7 @@ $mfont_size: 4vw;
     }
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     & {
       width: 100%;
       height: auto;
@@ -91,7 +91,7 @@ $mfont_size: 4vw;
     @include background($gradientMask, $url, $maskColor1, $maskColor2, $opacity);
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     & {
       background-size: auto 100%;
     }
@@ -123,7 +123,7 @@ $mfont_size: 4vw;
     background-position: center;
     background-repeat: no-repeat;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 800px) {
       & {
         width: math.div(10, 1) * 1vw;
         height: math.div(10, 1) * 1vw;
@@ -271,7 +271,7 @@ html {
   text-transform: uppercase;
   @include text(150%, 800, #FFF);
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     width: 100%;
     text-align: center;
   }
@@ -281,16 +281,87 @@ html {
   background-color: $basicColor;
   padding: 0.5vw 2.5%;
   position: fixed;
-  transform: translateY(-100px);
+  left: 0;
+  top: -100px;
   transition: .4s;
   z-index: 999;
 
   @include box(100%, 2.5%);
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
+    padding: 0vw 2.5%;
+    top: 0;
+  }
+}
+
+.header__line__box {
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.burger__menu {
+  display: none;
+
+  @media screen and (max-width: 800px) {
     position: relative;
-    padding: 5vw 2.5%;
-    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 8vw;
+    height: 5vw;
+    padding: 0;
+
+    & span {
+      position: absolute;
+      width: 100%;
+      height: 1vw;
+      background-color: #FFF;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+
+    & span:nth-child(1) {
+      top: 0;
+    }
+
+    & span:nth-child(2) {
+      width: 80%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    & span:nth-child(3) {
+      bottom: 0;
+    }
+
+    &.activeCloser span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    &.activeCloser span:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.activeCloser span:nth-child(3) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+    }
+  }
+}
+
+.menu__nav {
+  @media screen and (max-width: 800px) {
+    opacity: 0;
+    height: 0;
+    transition: .3s;
+
+    &.activeMenu {
+      height: auto;
+      opacity: 1;
+    }
   }
 }
 
@@ -302,7 +373,7 @@ html {
   @include box(100%, 2.5%);
   @include flex__box(row, center, flex-end);
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     @include flex__box(column, center);
   }
 
@@ -324,13 +395,17 @@ html {
   @include box(100%, 2.5%, 100dvh);
   @include flex__box(column, flex-start, center);
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     padding: 10vw 2.5%;
   }
 }
 
 .header__content__block {
   background-size: auto 175%;
+
+  @media screen and (max-width: 800px) {
+    background-size: auto 100%;
+  }
 }
 
 .header__content__company__box {
@@ -339,7 +414,7 @@ html {
   @include box(50%);
   @include flex__box(column, flex-start);
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 800px) {
     align-items: center;
     gap: 4vw;
   }
@@ -372,7 +447,7 @@ html {
       color: $accentColor;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 800px) {
       padding: 2vw 3vw;
       box-shadow: 10px 10px 0px $basicColor;
     }
@@ -389,6 +464,10 @@ html {
 
   @include flex__box(row, stretch);
   @include box(100%, 7.5%);
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 }
 
 .about__us__content {
@@ -447,6 +526,10 @@ html {
 
   @include flex__box(column, center, center);
   @include box(26vw, 0, 25vw);
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 }
 
 .advantages__items__box {
@@ -513,11 +596,20 @@ html {
   border-radius: 50%;
   cursor: pointer;
   transition: .3s;
-  
-  & img{
+
+  & img {
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+}
+
+.advantages__mobile{
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
   }
 }
 

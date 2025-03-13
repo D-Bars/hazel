@@ -274,7 +274,7 @@ html {
   @include text(150%, 800, #FFF);
 
   @media screen and (max-width: 800px) {
-    width: 50%;
+    width: auto;
     text-align: center;
   }
 }
@@ -374,7 +374,7 @@ html {
   padding: 0;
   gap: 2vw;
 
-  @include box(auto, 2%);
+  @include box(100%, 2%);
   @include flex__box(row, center, flex-end);
 
   @media screen and (max-width: 800px) {
@@ -393,19 +393,22 @@ html {
 .header__content__block {
   padding: 5vw 2.5%;
   border-bottom: 5px solid #0001;
-  background-attachment: fixed;
-
+  
   @include background_img('../img/header.jpg', true, #000, #000, 0.5);
   @include box(100%, 2.5%, 100dvh);
   @include flex__box(column, flex-start, center);
-
+  
   @media screen and (max-width: 800px) {
+    width: 95%;
     padding: 10vw 2.5%;
   }
 }
 
 .header__content__block {
+  background-attachment: fixed;
   background-size: auto 175%;
+  background-position: center center;
+  background-repeat: no-repeat;
 
   @media screen and (max-width: 800px) {
     background-size: auto 100%;
@@ -519,18 +522,16 @@ html {
 
 .advantages__circle {
   position: relative;
-  padding: 4vw 0;
   max-width: 400px;
   max-height: 400px;
-  min-width: 20vw;
-  min-height: 20vw;
+  min-width: 28vw;
+  min-height: 28vw;
   outline: 1px solid #000;
   background-color: #FFF;
   gap: 1vw;
   border-radius: 50%;
 
   @include flex__box(column, center, center);
-  @include box(26vw, 0, 25vw);
 
   @media screen and (max-width: 800px) {
     display: none;
@@ -549,7 +550,7 @@ html {
   aspect-ratio: 1 / 1;
 
   @include flex__box(column, center, center);
-  @include box(16vw, 0);
+  @include box(20vw, 0);
 }
 
 .advantages__title {

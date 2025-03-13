@@ -28,6 +28,7 @@
   font-weight: inherit;
   font-family: inherit;
   color: inherit;
+  box-sizing: content-box;
 }
 
 strong {
@@ -101,38 +102,38 @@ html {
 }
 
 /* BASIC */
-.header__logo__name {
+.header__logo__wrapper {
   text-transform: uppercase;
 }
-.header__logo__name {
+.header__logo__wrapper {
   font-size: 225%;
   font-family: "Montserrat";
   font-weight: 800;
   color: #FFF;
 }
 @media screen and (max-width: 800px) {
-  .header__logo__name {
+  .header__logo__wrapper {
     font-size: 6vw;
   }
 }
 @media screen and (max-width: 800px) {
-  .header__logo__name {
-    width: 100%;
+  .header__logo__wrapper {
+    width: 50%;
     text-align: center;
   }
 }
 
 .header__line__block {
   background-color: #1A1A1A;
-  padding: 0.5vw 2.5%;
   position: fixed;
+  padding: 0.5vw 2.5%;
   left: 0;
   top: -100px;
   transition: 0.4s;
   z-index: 999;
 }
 .header__line__block {
-  width: 100%;
+  width: 95%;
   padding-left: 2.5%;
   padding-right: 2.5%;
   margin-top: 0;
@@ -144,14 +145,30 @@ html {
     padding: 0;
   }
 }
+
 @media screen and (max-width: 800px) {
   .header__line__block {
+    width: 95%;
     padding: 0vw 2.5%;
     top: 0;
   }
 }
-
 .header__line__box {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .header__line__box {
+    width: 100%;
+    padding: 0;
+  }
+}
+.header__line__box {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
@@ -204,25 +221,24 @@ html {
 
 @media screen and (max-width: 800px) {
   .menu__nav {
-    opacity: 0;
-    height: 0;
-    transition: 0.3s;
+    display: none;
+    padding: 2vw 0;
   }
   .menu__nav.activeMenu {
-    height: auto;
-    opacity: 1;
+    display: flex;
   }
 }
 
 .header__menu__box {
   list-style: none;
   margin: 0;
+  padding: 0;
   gap: 2vw;
 }
 .header__menu__box {
-  width: 100%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+  width: auto-4%/1;
+  padding-left: 2%;
+  padding-right: 2%;
   margin-top: 0;
   height: auto;
 }
@@ -267,13 +283,13 @@ html {
   background-attachment: fixed;
 }
 .header__content__block {
-  background-image: url("../img/header.jpg");
+  background: url("../img/header.jpg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
 .header__content__block {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/header.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/header.jpg");
 }
 @media screen and (max-width: 800px) {
   .header__content__block {
@@ -281,7 +297,7 @@ html {
   }
 }
 .header__content__block {
-  width: 100%;
+  width: 95%;
   padding-left: 2.5%;
   padding-right: 2.5%;
   margin-top: 0;
@@ -412,7 +428,7 @@ html {
   justify-content: unset;
 }
 .about__us__block {
-  width: 100%;
+  width: 85%;
   padding-left: 7.5%;
   padding-right: 7.5%;
   margin-top: 0;
@@ -471,16 +487,7 @@ html {
 
 .about__us__wrapper__img {
   width: 3vw;
-  padding-left: 0%;
-  padding-right: 0%;
-  margin-top: 0;
   height: auto;
-}
-@media screen and (max-width: 800px) {
-  .about__us__wrapper__img {
-    width: 100%;
-    padding: 0;
-  }
 }
 .about__us__wrapper__img i {
   font-size: 3vw;
@@ -749,13 +756,13 @@ html {
   transform: translateZ(-1px);
 }
 .why__us__background {
-  background-image: url("../img/why_us.jpg");
+  background: url("../img/why_us.jpg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
 .why__us__background {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/why_us.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/why_us.jpg");
 }
 @media screen and (max-width: 800px) {
   .why__us__background {
@@ -822,7 +829,7 @@ html {
 }
 
 .slick-list {
-  width: 100%;
+  width: 95%;
   padding-left: 2.5%;
   padding-right: 2.5%;
   margin-top: 0;
@@ -1457,7 +1464,7 @@ html {
   transition: 0.4s;
 }
 .category__product__content__box {
-  width: 100%;
+  width: 95%;
   padding-left: 2.5%;
   padding-right: 2.5%;
   margin-top: 0;

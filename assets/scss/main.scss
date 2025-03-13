@@ -1,5 +1,6 @@
 // IMPORT 
 @use 'sass:math';
+@use "sass:color";
 // IMPORT 
 
 // ПЕРЕМЕННЫЕ 
@@ -30,7 +31,7 @@ $mfont_size: 4vw;
 
 @mixin box($width: 100%, $padding: 0%, $height: auto, $margin_top: 0) {
   & {
-    width: $width;
+    width: math.div($width - $padding * 2, 1);
     padding-left: $padding;
     padding-right: $padding;
     margin-top: $margin_top;
@@ -72,23 +73,24 @@ $mfont_size: 4vw;
 
 @mixin background($gradientMask, $url, $maskColor1, $maskColor2, $opacity) {
   @if $gradientMask ==true {
-    $rgba_color1: rgba(red($maskColor1), green($maskColor1), blue($maskColor1), $opacity);
-    $rgba_color2: rgba(red($maskColor2), green($maskColor2), blue($maskColor2), $opacity);
+    $rgba_color1: rgba(color.channel($maskColor1, "red"), color.channel($maskColor1, "green"), color.channel($maskColor1, "blue"), $opacity);
+    $rgba_color2: rgba(color.channel($maskColor2, "red"), color.channel($maskColor2, "green"), color.channel($maskColor2, "blue"), $opacity);
 
     & {
-      background-image: linear-gradient($rgba_color1, $rgba_color2), url($url);
+      background: linear-gradient($rgba_color1, $rgba_color2), url($url);
     }
   }
 }
 
 @mixin background_img($url, $gradientMask: false, $maskColor1: #000, $maskColor2: #000, $opacity: 0.45) {
   & {
-    background-image: url($url);
+    background: url($url);
+
+    @include background($gradientMask, $url, $maskColor1, $maskColor2, $opacity);
+
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% auto;
-
-    @include background($gradientMask, $url, $maskColor1, $maskColor2, $opacity);
   }
 
   @media screen and (max-width: 800px) {
@@ -113,25 +115,25 @@ $mfont_size: 4vw;
 @mixin closer__btn {
   & {
     cursor: pointer;
-    width: math.div(2, 1) * 1vw;
-    height: math.div(2, 1) * 1vw;
+    width: math.div(2, 1) * 1.2vw;
+    height: math.div(2, 1) * 1.2vw;
     position: absolute;
-    right: 0.5vw;
-    top: 0.5vw;
-    background: url(img/close.png), $color3;
+    right: 1vw;
+    top: 1vw;
+    border-radius: 10px;
+    border: 2px solid #FFF;
+    background: url(../img/close.png), $color3;
     background-size: 70% 70%;
+    background-color: $color1;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 999;
 
     @media screen and (max-width: 800px) {
       & {
-        width: math.div(10, 1) * 1vw;
-        height: math.div(10, 1) * 1vw;
+        width: math.div(8, 1) * 1.2vw;
+        height: math.div(8, 1) * 1.2vw;
       }
-    }
-
-    &:hover {
-      background-color: red;
     }
   }
 }
@@ -189,6 +191,7 @@ $mfont_size: 4vw;
   font-weight: inherit;
   font-family: inherit;
   color: inherit;
+  box-sizing: content-box;
 }
 
 strong {
@@ -266,21 +269,20 @@ html {
 
 // ******************************** HEADER ******************************** \\
 
-
-.header__logo__name {
+.header__logo__wrapper {
   text-transform: uppercase;
   @include text(150%, 800, #FFF);
 
   @media screen and (max-width: 800px) {
-    width: 100%;
+    width: 50%;
     text-align: center;
   }
 }
 
 .header__line__block {
   background-color: $basicColor;
-  padding: 0.5vw 2.5%;
   position: fixed;
+  padding: 0.5vw 2.5%;
   left: 0;
   top: -100px;
   transition: .4s;
@@ -288,16 +290,19 @@ html {
 
   @include box(100%, 2.5%);
 
-  @media screen and (max-width: 800px) {
+}
+
+@media screen and (max-width: 800px) {
+  .header__line__block {
+    width: 95%;
     padding: 0vw 2.5%;
     top: 0;
   }
 }
 
 .header__line__box {
-  align-items: center;
-  justify-content: space-between;
-
+  @include box(100%);
+  @include flex__box(row, center, space-between);
 }
 
 .burger__menu {
@@ -354,13 +359,11 @@ html {
 
 .menu__nav {
   @media screen and (max-width: 800px) {
-    opacity: 0;
-    height: 0;
-    transition: .3s;
+    display: none;
+    padding: 2vw 0;
 
     &.activeMenu {
-      height: auto;
-      opacity: 1;
+      display: flex;
     }
   }
 }
@@ -368,9 +371,10 @@ html {
 .header__menu__box {
   list-style: none;
   margin: 0;
+  padding: 0;
   gap: 2vw;
 
-  @include box(100%, 2.5%);
+  @include box(auto, 2%);
   @include flex__box(row, center, flex-end);
 
   @media screen and (max-width: 800px) {
@@ -486,7 +490,8 @@ html {
 }
 
 .about__us__wrapper__img {
-  @include box(3vw);
+  width: 3vw;
+  height: auto;
 
   & i {
     font-size: 3vw;
@@ -604,7 +609,7 @@ html {
   }
 }
 
-.advantages__mobile{
+.advantages__mobile {
   display: none;
 
   @media screen and (max-width: 800px) {

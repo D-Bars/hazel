@@ -11,9 +11,8 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <header>
-        <div class="container-fluid header__line__block" id="header__line">
-            <div class="row header__line__box">
-                <div class="col-4 col-md-4">
+        <div class="header__line__block" id="header__line">
+            <div class="header__line__box">
                     <a href="/" class="header__logo__wrapper">
                         <?php if (the_custom_logo()): ?>
                             <?php the_custom_logo(); ?>
@@ -21,14 +20,13 @@
                             <div class="header__logo__name"><?php bloginfo('name'); ?></div>
                         </a>
                     <?php endif; ?>
-                </div>
 
                 <div class="burger__menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-                <nav class="col-12 col-md-8 menu__nav">
+                <nav class="menu__nav">
                     <ul class="header__menu__box">
                         <li><a href="#" class="header__menu__item active__menu__item"><?php _e('Home', 'hazel'); ?></a>
                         </li>

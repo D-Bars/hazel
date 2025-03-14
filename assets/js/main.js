@@ -47,9 +47,16 @@ jQuery(document).ready(function ($) {
 
     const burger = $('.burger__menu');
     const menu = $('.menu__nav');
+    const menuHeight = menu.outerHeight(true);
     burger.on('click', () => {
         burger.toggleClass('activeCloser');
-        menu.toggleClass('activeMenu');
+        if (burger.hasClass('activeCloser')) {
+            menu.css('display', 'flex').animate({ 'height': menuHeight }, 300);
+        } else {
+            menu.animate({ 'height': 0 }, 300, function() {
+                menu.css('display', 'none');
+            });
+        }
     })
 
     //header line

@@ -285,24 +285,31 @@ html {
   padding: 0.5vw 2.5%;
   left: 0;
   top: -100px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
   transition: .4s;
   z-index: 999;
 
   @include box(100%, 2.5%);
-
+  @include flex__box(row, center, space-between)
 }
 
 @media screen and (max-width: 800px) {
   .header__line__block {
+    flex-direction: column;
     width: 95%;
-    padding: 0vw 2.5%;
+    padding: 2vw 2.5%;
     top: 0;
   }
 }
 
 .header__line__box {
-  @include box(100%);
+  width: auto;
+
   @include flex__box(row, center, space-between);
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 }
 
 .burger__menu {
@@ -358,13 +365,12 @@ html {
 }
 
 .menu__nav {
+  width: auto;
   @media screen and (max-width: 800px) {
     display: none;
+    width: 100%;
+    align-items: center;
     padding: 2vw 0;
-
-    &.activeMenu {
-      display: flex;
-    }
   }
 }
 

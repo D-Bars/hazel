@@ -37,7 +37,7 @@
                     foreach ($advantagesFieldsArr as $advantage):
                         ?>
                         <div class="advantages__item <?php echo (!$i) ? 'adv__active' : '' ?>"
-                            data-title="<?php echo $advantage['title'] ?>"  
+                            data-title="<?php echo $advantage['title'] ?>"
                             data-description="<?php echo $advantage['description'] ?>">
                             <?php echo $advantage['image']; ?>
                         </div>
@@ -47,9 +47,19 @@
             <div class="advantages__mobile">
                 <?php
                 foreach ($advantagesFieldsArr as $advantage):
-                ?>
-                <div class="title"><?php echo _e($advantage['title'], 'hazel'); ?></div>
-                <div class="description"><?php echo _e($advantage['description'], 'hazel'); ?></div>
+                    ?>
+                    <div class="advantages__mobile__item">
+                        <div class="advantages__mobile__left__box">
+                            <div class="advantages__mobile__wrapper__img">
+                                <?php echo $advantage['image']; ?>
+                            </div>
+                            <div class="advantages__mobile__stick"></div>
+                        </div>
+                        <div class="advantages__mobile__content">
+                            <div class="title"><?php echo _e($advantage['title'], 'hazel'); ?></div>
+                            <div class="description"><?php echo _e($advantage['description'], 'hazel'); ?></div>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -115,9 +125,9 @@
     </div>
 </div>
 
-<div class="services__block container-fluid">
-    <div class="services__box row">
-        <div class="services__item col-12" id="TriggerObserv__left" PosLeft>
+<div class="services__block">
+    <div class="services__box">
+        <div class="services__item services__left" id="TriggerObserv__left" PosLeft>
             <div class="services__wrapper__img"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/img/services1.jpg" alt="Services"></div>
             <div class="services__content">
@@ -131,7 +141,7 @@
                 <button class="services__btn">Buy Hazel</button>
             </div>
         </div>
-        <div class="services__item reverse col-12" id="TriggerObserv__right" PosRight>
+        <div class="services__item services__right" id="TriggerObserv__right" PosRight>
             <div class="services__wrapper__img"><img
                     src="<?php echo get_template_directory_uri(); ?>/assets/img/services2.jpg" alt="Services"></div>
             <div class="services__content">

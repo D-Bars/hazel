@@ -8,6 +8,7 @@ const observerCallback = (entries, observer) => {
         if (entry.isIntersecting) {
             const target = entry.target;
             if (target.hasAttribute('PosLeft')) {
+                console.log('left');
                 target.animate([
                     { left: '-100vw', opacity: 0 },
                     { left: 0, opacity: 1 }
@@ -18,9 +19,10 @@ const observerCallback = (entries, observer) => {
                 });
             }
             if (target.hasAttribute('PosRight')) {
+                console.log('right');
                 target.animate([
-                    { left: '100vw', opacity: 0 },
-                    { left: 0, opacity: 1 }
+                    { right: '-100vw', opacity: 0 },
+                    { right: 0, opacity: 1 }
                 ], {
                     duration: 3000,
                     easing: 'ease-in-out',
@@ -34,14 +36,17 @@ const observerCallback = (entries, observer) => {
 
 const observerOptions = {
     root: null,
-    rootMargin: '110%',
+    rootMargin: '100%',
     threshold: 0.5
 };
 
-const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-observer.observe(targetServicePosLeft);
-observer.observe(targetServicePosRight);
+if(mql.matches){
+    console.log(1);
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
+    observer.observe(targetServicePosLeft);
+    observer.observe(targetServicePosRight);
+}
 
 jQuery(document).ready(function ($) {
 
@@ -62,7 +67,6 @@ jQuery(document).ready(function ($) {
     //header line
     var lastScroll = 0;
     const headerLine = $('#header__line');
-    const mql = window.matchMedia("(min-width: 800px)");
 
     const toggleScrollHandler = (mql) => {
         if (mql.matches) {
@@ -174,7 +178,6 @@ jQuery(document).ready(function ($) {
     }
     if(mql.matches){
         const advantages = new Advantages($('.advantages__circle'));
-        console.log(1);
     }
 
     //why us parallax
@@ -269,7 +272,7 @@ jQuery(document).ready(function ($) {
                     opacity: 0,
                 }).animate({
                     opacity: 1
-                }, 500, function () {
+                }, 300, function () {
                     animateCategoryBlock = false;
                 });
             });

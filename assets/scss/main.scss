@@ -10,7 +10,7 @@ $accentColor: #08E7C5;
 $fontColor: #747474;
 $font1: 'Montserrat';
 $font_size: 1.1vw;
-$mfont_size: 4vw;
+$mfont_size: 3.5vw;
 // ПЕРЕМЕННЫЕ 
 
 // МИКСИНЫ
@@ -91,12 +91,6 @@ $mfont_size: 4vw;
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% auto;
-  }
-
-  @media screen and (max-width: 800px) {
-    & {
-      background-size: auto 100%;
-    }
   }
 }
 
@@ -480,6 +474,8 @@ html {
 
   @media screen and (max-width: 800px) {
     flex-direction: column;
+    width: 95%;
+    padding: 5vw 2.5%;
   }
 }
 
@@ -489,6 +485,10 @@ html {
 
   @include box(47.5%);
   @include flex__box(column);
+
+  @media screen and (max-width: 800px) {
+    gap: 5vw;
+  }
 
   & span {
     text-transform: uppercase;
@@ -505,6 +505,10 @@ html {
   & i {
     font-size: 3vw;
     color: #0003;
+
+    @media screen and (max-width: 800px) {
+      font-size: 8vw;
+    }
   }
 }
 
@@ -622,7 +626,61 @@ html {
   @media screen and (max-width: 800px) {
     display: flex;
     flex-direction: column;
+    margin-top: 3vw;
+    gap: 8vw;
   }
+}
+
+.advantages__mobile__item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+
+  & .advantages__mobile__wrapper__img{
+    position: relative;
+    width: 8vw;
+    align-self: flex-start;
+    padding: 2vw;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 50%;
+    z-index: 2;
+
+    & img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: invert(1);
+    }
+
+  }
+}
+
+.advantages__mobile__left__box{
+  position: relative;
+  width: 20%;
+  
+  & .advantages__mobile__stick{
+    position: absolute;
+    width: 0.5vw;
+    height: 100%;
+    top: 4vw;
+    left: 4vw;
+    background-color: #333;
+    z-index: 1;
+  }
+}
+
+.advantages__mobile__content{
+  width: 70%;
+  padding: 3vh 2.5%;
+  background-color: #000;
+  color: #FFF;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
 }
 
 // ******************************** ABOUT__US ******************************** \\
@@ -648,13 +706,16 @@ html {
 }
 
 .why__us__background {
+  @include background_img('../img/why_us.jpg', true, #000, #000, 0.5);
+}
+
+.why__us__background{
+  background-repeat: no-repeat;
   width: 100%;
   height: 100%;
-  background-image: url('../img/why_us.jpg');
-  background-position: 30% 20% !important;
+  background-position: 10% 30% !important;
   transform: translateZ(-1px);
 
-  @include background_img('../img/why_us.jpg', true, #000, #000, 0.5);
 }
 
 .why__us__title {
@@ -669,6 +730,11 @@ html {
   z-index: 2;
 
   @include box(60%);
+  @include flex__box(column, center);
+
+  @media screen and (max-width: 800px) {
+    padding: 5vw 0;
+  }
 }
 
 .why__us__slider__block {
@@ -676,10 +742,19 @@ html {
 
   @include box(100%, 0, auto, 5vw);
 
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding: 0 2.5%;
+  }
+  
   & .slick-slide {
     margin: 0 40px;
     box-sizing: border-box;
   }
+}
+
+.why__us__slider__block.slick-slider{
+  @include flex__box(row, center, center);
 }
 
 .slick-list {
@@ -692,11 +767,15 @@ html {
 }
 
 .slick-prev {
-  left: -3vw !important;
+  @media screen and (max-width: 800px) {
+    left: -2.5% !important;
+  }
 }
 
 .slick-next {
-  right: -2vw !important;
+  @media screen and (max-width: 800px) {
+    right: -2.5% !important;
+  }
 }
 
 .slick-arrow img {
@@ -719,6 +798,10 @@ html {
   & i {
     color: #FFF;
     font-size: 2vw;
+
+    @media screen and (max-width: 800px) {
+      font-size: 5vw;
+    }
   }
 
   & .why__us__slider__title {
@@ -739,13 +822,34 @@ html {
 
 // ******************************** SERVICES ******************************** \\
 
+.services__block{
+  @include box(100%);
+}
+
+.services__box{
+  @include box(100%);
+  @include flex__box(column);
+}
+
 .services__item {
-  position: relative;
-  left: -100vw;
   padding: 0;
   gap: 8vw;
-
+  
   @include flex__box(row, stretch);
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    gap: 5vw;
+  }
+}
+
+.services__left{
+  position: relative;
+  left: -100vw;
+
+  @media screen and (max-width: 800px) {
+    left: 0;
+  }
 }
 
 .services__content {
@@ -755,11 +859,20 @@ html {
   @include box(35%);
   @include flex__box(column, flex-start);
 
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding: 1vw 2.5%;
+  }
+
   &>span {
     letter-spacing: 5px;
     text-shadow: 2px 2px 5px #DBDBDA;
 
     @include text(130%, 600, #DBDBDA, 'ROBOTTO');
+    
+    @media screen and (max-width: 800px) {
+      font-size: 4vw;
+    }
   }
 }
 
@@ -767,11 +880,19 @@ html {
   text-transform: uppercase;
 
   @include text(135%, 800, $basicColor);
+  
+  @media screen and (max-width: 800px) {
+    font-size: 4.5vw;
+  }
 
   & span {
     text-shadow: 0px 0px 1px $basicColor;
 
     @include text(120%, 800, $basicColor);
+
+    @media screen and (max-width: 800px) {
+      font-size: 4.5vw;
+    }
   }
 }
 
@@ -779,10 +900,18 @@ html {
   margin: 2vw 0;
 
   @include text(110%, 600, $fontColor);
+
+  @media screen and (max-width: 800px) {
+    font-size: 3.5vw;
+  }
 }
 
 .services__wrapper__img {
   @include img_box(50%);
+
+  @media screen and (max-width: 800px) {
+    height: 45vh;
+  }
 
   & img {
     filter: grayscale(90%);
@@ -799,16 +928,25 @@ html {
 
   @include text(110%, 600, #FFF);
 
+  @media screen and (max-width: 800px) {
+    font-size: 3.5vw;
+  }
+
   &:hover {
     color: $accentColor;
     box-shadow: unset;
   }
 }
 
-.reverse {
+.services__right {
   position: relative;
-  left: 100vw;
+  right: -100vw;
   flex-direction: row-reverse;
+
+  @media screen and (max-width: 800px) {
+    right: 0;
+    flex-direction: column-reverse;
+  }
 
   & .services__content {
     text-align: right;
@@ -826,6 +964,10 @@ html {
 
   @include flex__box(column, center);
   @include box(100%);
+
+  @media screen and (max-width: 800px) {
+    padding: 5vw 0;
+  }
 }
 
 .questions__content {
@@ -833,6 +975,10 @@ html {
 
   @include box(100%);
   @include flex__box(column, center);
+
+  @media screen and (max-width: 800px) {
+    gap: 3vw;
+  }
 }
 
 .questions__title {
@@ -842,8 +988,16 @@ html {
 
   @include text(140%, 600, #FFF);
 
+  @media screen and (max-width: 800px) {
+    font-size: 4.5vw;
+  }
+
   & span {
     font-size: 0.7vw;
+
+    @media screen and (max-width: 800px) {
+      font-size: 4vw;
+    }
   }
 }
 
@@ -853,6 +1007,10 @@ html {
 
   @include box(60%);
   @include text(110%, 400, #fff9);
+
+  @media screen and (max-width: 800px) {
+    font-size: 3vw;
+  }
 }
 
 .questions__btn {
@@ -865,6 +1023,11 @@ html {
   transition: .4s;
 
   @include text(95%, 800, #FFF);
+
+  @media screen and (max-width: 800px) {
+    font-size: 3vw;
+    padding: 0.5vw 1.5vw;
+  }
 
   &:hover {
     background-color: #FFF;
@@ -952,6 +1115,13 @@ html {
 
   @include flex__box(row);
   @include box(100%);
+
+  @media screen and (max-width: 800px) {
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: baseline;
+    gap: 1vw;
+  }
 }
 
 .category__product {
@@ -960,6 +1130,13 @@ html {
   cursor: pointer;
 
   @include box(25%, 0, 20vw);
+
+  @media screen and (max-width: 800px) {
+    width: 47.5%;
+    flex-direction: column;
+    height: auto;
+    flex-grow: 0;
+  }
 
   &:hover .category__product__content__box {
     bottom: 0;
@@ -977,6 +1154,10 @@ html {
   transition: 0.4s;
 
   @include img_box(100%, 100%);
+
+  @media screen and (max-width: 800px) {
+    height: 40vw;
+  }
 }
 
 .category__product__content__box {
@@ -989,6 +1170,14 @@ html {
 
   @include box(100%, 2.5%, 3vw);
   @include flex__box(column, center, center);
+
+  @media screen and (max-width: 800px) {
+    position: relative;
+    height: auto;
+    width: 95%;
+    padding: 1vw 2.5%;
+    bottom: 0;
+  }
 }
 
 .category__product__title {

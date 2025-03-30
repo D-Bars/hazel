@@ -8,7 +8,6 @@ const observerCallback = (entries, observer) => {
         if (entry.isIntersecting) {
             const target = entry.target;
             if (target.hasAttribute('PosLeft')) {
-                console.log('left');
                 target.animate([
                     { left: '-100vw', opacity: 0 },
                     { left: 0, opacity: 1 }
@@ -19,7 +18,6 @@ const observerCallback = (entries, observer) => {
                 });
             }
             if (target.hasAttribute('PosRight')) {
-                console.log('right');
                 target.animate([
                     { right: '-100vw', opacity: 0 },
                     { right: 0, opacity: 1 }
@@ -41,7 +39,6 @@ const observerOptions = {
 };
 
 if(mql.matches){
-    console.log(1);
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     
     observer.observe(targetServicePosLeft);
@@ -208,11 +205,12 @@ jQuery(document).ready(function ($) {
 
                 this.productBox = $('.category__content__box');
                 this.productCollection = this.productBox.find('.category__product');
+                this.countProductsInCategory = 0;
 
                 this.setActive();
-                this.setHeightProductBox();
 
                 if (this.categoryObj.is('[category-all]')) {
+                    this.countProductsInCategory = this.productCollection.length;
                     this.showAllProducts();
                 } else {
                     this.categoryName = this.categoryObj.attr('data-category');
@@ -241,30 +239,34 @@ jQuery(document).ready(function ($) {
                 var currentChilds = this.findChilds(this.categoriesChilds);
                 this.animateProduct(currentChilds);
             } else {
-                this.findCurrentProduct();
-                if (this.currentProducts.length) {
-                    this.animateProduct(this.currentProducts);
+                const currentProducts = this.findCurrentProducts();
+                if (currentProducts.length) {
+                    this.animateProduct(currentProducts);
                 }
             }
         }
 
         findChilds(childs) {
-            var currentChilds = [];
+            const currentChilds = [];
             this.productCollection.each(function () {
-                var category = $(this).attr('data-category');
+                const category = $(this).attr('data-category');
                 if (category && childs.includes(category)) {
                     currentChilds.push($(this));
                 }
             });
+            this.countProductsInCategory = currentChilds.length;
             return $(currentChilds);
         }
 
-        findCurrentProduct() {
-            this.currentProducts = this.productBox.find('[data-category=' + this.categoryName + ']');
+        findCurrentProducts() {
+            const currentProducts = this.productBox.find('[data-category=' + this.categoryName + ']');
+            this.countProductsInCategory = currentProducts.length;
+            return currentProducts;
         }
 
         animateProduct(products) {
             animateCategoryBlock = true;
+            this.setHeightProductBox();
             this.productCollection.css('display', 'none');
             products.each(function () {
                 $(this).css({
@@ -279,8 +281,15 @@ jQuery(document).ready(function ($) {
         }
 
         setHeightProductBox() {
-            this.boxHeight = this.productBox.outerHeight(true);
-            this.productBox.css('min-height', this.boxHeight);
+            const oneProductHeight = this.productCollection.first().outerHeight(true);
+            let countRows = 1;
+            if(mql.matches){
+                countRows = Math.ceil(Number(this.countProductsInCategory) / 4);
+            }else{
+                countRows = Math.ceil(Number(this.countProductsInCategory) / 2);
+            }
+            const newBoxHeight = countRows * oneProductHeight;
+            this.productBox.animate({'height' : newBoxHeight}, 300);
         }
     }
     $('.category__item__title').on('click', function () {

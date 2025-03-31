@@ -92,4 +92,46 @@ add_action('init', function () {
             'show_in_rest' => true,
         )
     );
+
+    register_post_type(
+        'reviews',
+        array(
+            'labels' => array(
+                'name' => '1Отзывы',
+                'singular_name' => '2Отзыв',
+                'add_new' => '3Добавить отзыв',
+                'add_new_item' => '4Добавить новый отзыв',
+                'edit_item' => '5Изменить отзыв',
+                'new_item' => '6Новый отзыв',
+                'view_item' => '7Просмотр отзыва',
+                'search_items' => '8Найти отзыв',
+                'not_found' => '9Отзывов не найдено',
+                'not_found_in_trash' => '10В корзине нет отзывов',
+                'parent_item_colon' => '11Родительский отзыв',
+                'all_items' => '12Все отзывы',
+                'archives' => '13Архивы отзывов',
+                'menu_name' => '14Отзывы',
+                'name_admin_bar' => '15Отзыв',
+                'view_items' => '16Просмотр отзыва',
+                'attributes' => '17Свойства отзыва',
+
+                'insert_into_item' => '18Вставить в отзыв',
+                'uploaded_to_this_item' => '19Загружено для этого отзыва',
+                'featured_image' => '20Изображение отзыва',
+                'set_featured_image' => '21Установить изображение отзыва',
+                'remove_featured_image' => '22Удалить изображение отзыва',
+                'use_featured_image' => '23Использовать как изображение отзыва',
+
+                'item_updated' => '24Отзыв обновлён.',
+                'item_published' => '25Отзыв добавлен.',
+                'item_published_privately' => '26Отзыв добавлено приватно.',
+                'item_reverted_to_draft' => '27Отзыв сохранёно как черновик.',
+                'item_scheduled' => '28Публикация отзыва запланирована.',
+            ),
+            'public' => true,
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'menu_icon' => 'dashicons-archive',
+            'show_in_rest' => true,
+        )
+    );
 });

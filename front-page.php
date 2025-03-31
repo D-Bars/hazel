@@ -222,7 +222,7 @@
                     <?php endforeach; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
-        </div><!-- ./category__line -->
+        </div>
         <div class="category__content__box">
             <?php
             $items = new WP_Query(array(
@@ -258,8 +258,62 @@
                 wp_reset_postdata();
             }
             ?>
-        </div><!-- ./category__content__box -->
-    </div><!-- ./portfolio__categories__box -->
-</div><!-- ./portfolio__block -->
+        </div>
+    </div>
+</div>
+
+<?php 
+    global $post;
+    $reviews = get_posts( array(
+        'post_type' => 'reviews',
+        'numberposts' => -1
+    ));
+?>
+
+<?php 
+    if($reviews) :
+?>
+<div class="reviews__block">
+    <h2><?php _e('OUR CLIENTS FEEDBACK', 'hazel'); ?></h2>
+    <?php foreach($reviews as $review) : ?>
+    <div class="customers__img__box">
+        <div class="customer__wrapper__img"><?php echo get_the_post_thumbnail($review); ?></div>
+    </div>
+    <?php endforeach; ?>
+    <div class="customers__review__box">
+        <div class="customer__review__content"></div>
+        <div class="customer__review__fullname"></div>
+        <div class="customer__review__profession"></div>
+    </div>
+</div>
+<?php endif; ?>
+
+<div class="manufacturers__block">
+    <div class="manufacturer__wrapper__img"><img src="" alt=""></div>
+    <div class="manufacturer__wrapper__img"><img src="" alt=""></div>
+    <div class="manufacturer__wrapper__img"><img src="" alt=""></div>
+    <div class="manufacturer__wrapper__img"><img src="" alt=""></div>
+</div>
+
+<div class="contact__form__block">
+    <div class="contact__form__wrapper__img"><img src="" alt=""></div>
+    <span></span>
+    <h2></h2>
+    <!-- shortcode -->
+     <div class="contact__details__box"><!-- design el!(::after) -->
+        <div class="contact__details__item"></div>
+     </div>
+</div>
+
+<div class="map__block">
+    <div class="banner__box">
+            <div class="banner__wrapper__img">
+                <div class="banner__mask__img"><img src="" alt=""></div>
+            </div>
+            <span></span>
+            <h2></h2>
+    </div>
+    <div class="map__box"></div>
+</div>
 
 <?php get_footer(); ?>

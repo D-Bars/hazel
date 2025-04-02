@@ -307,7 +307,7 @@ jQuery(document).ready(function ($) {
             this.sampleCustomerReview = this.sampleReviewBox.find('.customer__review__content');
             this.sampleCustomerFullname = this.sampleReviewBox.find('.customer__review__fullname');
             this.sampleCustomerProfession = this.sampleReviewBox.find('.customer__review__profession');
-            console.log(this.lastHeight);
+
             this.addListeners();
             this.updateCustomerState(this.customerFirst);
         }

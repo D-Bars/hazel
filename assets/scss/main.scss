@@ -360,6 +360,7 @@ html {
 
 .menu__nav {
   width: auto;
+
   @media screen and (max-width: 800px) {
     display: none;
     width: 100%;
@@ -393,11 +394,11 @@ html {
 .header__content__block {
   padding: 5vw 2.5%;
   border-bottom: 5px solid #0001;
-  
+
   @include background_img('../img/header.jpg', true, #000, #000, 0.5);
   @include box(100%, 2.5%, 100dvh);
   @include flex__box(column, flex-start, center);
-  
+
   @media screen and (max-width: 800px) {
     width: 95%;
     padding: 10vw 2.5%;
@@ -631,13 +632,13 @@ html {
   }
 }
 
-.advantages__mobile__item{
+.advantages__mobile__item {
   width: 100%;
   display: flex;
   flex-direction: row;
   gap: 5%;
 
-  & .advantages__mobile__wrapper__img{
+  & .advantages__mobile__wrapper__img {
     position: relative;
     width: 8vw;
     align-self: flex-start;
@@ -647,7 +648,7 @@ html {
     border-radius: 50%;
     z-index: 2;
 
-    & img{
+    & img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -657,11 +658,11 @@ html {
   }
 }
 
-.advantages__mobile__left__box{
+.advantages__mobile__left__box {
   position: relative;
   width: 20%;
-  
-  & .advantages__mobile__stick{
+
+  & .advantages__mobile__stick {
     position: absolute;
     width: 0.5vw;
     height: 100%;
@@ -672,7 +673,7 @@ html {
   }
 }
 
-.advantages__mobile__content{
+.advantages__mobile__content {
   width: 70%;
   padding: 3vh 2.5%;
   background-color: #000;
@@ -709,7 +710,7 @@ html {
   @include background_img('../img/why_us.jpg', true, #000, #000, 0.5);
 }
 
-.why__us__background{
+.why__us__background {
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
@@ -746,14 +747,14 @@ html {
     width: 95%;
     padding: 0 2.5%;
   }
-  
+
   & .slick-slide {
     margin: 0 40px;
     box-sizing: border-box;
   }
 }
 
-.why__us__slider__block.slick-slider{
+.why__us__slider__block.slick-slider {
   @include flex__box(row, center, center);
 }
 
@@ -822,11 +823,11 @@ html {
 
 // ******************************** SERVICES ******************************** \\
 
-.services__block{
+.services__block {
   @include box(100%);
 }
 
-.services__box{
+.services__box {
   @include box(100%);
   @include flex__box(column);
 }
@@ -834,7 +835,7 @@ html {
 .services__item {
   padding: 0;
   gap: 8vw;
-  
+
   @include flex__box(row, stretch);
 
   @media screen and (max-width: 800px) {
@@ -843,7 +844,7 @@ html {
   }
 }
 
-.services__left{
+.services__left {
   position: relative;
   left: -100vw;
 
@@ -869,7 +870,7 @@ html {
     text-shadow: 2px 2px 5px #DBDBDA;
 
     @include text(130%, 600, #DBDBDA, 'ROBOTTO');
-    
+
     @media screen and (max-width: 800px) {
       font-size: 4vw;
     }
@@ -880,7 +881,7 @@ html {
   text-transform: uppercase;
 
   @include text(135%, 800, $basicColor);
-  
+
   @media screen and (max-width: 800px) {
     font-size: 4.5vw;
   }
@@ -1193,43 +1194,47 @@ html {
 
 // ******************************** REVIEWS ******************************** \\
 
-.reviews__block{
+.reviews__block {
   text-align: center;
 
   @include box(100%, 0, auto, 20vh);
   @include flex__box(column, center);
 
-  & h2{
+  & h2 {
     @include h2__decor(#000, #000);
   }
 }
 
-.customers__img__box{
-  gap: 1%;
+.customers__img__box {
+  gap: 1vw 1%;
 
   @include box(100%, 0, auto, 10vh);
   @include flex__box(row, center, center);
 }
 
-.customer__wrapper__img{
+.customer__wrapper__img {
   border-radius: 50%;
   opacity: 0.5;
   overflow: hidden;
   cursor: pointer;
   transition: .4s;
-  
+
   @include img_box(2.7vw, 2.7vw);
 
-  &:hover{
+  @media screen and (max-width: 800px) {
+    width: 10vw;
+  }
+
+  &:hover {
     opacity: 1;
   }
 }
 
-.customer__active{
+.customer__active {
   position: relative;
   opacity: 1;
 
-  &::after{
+  &::after {
     content: '\f10e';
     position: absolute;
     font-family: "Font Awesome 6 Free";
@@ -1238,10 +1243,14 @@ html {
     left: 55%;
     color: #FFF;
     font-size: 1vw;
+
+    @media screen and (max-width: 800px) {
+      font-size: 4vw;
+    }
   }
 }
 
-.customers__review__box{
+.customers__review__box {
   gap: 0.3vw;
   margin-bottom: 10vh;
   text-align: center;
@@ -1249,26 +1258,36 @@ html {
   @include box(60%, 2.5%, auto, 5vh);
   @include flex__box(column, center);
 
-  & .customer__review__content{
-    @include text(115%, 600, $basicColor);
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
   }
 
-  & .customer__review__fullname{
+  & .customer__review__content {
+    @include text(100%, 600, $basicColor);
+  }
+
+  & .customer__review__fullname {
     margin-top: 3vh;
 
     @include text(110%, 600, $basicColor);
   }
 
-  & .customer__review__profession{
+  & .customer__review__profession {
     @include text(100%, 600, #DBDBDA);
   }
 }
 
-.separator__stick{
+.separator__stick {
   background-color: #DBDBDA;
   box-shadow: 0px -1px 5px #DBDBDA;
 
   @include box(40%, 0, 0.1vh);
+
+  @media screen and (max-width: 800px) {
+    width: 40%;
+  }
 }
 
 // ******************************** REVIEWS ******************************** \\

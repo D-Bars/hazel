@@ -262,30 +262,41 @@
     </div>
 </div>
 
-<?php 
-    global $post;
-    $reviews = get_posts( array(
-        'post_type' => 'reviews',
-        'numberposts' => -1
-    ));
+<?php
+global $post;
+$reviews = get_posts(array(
+    'post_type' => 'reviews',
+    'numberposts' => -1
+));
 ?>
 
-<?php 
-    if($reviews) :
-?>
-<div class="reviews__block">
-    <h2><?php _e('OUR CLIENTS FEEDBACK', 'hazel'); ?></h2>
-    <?php foreach($reviews as $review) : ?>
-    <div class="customers__img__box">
-        <div class="customer__wrapper__img"><?php echo get_the_post_thumbnail($review); ?></div>
+<?php
+if ($reviews):
+    ?>
+    <div class="reviews__block">
+        <h2><?php _e('OUR CLIENTS FEEDBACK', 'hazel'); ?></h2>
+        <div class="customers__img__box">
+            <?php foreach ($reviews as $review):
+                $customer__fullname = get_field('customer_full_name', $review->ID);
+                $customer__profession = get_field('customer_profession', $review->ID);
+                $customer__review = get_field('customer_review', $review->ID);
+                ?>
+                <div class="customer__wrapper__img" 
+                data-fullname="<?php echo $customer__fullname; ?>"
+                data-profession="<?php echo $customer__profession; ?>"
+                data-review="<?php echo $customer__review ?>"
+                >
+                    <?php echo get_the_post_thumbnail($review); ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="customers__review__box">
+            <div class="customer__review__content"></div>
+            <div class="customer__review__fullname"></div>
+            <div class="customer__review__profession"></div>
+        </div>
+        <div class="separator__stick"></div>
     </div>
-    <?php endforeach; ?>
-    <div class="customers__review__box">
-        <div class="customer__review__content"></div>
-        <div class="customer__review__fullname"></div>
-        <div class="customer__review__profession"></div>
-    </div>
-</div>
 <?php endif; ?>
 
 <div class="manufacturers__block">
@@ -300,18 +311,18 @@
     <span></span>
     <h2></h2>
     <!-- shortcode -->
-     <div class="contact__details__box"><!-- design el!(::after) -->
+    <div class="contact__details__box"><!-- design el!(::after) -->
         <div class="contact__details__item"></div>
-     </div>
+    </div>
 </div>
 
 <div class="map__block">
     <div class="banner__box">
-            <div class="banner__wrapper__img">
-                <div class="banner__mask__img"><img src="" alt=""></div>
-            </div>
-            <span></span>
-            <h2></h2>
+        <div class="banner__wrapper__img">
+            <div class="banner__mask__img"><img src="" alt=""></div>
+        </div>
+        <span></span>
+        <h2></h2>
     </div>
     <div class="map__box"></div>
 </div>

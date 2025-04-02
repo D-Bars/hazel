@@ -1189,3 +1189,86 @@ html {
 }
 
 // ******************************** PORTFOLIO ******************************** \\
+
+
+// ******************************** REVIEWS ******************************** \\
+
+.reviews__block{
+  text-align: center;
+
+  @include box(100%, 0, auto, 20vh);
+  @include flex__box(column, center);
+
+  & h2{
+    @include h2__decor(#000, #000);
+  }
+}
+
+.customers__img__box{
+  gap: 1%;
+
+  @include box(100%, 0, auto, 10vh);
+  @include flex__box(row, center, center);
+}
+
+.customer__wrapper__img{
+  border-radius: 50%;
+  opacity: 0.5;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .4s;
+  
+  @include img_box(2.7vw, 2.7vw);
+
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.customer__active{
+  position: relative;
+  opacity: 1;
+
+  &::after{
+    content: '\f10e';
+    position: absolute;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    top: 60%;
+    left: 55%;
+    color: #FFF;
+    font-size: 1vw;
+  }
+}
+
+.customers__review__box{
+  gap: 0.3vw;
+  margin-bottom: 10vh;
+  text-align: center;
+
+  @include box(60%, 2.5%, auto, 5vh);
+  @include flex__box(column, center);
+
+  & .customer__review__content{
+    @include text(115%, 600, $basicColor);
+  }
+
+  & .customer__review__fullname{
+    margin-top: 3vh;
+
+    @include text(110%, 600, $basicColor);
+  }
+
+  & .customer__review__profession{
+    @include text(100%, 600, #DBDBDA);
+  }
+}
+
+.separator__stick{
+  background-color: #DBDBDA;
+  box-shadow: 0px -1px 5px #DBDBDA;
+
+  @include box(40%, 0, 0.1vh);
+}
+
+// ******************************** REVIEWS ******************************** \\

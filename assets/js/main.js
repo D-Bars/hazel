@@ -38,9 +38,9 @@ const observerOptions = {
     threshold: 0.5
 };
 
-if(mql.matches){
+if (mql.matches) {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
+
     observer.observe(targetServicePosLeft);
     observer.observe(targetServicePosRight);
 }
@@ -55,7 +55,7 @@ jQuery(document).ready(function ($) {
         if (burger.hasClass('activeCloser')) {
             menu.css('display', 'flex').animate({ 'height': menuHeight }, 300);
         } else {
-            menu.animate({ 'height': 0 }, 300, function() {
+            menu.animate({ 'height': 0 }, 300, function () {
                 menu.css('display', 'none');
             });
         }
@@ -95,9 +95,9 @@ jQuery(document).ready(function ($) {
             this.advantageDescription = this.circle.find('[description]');
             this.advantagesItemsBox = this.circle.find('.advantages__items__box');
             this.advantagesCollection = this.advantagesItemsBox.find('.advantages__item');
-            
+
             this.positionItems();
-            window.addEventListener('resize', ()=>{this.positionItems()});
+            window.addEventListener('resize', () => { this.positionItems() });
             this.addHoverIco();
             this.setContent();
             this.advantageInterval = setInterval(() => this.switchActive(), 5000);
@@ -106,13 +106,13 @@ jQuery(document).ready(function ($) {
         }
 
         positionItems() {
-            const radius = this.circle.width() / 2; 
-        
+            const radius = this.circle.width() / 2;
+
             this.advantagesCollection.each((index, item) => {
                 let angle = (index / this.advantagesCollection.length) * (2 * Math.PI);
                 let x = Math.cos(angle) * radius;
                 let y = Math.sin(angle) * radius;
-        
+
                 $(item).css({
                     left: `calc(50% + ${x}px - ${$(item).outerWidth() / 2}px)`,
                     top: `calc(50% + ${y}px - ${$(item).outerHeight() / 2}px)`
@@ -173,7 +173,7 @@ jQuery(document).ready(function ($) {
             this.advantageDescription.html(this.description);
         }
     }
-    if(mql.matches){
+    if (mql.matches) {
         const advantages = new Advantages($('.advantages__circle'));
     }
 
@@ -283,17 +283,85 @@ jQuery(document).ready(function ($) {
         setHeightProductBox() {
             const oneProductHeight = this.productCollection.first().outerHeight(true);
             let countRows = 1;
-            if(mql.matches){
+            if (mql.matches) {
                 countRows = Math.ceil(Number(this.countProductsInCategory) / 4);
-            }else{
+            } else {
                 countRows = Math.ceil(Number(this.countProductsInCategory) / 2);
             }
             const newBoxHeight = countRows * oneProductHeight;
-            this.productBox.animate({'height' : newBoxHeight}, 300);
+            this.productBox.animate({ 'height': newBoxHeight }, 300);
         }
     }
     $('.category__item__title').on('click', function () {
         const category = new Filter($(this));
     })
+
+    //reviews
+    class Reviews {
+        constructor(customersBox) {
+            this.customersBox = $(customersBox);
+            this.customerFirst = this.customersBox.find('.customer__wrapper__img').first();
+            this.activeCustomer = null;
+
+            this.sampleReviewBox = $('.customers__review__box');
+            this.sampleCustomerReview = this.sampleReviewBox.find('.customer__review__content');
+            this.sampleCustomerFullname = this.sampleReviewBox.find('.customer__review__fullname');
+            this.sampleCustomerProfession = this.sampleReviewBox.find('.customer__review__profession');
+            console.log(this.lastHeight);
+            this.addListeners();
+            this.updateCustomerState(this.customerFirst);
+        }
+
+        setActive(activeItem) {
+            activeItem.addClass('customer__active');
+            this.activeCustomer = activeItem;
+        }
+
+        removeActive() {
+            this.customersBox.find('.customer__active').removeClass('customer__active');
+        }
+
+        getDataCustomer(customer) {
+            return {
+                review: customer.attr('data-review') || '',
+                fullname: customer.attr('data-fullname') || '',
+                profession: customer.attr('data-profession') || ''
+            };
+        }
+
+        setDataCustomer(dataArray) {
+            this.sampleCustomerReview.text(dataArray.review);
+            this.sampleCustomerFullname.text(dataArray.fullname);
+            this.sampleCustomerProfession.text(dataArray.profession);
+        }
+
+        animateSampleBox() {
+            this.sampleReviewBox.stop(true, true);
+            const currentHeight = this.sampleReviewBox.height();
+            this.sampleReviewBox.css("height", "auto");
+            const newBoxHeight = this.sampleReviewBox[0].scrollHeight;
+            this.sampleReviewBox.height(currentHeight).animate({ height: newBoxHeight }, 300, 'swing');
+        }
+
+        updateCustomerState(customer) {
+            if(customer.get(0) !== this.activeCustomer?.get(0)){
+                this.removeActive();
+                this.setActive(customer);
+                const customerData = this.getDataCustomer(customer);
+                this.setDataCustomer(customerData);
+                this.animateSampleBox();
+            }
+        }
+
+        addListeners() {
+            this.customersBox.find('.customer__wrapper__img').each((index, customer) => {
+                $(customer).on('mouseenter', () => {
+                    this.updateCustomerState($(customer));
+                })
+            })
+        }
+    }
+
+    const reviewsObj = new Reviews($('.customers__img__box'));
 });
 

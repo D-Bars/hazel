@@ -1291,3 +1291,30 @@ html {
 }
 
 // ******************************** REVIEWS ******************************** \\
+
+
+// ******************************** REVIEWS ******************************** \\
+
+.manufacturers__block{
+  gap: 5%;
+  padding: 10vh 2.5%;
+
+  @include box(100%, 2.5%);
+  @include flex__box(row, center, center);
+
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding: 10vh 2.5%;
+    flex-direction: column;
+  }
+}
+
+.manufacturer__wrapper__img{
+  @include img_box(13%);
+
+  @media screen and (max-width: 800px) {
+    width: 55%;
+  }
+}
+
+// ******************************** REVIEWS ******************************** \\

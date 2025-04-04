@@ -1216,10 +1216,11 @@ html {
   border-radius: 50%;
   opacity: 0.5;
   overflow: hidden;
+  aspect-ratio: 3 / 3;
   cursor: pointer;
   transition: .4s;
 
-  @include img_box(2.7vw, 2.7vw);
+  @include img_box(unset, unset);
 
   @media screen and (max-width: 800px) {
     width: 10vw;
@@ -1293,9 +1294,9 @@ html {
 // ******************************** REVIEWS ******************************** \\
 
 
-// ******************************** REVIEWS ******************************** \\
+// ******************************** MANUFACTURERS ******************************** \\
 
-.manufacturers__block{
+.manufacturers__block {
   gap: 5%;
   padding: 10vh 2.5%;
 
@@ -1309,7 +1310,7 @@ html {
   }
 }
 
-.manufacturer__wrapper__img{
+.manufacturer__wrapper__img {
   @include img_box(13%);
 
   @media screen and (max-width: 800px) {
@@ -1317,4 +1318,119 @@ html {
   }
 }
 
-// ******************************** REVIEWS ******************************** \\
+// ******************************** MANUFACTURERS ******************************** \\
+
+
+// ******************************** CONTACT__FORM ******************************** \\
+
+.contact__form__block {
+  padding: 8vh 2.5%;
+  gap: 5vh;
+  background-color: #101010;
+
+  @include box(100%, 2.5%);
+  @include flex__box(column, center);
+}
+
+.contact__form__headers {
+  gap: 2vh;
+
+  @include box(100%);
+  @include flex__box(column, center);
+
+  & i {
+    font-size: 3vw;
+    color: #FFF;
+    font-weight: 400;
+  }
+
+  &>span {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-top: 2vh;
+    text-shadow: 0px 0px 2px #DBDBDA;
+
+    @include text(100%, 600, #DBDBDA, 'ROBOTTO');
+  }
+
+  & h2 {
+    @include h2__decor(#FFF, #FFF);
+  }
+}
+
+.contact__details__box {
+  @include box(100%, 0, auto, 5vh);
+  @include flex__box(row, flex-start, center);
+}
+
+.contact__details__item {
+  gap: 2vh;
+
+  @include box(20%);
+  @include flex__box(column, center);
+
+  & i {
+    font-size: 2vw;
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  & .detail__item__text {
+    text-align: center;
+
+    @include text(100%, 600, #DBDBDA);
+  }
+}
+
+.contact__form__block .wpforms-container {
+  @include box(80%);
+
+  & form {
+    @include box(100%);
+
+    & .wpforms-field-container {
+      flex-wrap: wrap;
+
+      @include flex__box(row, center, space-between);
+    }
+
+    & .contact__form__input {
+      @include box(32%);
+    }
+
+    & .contact__form__textarea {
+      @include box(100%);
+    }
+
+    & input,
+    & textarea {
+      font-size: 1.1vw;
+      font-weight: 600;
+      color: #FFF !important;
+      background-color: unset !important;
+      outline: 1px solid #FFF3;
+      outline-offset: -1px;
+      transition: .4s !important;
+    }
+
+    & input::placeholder,
+    & textarea::placeholder {
+      color: #FFF !important;
+    }
+
+    & input:focus,
+    & textarea:focus {
+      outline: 1px solid #FFF !important;
+      outline-offset: -1px !important;
+      border: unset !important;
+      background-color: #FFF1 !important;
+    }
+
+    // & .wpforms-error{
+    //   position: absolute;
+    //   bottom: 0;
+    // }
+  }
+}
+
+// ******************************** CONTACT__FORM ******************************** \\

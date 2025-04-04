@@ -1804,12 +1804,13 @@ html {
   border-radius: 50%;
   opacity: 0.5;
   overflow: hidden;
+  aspect-ratio: 3/3;
   cursor: pointer;
   transition: 0.4s;
 }
 .customer__wrapper__img {
-  width: 2.7vw;
-  height: 2.7vw;
+  width: unset;
+  height: unset;
   outline: unset;
   outline-offset: -2px;
 }
@@ -2002,4 +2003,232 @@ html {
   .manufacturer__wrapper__img {
     width: 55%;
   }
+}
+
+.contact__form__block {
+  padding: 8vh 2.5%;
+  gap: 5vh;
+  background-color: #101010;
+}
+.contact__form__block {
+  width: 95%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__block {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__form__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+}
+
+.contact__form__headers {
+  gap: 2vh;
+}
+.contact__form__headers {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__headers {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__form__headers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+}
+.contact__form__headers i {
+  font-size: 3vw;
+  color: #FFF;
+  font-weight: 400;
+}
+.contact__form__headers > span {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-top: 2vh;
+  text-shadow: 0px 0px 2px #DBDBDA;
+}
+.contact__form__headers > span {
+  font-size: 100%;
+  font-family: "ROBOTTO";
+  font-weight: 600;
+  color: #DBDBDA;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__headers > span {
+    font-size: 3.5vw;
+  }
+}
+.contact__form__headers h2 {
+  text-shadow: 2px 2px 3px #FFF;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.contact__form__headers h2 {
+  font-size: 400%;
+  font-family: "Montserrat";
+  font-weight: 600;
+  color: #FFF;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__headers h2 {
+    font-size: 7vw;
+  }
+}
+
+.contact__details__box {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 5vh;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__details__box {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__details__box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contact__details__item {
+  gap: 2vh;
+}
+.contact__details__item {
+  width: 20%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__details__item {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__details__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+}
+.contact__details__item i {
+  font-size: 2vw;
+  color: #FFF;
+  font-weight: 600;
+}
+.contact__details__item .detail__item__text {
+  text-align: center;
+}
+.contact__details__item .detail__item__text {
+  font-size: 100%;
+  font-family: "Montserrat";
+  font-weight: 600;
+  color: #DBDBDA;
+}
+@media screen and (max-width: 800px) {
+  .contact__details__item .detail__item__text {
+    font-size: 3.5vw;
+  }
+}
+
+.contact__form__block .wpforms-container {
+  width: 80%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__block .wpforms-container {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__form__block .wpforms-container form {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__block .wpforms-container form {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__form__block .wpforms-container form .wpforms-field-container {
+  flex-wrap: wrap;
+}
+.contact__form__block .wpforms-container form .wpforms-field-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact__form__block .wpforms-container form .contact__form__input {
+  width: 32%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__block .wpforms-container form .contact__form__input {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__form__block .wpforms-container form .contact__form__textarea {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .contact__form__block .wpforms-container form .contact__form__textarea {
+    width: 100%;
+    padding: 0;
+  }
+}
+.contact__form__block .wpforms-container form input, .contact__form__block .wpforms-container form textarea {
+  font-size: 1.1vw;
+  font-weight: 600;
+  color: #FFF !important;
+  background-color: unset !important;
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+  outline-offset: -1px;
+  transition: 0.4s !important;
+}
+.contact__form__block .wpforms-container form input::placeholder, .contact__form__block .wpforms-container form textarea::placeholder {
+  color: #FFF !important;
+}
+.contact__form__block .wpforms-container form input:focus, .contact__form__block .wpforms-container form textarea:focus {
+  outline: 1px solid #FFF !important;
+  outline-offset: -1px !important;
+  border: unset !important;
+  background-color: rgba(255, 255, 255, 0.0666666667) !important;
 }

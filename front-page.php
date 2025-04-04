@@ -281,11 +281,8 @@ if ($reviews):
                 $customer__profession = get_field('customer_profession', $review->ID);
                 $customer__review = get_field('customer_review', $review->ID);
                 ?>
-                <div class="customer__wrapper__img" 
-                data-fullname="<?php echo $customer__fullname; ?>"
-                data-profession="<?php echo $customer__profession; ?>"
-                data-review="<?php echo $customer__review ?>"
-                >
+                <div class="customer__wrapper__img" data-fullname="<?php echo $customer__fullname; ?>"
+                    data-profession="<?php echo $customer__profession; ?>" data-review="<?php echo $customer__review ?>">
                     <?php echo get_the_post_thumbnail($review); ?>
                 </div>
             <?php endforeach; ?>
@@ -315,12 +312,31 @@ if ($reviews):
 </div>
 
 <div class="contact__form__block">
-    <div class="contact__form__wrapper__img"><img src="" alt=""></div>
-    <span></span>
-    <h2></h2>
-    <!-- shortcode -->
+    <div class="contact__form__headers">
+        <i class="fa-solid fa-newspaper"></i>
+        <span><?php _e("WE'RE HAZEL AGENCY", 'hazel'); ?></span>
+        <h2><?php _e("CONTACT US", 'hazel'); ?></h2>
+    </div>
+    <?php echo do_shortcode('[wpforms id="81" title="false"]') ?>
     <div class="contact__details__box"><!-- design el!(::after) -->
-        <div class="contact__details__item"></div>
+        <div class="contact__details__item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="detail__item__text">
+                <?php _e('PO Box 16122 Collins Street West Victoria 8007 Australia', 'hazel'); ?>
+            </div>
+        </div>
+        <div class="contact__details__item">
+            <i class="fa-solid fa-at"></i>
+            <a class="detail__item__text" href="mailto:geral@example.com">
+                <?php _e('geral@example.com', 'hazel'); ?>
+            </a>
+        </div>
+        <div class="contact__details__item">
+            <i class="fa-solid fa-fax"></i>
+            <a class="detail__item__text" href="tel:+23345322233">
+                <?php _e('(+23) 345 322 233', 'hazel'); ?>
+            </a>
+        </div>
     </div>
 </div>
 

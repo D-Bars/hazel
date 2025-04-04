@@ -146,7 +146,7 @@ $mfont_size: 3.5vw;
   text-transform: uppercase;
   letter-spacing: 5px;
 
-  @include text(200%, 600, $color);
+  @include text(170%, 600, $color);
 }
 
 // МИКСИНЫ
@@ -1223,7 +1223,7 @@ html {
   @include img_box(unset, unset);
 
   @media screen and (max-width: 800px) {
-    width: 10vw;
+    width: 8vw;
   }
 
   &:hover {
@@ -1311,10 +1311,13 @@ html {
 }
 
 .manufacturer__wrapper__img {
+  aspect-ratio: 1/1;
+
   @include img_box(13%);
 
   @media screen and (max-width: 800px) {
     width: 55%;
+    aspect-ratio: unset;
   }
 }
 
@@ -1324,12 +1327,19 @@ html {
 // ******************************** CONTACT__FORM ******************************** \\
 
 .contact__form__block {
-  padding: 8vh 2.5%;
+  padding: 0vh 2.5%;
+  padding-top: 8vh;
   gap: 5vh;
   background-color: #101010;
 
   @include box(100%, 2.5%);
   @include flex__box(column, center);
+
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding: 0vh 2.5%;
+    padding-top: 8vh;
+  }
 }
 
 .contact__form__headers {
@@ -1339,7 +1349,7 @@ html {
   @include flex__box(column, center);
 
   & i {
-    font-size: 3vw;
+    font-size: 3em;
     color: #FFF;
     font-weight: 400;
   }
@@ -1351,6 +1361,10 @@ html {
     text-shadow: 0px 0px 2px #DBDBDA;
 
     @include text(100%, 600, #DBDBDA, 'ROBOTTO');
+
+    @media screen and (max-width: 800px) {
+      font-size: 2.5vw;
+    }
   }
 
   & h2 {
@@ -1359,8 +1373,29 @@ html {
 }
 
 .contact__details__box {
+  position: relative;
+  padding-bottom: 8vh;
+  gap: 5%;
+
   @include box(100%, 0, auto, 5vh);
   @include flex__box(row, flex-start, center);
+
+  @media screen and (max-width: 800px) {
+    padding-bottom: 8vh;
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5em;
+    aspect-ratio: 2/1;
+    background-color: #000;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    z-index: 3;
+  }
 }
 
 .contact__details__item {
@@ -1370,7 +1405,7 @@ html {
   @include flex__box(column, center);
 
   & i {
-    font-size: 2vw;
+    font-size: 2em;
     color: #FFF;
     font-weight: 600;
   }
@@ -1379,38 +1414,91 @@ html {
     text-align: center;
 
     @include text(100%, 600, #DBDBDA);
+
+    @media screen and (max-width: 800px) {
+      font-size: 2vw;
+    }
   }
 }
 
 .contact__form__block .wpforms-container {
   @include box(80%);
 
+  & .wpforms-confirmation-container-full {
+    background: unset;
+    padding: 10vh 0;
+    border: unset;
+    outline: 1px solid #FFF3;
+    outline-offset: -1px;
+    gap: 10vh;
+
+    @include flex__box(column, center, center);
+
+    & p {
+      text-align: center;
+      color: #DBDBDA;
+    }
+
+    & p::before{
+      position: relative;
+      content: '\f560';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 2em;
+      color: green;
+      display: block;
+      margin-bottom: 5vh
+    }
+  }
+
   & form {
     @include box(100%);
+    @include flex__box(column, center);
+
 
     & .wpforms-field-container {
       flex-wrap: wrap;
+      gap: 1vh;
 
       @include flex__box(row, center, space-between);
     }
 
     & .contact__form__input {
       @include box(32%);
+
+      @media screen and (max-width: 1200px) {
+        width: 100%;
+      }
     }
 
     & .contact__form__textarea {
       @include box(100%);
+
+      @media screen and (max-width: 1200px) {
+        width: 100%;
+      }
     }
 
-    & input,
-    & textarea {
-      font-size: 1.1vw;
+    & .wpforms-field {
+      padding: 0;
+    }
+
+    & .wpforms-field>input,
+    & .wpforms-field>textarea {
+      margin: 2vh 0;
+      padding: 1vh 2% !important;
+      height: 100%;
+      font-size: 1.3vw !important;
       font-weight: 600;
       color: #FFF !important;
       background-color: unset !important;
       outline: 1px solid #FFF3;
       outline-offset: -1px;
       transition: .4s !important;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 2vw !important;
+      }
     }
 
     & input::placeholder,
@@ -1426,10 +1514,52 @@ html {
       background-color: #FFF1 !important;
     }
 
-    // & .wpforms-error{
-    //   position: absolute;
-    //   bottom: 0;
-    // }
+    & em.wpforms-error {
+      position: absolute !important;
+      bottom: -5px;
+    }
+
+    & .wpforms-field-gdpr-checkbox {
+
+      & label {
+        color: #FFF !important;
+      }
+
+      & .wpforms-field-required {
+        margin-bottom: 1.5vw;
+      }
+    }
+
+    & .wpforms-submit {
+      margin-top: 5vh;
+      height: 100%;
+      padding: 2vh 2vw;
+      text-transform: uppercase;
+      font-weight: 800;
+      background-color: unset !important;
+      outline: 1px solid #FFF3;
+      outline-offset: -1px;
+      transition: .4s;
+
+      &:hover {
+        color: #000;
+        background-color: #D8D8D8 !important;
+      }
+
+      &:focus::after {
+        border: unset !important;
+        outline: 1px solid #FFF3;
+        outline-offset: -1px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      &:focus {
+        transform: scale(0.9);
+      }
+    }
   }
 }
 

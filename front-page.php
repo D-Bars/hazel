@@ -298,16 +298,16 @@ if ($reviews):
 
 <div class="manufacturers__block">
     <div class="manufacturer__wrapper__img">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer1.jpg" alt="manufacturer1">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer1.png" alt="manufacturer1">
     </div>
     <div class="manufacturer__wrapper__img">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer2.jpg" alt="manufacturer2">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer2.png" alt="manufacturer2">
     </div>
     <div class="manufacturer__wrapper__img">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer3.jpg" alt="manufacturer3">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer3.png" alt="manufacturer3">
     </div>
     <div class="manufacturer__wrapper__img">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer4.jpg" alt="manufacturer4">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/manufacturer4.png" alt="manufacturer4">
     </div>
 </div>
 

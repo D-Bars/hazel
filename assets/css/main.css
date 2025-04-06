@@ -39,7 +39,7 @@ body {
   max-width: 100vw;
   overflow: hidden;
   overflow-y: auto;
-  background-color: #FFF;
+  background-color: #F7F7F7;
 }
 
 a {
@@ -1983,7 +1983,7 @@ html {
   aspect-ratio: 1/1;
 }
 .manufacturer__wrapper__img {
-  width: 13%;
+  width: 10%;
   height: auto;
   outline: unset;
   outline-offset: -2px;

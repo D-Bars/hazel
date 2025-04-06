@@ -103,21 +103,33 @@ html {
 
 /* BASIC */
 .header__logo__wrapper {
+  width: auto;
+}
+@media screen and (max-width: 800px) {
+  .header__logo__wrapper {
+    width: 20%;
+  }
+}
+.header__logo__wrapper .custom-logo-link {
+  display: block;
+  padding: 1vh 0;
+}
+.header__logo__wrapper .header__logo__name {
   text-transform: uppercase;
 }
-.header__logo__wrapper {
+.header__logo__wrapper .header__logo__name {
   font-size: 225%;
   font-family: "Montserrat";
   font-weight: 800;
   color: #FFF;
 }
 @media screen and (max-width: 800px) {
-  .header__logo__wrapper {
+  .header__logo__wrapper .header__logo__name {
     font-size: 5.25vw;
   }
 }
 @media screen and (max-width: 800px) {
-  .header__logo__wrapper {
+  .header__logo__wrapper .header__logo__name {
     width: auto;
     text-align: center;
   }
@@ -268,6 +280,9 @@ html {
   }
 }
 .header__menu__box li {
+  transition: 0.7s;
+}
+.header__menu__box li {
   font-size: 100%;
   font-family: "Montserrat";
   font-weight: 600;
@@ -278,7 +293,11 @@ html {
     font-size: 3.5vw;
   }
 }
+.header__menu__box li:hover {
+  color: #FFF;
+}
 .header__menu__box .active__menu__item {
+  transition: 0.7s;
   color: #FFF;
 }
 

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="about__us__block">
+<div class="about__us__block" id="About">
     <div class="about__us__content">
         <div class="about__us__wrapper__img"><i class="fa-solid fa-sign-hanging"></i></div>
         <span><?php _e('WE ARE HAZEL', 'hazel'); ?></span>
@@ -66,7 +66,7 @@
     <?php endif; ?>
 </div>
 
-<div class="why__us__block">
+<div class="why__us__block" id="Services">
     <div class="why__us__background__wrapper">
         <div class="why__us__background" id="wrapper__parallax"></div>
     </div>
@@ -167,7 +167,7 @@
     </div>
 </div>
 
-<div class="portfolio__block">
+<div class="portfolio__block" id="Work">
     <div class="portfolio__heade__box">
         <div class="separator__line"></div>
         <span>WE BUILD GOOD STUFF</span>
@@ -273,7 +273,7 @@ $reviews = get_posts(array(
 <?php
 if ($reviews):
     ?>
-    <div class="reviews__block">
+    <div class="reviews__block" id="Clients">
         <h2><?php _e('OUR CLIENTS FEEDBACK', 'hazel'); ?></h2>
         <div class="customers__img__box">
             <?php foreach ($reviews as $review):
@@ -311,7 +311,7 @@ if ($reviews):
     </div>
 </div>
 
-<div class="contact__form__block">
+<div class="contact__form__block" id="Contact">
     <div class="contact__form__headers">
         <i class="fa-solid fa-newspaper"></i>
         <span><?php _e("WE'RE HAZEL AGENCY", 'hazel'); ?></span>

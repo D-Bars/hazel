@@ -264,12 +264,26 @@ html {
 // ******************************** HEADER ******************************** \\
 
 .header__logo__wrapper {
-  text-transform: uppercase;
-  @include text(150%, 800, #FFF);
+  width: auto;
 
   @media screen and (max-width: 800px) {
-    width: auto;
-    text-align: center;
+    width: 20%;
+  }
+
+  & .custom-logo-link {
+    display: block;
+    padding: 1vh 0;
+  }
+
+
+  & .header__logo__name {
+    text-transform: uppercase;
+    @include text(150%, 800, #FFF);
+
+    @media screen and (max-width: 800px) {
+      width: auto;
+      text-align: center;
+    }
   }
 }
 
@@ -383,10 +397,17 @@ html {
   }
 
   & li {
+    transition: .7s;
+
     @include text(100%, 600, $fontColor);
+
+    &:hover{
+      color: #FFF;
+    }
   }
 
   & .active__menu__item {
+    transition: .7s;
     color: #FFF;
   }
 }
@@ -1649,7 +1670,7 @@ html {
     & span {
       text-transform: uppercase;
       letter-spacing: 5px;
-      
+
       @include text(100%, 600, #33D1C8, 'ROBOTTO');
 
       @media screen and (max-width: 800px) {
@@ -1679,5 +1700,12 @@ html {
     height: 100%;
   }
 }
+
+// ******************************** CONTACT__FORM ******************************** \\
+
+
+// ******************************** CONTACT__FORM ******************************** \\
+
+
 
 // ******************************** CONTACT__FORM ******************************** \\

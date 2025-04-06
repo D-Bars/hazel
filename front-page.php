@@ -318,7 +318,7 @@ if ($reviews):
         <h2><?php _e("CONTACT US", 'hazel'); ?></h2>
     </div>
     <?php echo do_shortcode('[wpforms id="81" title="false"]') ?>
-    <div class="contact__details__box"><!-- design el!(::after) -->
+    <div class="contact__details__box">
         <div class="contact__details__item">
             <i class="fa-solid fa-location-dot"></i>
             <div class="detail__item__text">
@@ -342,13 +342,15 @@ if ($reviews):
 
 <div class="map__block">
     <div class="banner__box">
-        <div class="banner__wrapper__img">
-            <div class="banner__mask__img"><img src="" alt=""></div>
+        <div class="banner__img">
+            <div class="banner__mask__img"></div>
         </div>
-        <span></span>
-        <h2></h2>
+        <div class="banner__content">
+            <span><?php _e('WE LOVE YOU!', 'hazel'); ?></span>
+            <h2><?php _e('COME VISIT US ON OUR OFFICE IN MELBOURNE', 'hazel'); ?></h2>
+        </div>
     </div>
-    <div class="map__box"></div>
+    <div class="map__box"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1325.1279785236509!2d144.94818608599445!3d-37.82041944711411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5a3ff30273%3A0x55700729bcaebb85!2zMTYxMjIgQ29sbGlucyBTdCwgV2VzdCBNZWxib3VybmUgVklDIDMwMDgsINCQ0LLRgdGC0YDQsNC70LjRjw!5e0!3m2!1sru!2spl!4v1743785366574!5m2!1sru!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div>
 
 <?php get_footer(); ?>

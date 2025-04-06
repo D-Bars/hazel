@@ -1382,9 +1382,12 @@ html {
 
   @media screen and (max-width: 800px) {
     padding-bottom: 8vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
   }
 
-  &::after{
+  &::after {
     content: '';
     position: absolute;
     top: 99%;
@@ -1392,7 +1395,7 @@ html {
     transform: translateX(-50%);
     width: 2.5em;
     aspect-ratio: 2/1;
-    background-color: #000;
+    background-color: #101010;
     clip-path: polygon(50% 100%, 0 0, 100% 0);
     z-index: 3;
   }
@@ -1403,6 +1406,11 @@ html {
 
   @include box(20%);
   @include flex__box(column, center);
+
+  @media screen and (max-width: 800px) {
+    width: 60%;
+    gap: 4vh;
+  }
 
   & i {
     font-size: 2em;
@@ -1416,7 +1424,7 @@ html {
     @include text(100%, 600, #DBDBDA);
 
     @media screen and (max-width: 800px) {
-      font-size: 2vw;
+      font-size: 2.5vw;
     }
   }
 }
@@ -1439,7 +1447,7 @@ html {
       color: #DBDBDA;
     }
 
-    & p::before{
+    & p::before {
       position: relative;
       content: '\f560';
       font-family: 'Font Awesome 6 Free';
@@ -1541,6 +1549,10 @@ html {
       outline-offset: -1px;
       transition: .4s;
 
+      @media screen and (max-width: 800px) {
+        padding: 2vh 4vw;
+      }
+
       &:hover {
         color: #000;
         background-color: #D8D8D8 !important;
@@ -1560,6 +1572,111 @@ html {
         transform: scale(0.9);
       }
     }
+  }
+}
+
+// ******************************** CONTACT__FORM ******************************** \\
+
+
+// ******************************** CONTACT__FORM ******************************** \\
+
+.map__block {
+  position: relative;
+  z-index: 2;
+
+  @include box(100%);
+  @include flex__box(row, stretch);
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+}
+
+.banner__box {
+  position: relative;
+
+  @include box(50%, 0, 60vh);
+  @include flex__box(column, center, center);
+
+  @media screen and (max-width: 800px) {
+    height: auto;
+    padding-top: 6vh;
+    padding-bottom: 5vh;
+    background-color: #171717;
+  }
+
+  & .banner__img {
+    position: relative;
+    z-index: 1;
+    background-image: url('../img/banner__map.jpg');
+    background-size: 215% auto;
+    background-position: 5% 50%;
+    background-repeat: no-repeat;
+    filter: sepia(20%);
+
+    @include box(100%, 0, 100%);
+
+    @media screen and (max-width: 800px) {
+      background-image: none;
+    }
+  }
+
+  & .banner__mask__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#171717, 0.7);
+    z-index: 2;
+  }
+
+  & .banner__content {
+    position: absolute;
+    text-align: end;
+    gap: 2vh;
+    z-index: 3;
+
+    @include box(100%, 10%);
+    @include flex__box(column, flex-end);
+
+    @media screen and (max-width: 800px) {
+      position: relative;
+      text-align: center;
+      align-items: center;
+    }
+
+    & span {
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      
+      @include text(100%, 600, #33D1C8, 'ROBOTTO');
+
+      @media screen and (max-width: 800px) {
+        font-size: 4vw;
+      }
+    }
+
+    & h2 {
+      @include text(160%, 800, #FFF);
+
+      @media screen and (max-width: 800px) {
+        font-size: 3.5vw;
+      }
+    }
+  }
+}
+
+.map__box {
+  @include box(50%);
+
+  @media screen and (max-width: 800px) {
+    height: 40vh;
+  }
+
+  & iframe {
+    width: 100%;
+    height: 100%;
   }
 }
 

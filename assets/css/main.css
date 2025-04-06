@@ -2135,6 +2135,9 @@ html {
 @media screen and (max-width: 800px) {
   .contact__details__box {
     padding-bottom: 8vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
   }
 }
 .contact__details__box::after {
@@ -2145,7 +2148,7 @@ html {
   transform: translateX(-50%);
   width: 2.5em;
   aspect-ratio: 2/1;
-  background-color: #000;
+  background-color: #101010;
   clip-path: polygon(50% 100%, 0 0, 100% 0);
   z-index: 3;
 }
@@ -2172,6 +2175,12 @@ html {
   align-items: center;
   justify-content: unset;
 }
+@media screen and (max-width: 800px) {
+  .contact__details__item {
+    width: 60%;
+    gap: 4vh;
+  }
+}
 .contact__details__item i {
   font-size: 2em;
   color: #FFF;
@@ -2193,7 +2202,7 @@ html {
 }
 @media screen and (max-width: 800px) {
   .contact__details__item .detail__item__text {
-    font-size: 2vw;
+    font-size: 2.5vw;
   }
 }
 
@@ -2353,6 +2362,11 @@ html {
   outline-offset: -1px;
   transition: 0.4s;
 }
+@media screen and (max-width: 800px) {
+  .contact__form__block .wpforms-container form .wpforms-submit {
+    padding: 2vh 4vw;
+  }
+}
 .contact__form__block .wpforms-container form .wpforms-submit:hover {
   color: #000;
   background-color: #D8D8D8 !important;
@@ -2368,4 +2382,191 @@ html {
 }
 .contact__form__block .wpforms-container form .wpforms-submit:focus {
   transform: scale(0.9);
+}
+
+.map__block {
+  position: relative;
+  z-index: 2;
+}
+.map__block {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .map__block {
+    width: 100%;
+    padding: 0;
+  }
+}
+.map__block {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: unset;
+}
+@media screen and (max-width: 800px) {
+  .map__block {
+    flex-direction: column;
+  }
+}
+
+.banner__box {
+  position: relative;
+}
+.banner__box {
+  width: 50%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  height: 60vh;
+}
+@media screen and (max-width: 800px) {
+  .banner__box {
+    width: 100%;
+    padding: 0;
+  }
+}
+.banner__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 800px) {
+  .banner__box {
+    height: auto;
+    padding-top: 6vh;
+    padding-bottom: 5vh;
+    background-color: #171717;
+  }
+}
+.banner__box .banner__img {
+  position: relative;
+  z-index: 1;
+  background-image: url("../img/banner__map.jpg");
+  background-size: 215% auto;
+  background-position: 5% 50%;
+  background-repeat: no-repeat;
+  filter: sepia(20%);
+}
+.banner__box .banner__img {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  height: 100%;
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__img {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__img {
+    background-image: none;
+  }
+}
+.banner__box .banner__mask__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(23, 23, 23, 0.7);
+  z-index: 2;
+}
+.banner__box .banner__content {
+  position: absolute;
+  text-align: end;
+  gap: 2vh;
+  z-index: 3;
+}
+.banner__box .banner__content {
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__content {
+    width: 100%;
+    padding: 0;
+  }
+}
+.banner__box .banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: unset;
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__content {
+    position: relative;
+    text-align: center;
+    align-items: center;
+  }
+}
+.banner__box .banner__content span {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.banner__box .banner__content span {
+  font-size: 100%;
+  font-family: "ROBOTTO";
+  font-weight: 600;
+  color: #33D1C8;
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__content span {
+    font-size: 3.5vw;
+  }
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__content span {
+    font-size: 4vw;
+  }
+}
+.banner__box .banner__content h2 {
+  font-size: 256%;
+  font-family: "Montserrat";
+  font-weight: 800;
+  color: #FFF;
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__content h2 {
+    font-size: 5.6vw;
+  }
+}
+@media screen and (max-width: 800px) {
+  .banner__box .banner__content h2 {
+    font-size: 3.5vw;
+  }
+}
+
+.map__box {
+  width: 50%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .map__box {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 800px) {
+  .map__box {
+    height: 40vh;
+  }
+}
+.map__box iframe {
+  width: 100%;
+  height: 100%;
 }

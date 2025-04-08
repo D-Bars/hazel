@@ -1704,8 +1704,44 @@ html {
 // ******************************** CONTACT__FORM ******************************** \\
 
 
-// ******************************** CONTACT__FORM ******************************** \\
+// ******************************** FOOTER ******************************** \\
 
+footer{
+  padding: 5vh 2.5%;
+  gap: 3vh;
 
+  @include box(100%, 2.5%);
+  @include flex__box(column, center);
+}
 
-// ******************************** CONTACT__FORM ******************************** \\
+.footer__logo__link__wrapper{
+  width: auto;
+  height: auto;
+
+  & a{
+    display: block;
+  }
+}
+
+.footer__social__media__box{
+  gap: 0.7vw;
+
+  @include flex__box(row, stretch);
+
+  & a{
+    display: block;
+  }
+
+  & i{
+    padding: 0.2vw;
+    font-size: 1vw;
+    color: #000;
+    transition: .4s;
+
+    &:hover{
+      color: #DBDBDA;
+    }
+  }
+}
+
+// ******************************** FOOTER ******************************** \\

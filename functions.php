@@ -8,6 +8,21 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/assets/slick/slick-theme.css');
 
     wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
+    $script_id = 'main-js';
+
+    $enqueue_script_add_type_attribute = static function ($tag, $handle) use ($script_id) {
+
+        if ($script_id !== $handle) {
+            return $tag;
+        }
+
+        $tag = preg_replace('/ type=([\'"])[^\'"]+\1/', '', $tag);
+
+        $tag = str_replace('src=', 'type="module" src=', $tag);
+
+        return $tag;
+    };
+    add_filter('script_loader_tag', $enqueue_script_add_type_attribute, 10, 2);
     wp_enqueue_script('jquery');
     wp_enqueue_script('slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array('jquery'), null, true);
 
@@ -34,23 +49,26 @@ add_action('wp_enqueue_scripts', function () {
 
 });
 
-add_action('after_setup_theme', function(){
+add_action('after_setup_theme', function () {
     add_theme_support('custom-logo');
     add_theme_support('post-thumbnails');
     add_theme_support('title-tag');
 });
 
-function the__localize__title($objId) {
+function the__localize__title($objId)
+{
     $obj_title = get_the_title($objId);
     echo __($obj_title, 'hazel');
 }
-function the__localize__content($objId) {
+function the__localize__content($objId)
+{
     $obj_content = get_the_content($objId);
     echo __($obj_content, 'hazel');
 }
 
-function hazel_dump( $data ) {
-	echo "<pre>" . print_r( $data, 1 ) . "</pre>";
+function hazel_dump($data)
+{
+    echo "<pre>" . print_r($data, 1) . "</pre>";
 }
 
 require_once get_template_directory() . '/incs/cpt.php';

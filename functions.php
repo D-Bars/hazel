@@ -54,3 +54,4 @@ function hazel_dump( $data ) {
 }
 
 require_once get_template_directory() . '/incs/cpt.php';
+require_once get_template_directory() . '/incs/customizer.php';

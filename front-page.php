@@ -236,6 +236,7 @@
                     $item_image = get_the_post_thumbnail();
                     $item_title = get_the_title();
                     $item_subtitle = get_field('description__field');
+                    $item_archive_link = get_post_type_archive_link('products');
                     $category_items = get_the_terms(get_the_ID(), 'category');
 
                     if (!empty($category_items) && !is_wp_error($category_items)) {
@@ -246,13 +247,13 @@
                         $category_name_string = '';
                     }
                     ?>
-                    <div class="category__product" data-category="<?php echo esc_attr($category_name_string); ?>">
+                    <a href="<?php the_permalink(); ?>" class="category__product" data-category="<?php echo esc_attr($category_name_string); ?>">
                         <div class="category__product__wrapper__img"><?php echo $item_image; ?></div>
                         <div class="category__product__content__box">
                             <div class="category__product__title"><?php echo $item_title; ?></div>
                             <div class="category__product__subtitle"><?php echo $item_subtitle; ?></div>
                         </div>
-                    </div>
+                    </a>
                     <?php
                 }
                 wp_reset_postdata();

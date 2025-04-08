@@ -39,6 +39,8 @@ add_action('init', function () {
             'supports' => array('title', 'editor', 'thumbnail'),
             'menu_icon' => 'dashicons-products',
             'show_in_rest' => true,
+            'rewrite' => ['slug' => 'products'],
+            'has_archive' => true
         )
     );
 

@@ -2613,6 +2613,12 @@ footer {
   align-items: center;
   justify-content: unset;
 }
+@media screen and (max-width: 800px) {
+  footer {
+    width: 95%;
+    padding: 5vh 2.5%;
+  }
+}
 
 .footer__logo__link__wrapper {
   width: auto;
@@ -2639,6 +2645,11 @@ footer {
   font-size: 1vw;
   color: #000;
   transition: 0.4s;
+}
+@media screen and (max-width: 800px) {
+  .footer__social__media__box i {
+    font-size: 2.5vw;
+  }
 }
 .footer__social__media__box i:hover {
   color: #DBDBDA;

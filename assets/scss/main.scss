@@ -1775,3 +1775,84 @@ footer{
 }
 
 // ******************************** FOOTER ******************************** \\
+
+
+// ******************************** SINGLE PRODUCT PAGE ******************************** \\
+
+.single__product__item{
+  @include box(100%, 2.5%, auto, 3vh);
+  @include flex__box(column, center);
+
+  & h1{
+    text-transform: uppercase;
+
+    @include text(160%, 800, $basicColor);
+  }
+}
+
+.single__product__item__box{
+  gap: 5%;
+
+  @include box(70%, 0, auto, 5vh);
+  @include flex__box(row, stretch);
+}
+
+.product__slider__container{
+  @include box(45%);
+  @include flex__box(column);
+}
+
+.single__product__slider-for{
+  @include box(100%, 0, 50vh);
+  @include flex__box(row);
+
+  & .slick-list,
+  & .slick-track{
+    height: 100%;
+  }
+  
+  & .product__slider-for__img{
+    overflow: hidden;
+
+    @include img_box(100%, 100%);
+  }
+}
+
+.single__product__slider-nav{
+  @include box(100%, 0, auto, 3vh);
+
+  & .slick-list.draggable{
+    padding: 0 !important;
+  }
+
+  & .product__slider-nav__img{
+    @include img_box(30%, 20vh);
+  }
+  
+  & img {
+    border-radius: 10px 10px 0 0;
+    cursor: grab;
+    opacity: 0.6;
+    transition: 0.3s ease;
+  }
+  
+  & .slick-current img {
+    outline: 2px solid $accentColor;
+    outline-offset: -2px;
+    opacity: 1;
+  }
+
+  & .slick-dots{
+    
+  }
+}
+
+
+// .slider-for img,
+// .slider-nav img {
+//   max-width: 100%;
+//   display: block;
+//   margin: 0 auto;
+// }
+
+// ******************************** SINGLE PRODUCT PAGE ******************************** \\

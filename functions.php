@@ -6,7 +6,9 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
     wp_enqueue_style('slick-css', get_template_directory_uri() . '/assets/slick/slick.css');
     wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/assets/slick/slick-theme.css');
-
+    wp_enqueue_style('fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css');
+    
+    wp_enqueue_script('fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js', array(), null, true);
     wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
     $script_id = 'main-js';
 
@@ -31,7 +33,7 @@ add_action('wp_enqueue_scripts', function () {
         'templateUrl' => get_template_directory_uri()
     ));
 
-    //slick settings
+    //slick settings Front Page
     wp_add_inline_script('slick-js', "
         jQuery('.why__us__slider__block').slick({
             dots: false,
@@ -46,7 +48,33 @@ add_action('wp_enqueue_scripts', function () {
         });
     ");
 
+    //slick settings Single-Product Page
+    wp_add_inline_script('slick-js', "
+        jQuery('.single__product__slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.single__product__slider-nav'
+        });
 
+        jQuery('.single__product__slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.single__product__slider-for',
+            dots: true,
+            arrows: false,
+            centerMode: true,
+            focusOnSelect: true
+        });
+
+        // Fancybox init
+        Fancybox.bind('[data-fancybox=\"gallery\"]', {
+            Thumbs: {
+                autoStart: true
+            }
+        });
+    ");
 });
 
 add_action('after_setup_theme', function () {
@@ -73,3 +101,4 @@ function hazel_dump($data)
 
 require_once get_template_directory() . '/incs/cpt.php';
 require_once get_template_directory() . '/incs/customizer.php';
+require_once get_template_directory() . '/incs/meta-boxes/product-photo-gallery.php';

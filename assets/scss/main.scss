@@ -1210,6 +1210,27 @@ html {
   @include text(90%, 600, $fontColor);
 }
 
+.portfolio__archive__link{
+  margin-top: 3vh;
+  text-transform: uppercase;
+  box-shadow: 10px 5px 5px #1A1A1A;
+  padding: 0.5vw 1.5vw;
+  background-color: #1A1A1A;
+  transition: 0.4s;
+  cursor: pointer;
+
+  @include text(110%, 600, #FFF);
+
+  @media screen and (max-width: 800px) {
+    font-size: 3.5vw;
+  }
+
+  &:hover {
+    color: $accentColor;
+    box-shadow: unset;
+  }
+}
+
 // ******************************** PORTFOLIO ******************************** \\
 
 

@@ -1757,6 +1757,36 @@ html {
   }
 }
 
+.portfolio__archive__link {
+  margin-top: 3vh;
+  text-transform: uppercase;
+  box-shadow: 10px 5px 5px #1A1A1A;
+  padding: 0.5vw 1.5vw;
+  background-color: #1A1A1A;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.portfolio__archive__link {
+  font-size: 121%;
+  font-family: "Montserrat";
+  font-weight: 600;
+  color: #FFF;
+}
+@media screen and (max-width: 800px) {
+  .portfolio__archive__link {
+    font-size: 3.85vw;
+  }
+}
+@media screen and (max-width: 800px) {
+  .portfolio__archive__link {
+    font-size: 3.5vw;
+  }
+}
+.portfolio__archive__link:hover {
+  color: #08E7C5;
+  box-shadow: unset;
+}
+
 .reviews__block {
   text-align: center;
 }

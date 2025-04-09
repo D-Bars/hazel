@@ -230,7 +230,10 @@
                 'posts_per_page' => -1
             ));
             if ($items->have_posts()) {
-                while ($items->have_posts()) {
+                $posts_count = count($items->posts);
+                $posts_limit = 8;
+                $loop_count = min($posts_count, $posts_limit);
+                for ($i = 0; $i < $loop_count; $i++) {
                     $items->the_post();
 
                     $item_image = get_the_post_thumbnail();
@@ -247,7 +250,8 @@
                         $category_name_string = '';
                     }
                     ?>
-                    <a href="<?php the_permalink(); ?>" class="category__product" data-category="<?php echo esc_attr($category_name_string); ?>">
+                    <a href="<?php the_permalink(); ?>" class="category__product"
+                        data-category="<?php echo esc_attr($category_name_string); ?>">
                         <div class="category__product__wrapper__img"><?php echo $item_image; ?></div>
                         <div class="category__product__content__box">
                             <div class="category__product__title"><?php echo $item_title; ?></div>
@@ -256,11 +260,16 @@
                     </a>
                     <?php
                 }
-                wp_reset_postdata();
             }
             ?>
         </div>
     </div>
+    <?php if ($posts_count > $posts_limit): ?>
+        <a class="portfolio__archive__link" href="<?php echo $item_archive_link; ?>"><?php _e('Go to archive', 'hazel'); ?></a>
+    <?php endif; ?>
+    <?php
+    wp_reset_postdata();
+    ?>
 </div>
 
 <?php
@@ -351,7 +360,9 @@ if ($reviews):
             <h2><?php _e('COME VISIT US ON OUR OFFICE IN MELBOURNE', 'hazel'); ?></h2>
         </div>
     </div>
-    <div class="map__box"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1325.1279785236509!2d144.94818608599445!3d-37.82041944711411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5a3ff30273%3A0x55700729bcaebb85!2zMTYxMjIgQ29sbGlucyBTdCwgV2VzdCBNZWxib3VybmUgVklDIDMwMDgsINCQ0LLRgdGC0YDQsNC70LjRjw!5e0!3m2!1sru!2spl!4v1743785366574!5m2!1sru!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="map__box"><iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1325.1279785236509!2d144.94818608599445!3d-37.82041944711411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5a3ff30273%3A0x55700729bcaebb85!2zMTYxMjIgQ29sbGlucyBTdCwgV2VzdCBNZWxib3VybmUgVklDIDMwMDgsINCQ0LLRgdGC0YDQsNC70LjRjw!5e0!3m2!1sru!2spl!4v1743785366574!5m2!1sru!2spl"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div>
 
 <?php get_footer(); ?>

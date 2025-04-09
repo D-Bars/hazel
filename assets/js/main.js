@@ -52,3 +52,5 @@ jQuery(document).ready(function ($) {
     const reviewsObj = new Reviews($('.customers__img__box'));
 });
 
+//сделать отдельное меню для архивной страницы с продуктами и для продуктов
+

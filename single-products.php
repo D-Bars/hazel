@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header('front__page__links'); ?>
 
 <?php
 $item_image = get_the_post_thumbnail(get_the_ID(), 'full');

@@ -2028,3 +2028,56 @@ footer{
 }
 
 // ******************************** SINGLE PRODUCT PAGE ******************************** \\
+
+
+// ******************************** 404 PAGE ******************************** \\
+
+.error__page__block{
+  @include box(100%, 0, 85dvh);
+  @include flex__box(row, center);
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+
+  & .error__page__wrapper__img{
+    @include img_box(50%, auto);
+  }
+
+  & .error__page__message{
+    gap: 1vh;
+
+    @include flex__box(column, flex-start);
+
+    @media screen and (max-width: 800px) {
+      align-items: center;
+    }
+  }
+
+  & span{
+    @include text(150%, 600, red);
+  }
+
+  & .error__page__home__btn{
+    text-transform: uppercase;
+    padding: 1vh 1.5vw;
+    background-color: $contrastColor;
+    box-shadow: 5px 5px 0px $basicColor;
+    border-radius: 20px;
+    transition: .4s;
+
+    @include text(120%, 800, #FFF);
+
+    @media screen and (max-width: 800px) {
+      padding: 2vw 3vw;
+      box-shadow: 10px 10px 0px $basicColor;
+    }
+
+    &:hover{
+      box-shadow: unset;
+      color: $accentColor;
+    }
+  }
+}
+
+// ******************************** 404 PAGE ******************************** \\

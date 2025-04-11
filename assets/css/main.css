@@ -3159,3 +3159,102 @@ footer {
     font-size: 4.5vw;
   }
 }
+
+.error__page__block {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  height: 85dvh;
+}
+@media screen and (max-width: 800px) {
+  .error__page__block {
+    width: 100%;
+    padding: 0;
+  }
+}
+.error__page__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+}
+@media screen and (max-width: 800px) {
+  .error__page__block {
+    flex-direction: column;
+  }
+}
+.error__page__block .error__page__wrapper__img {
+  width: 50%;
+  height: auto;
+  outline: unset;
+  outline-offset: -2px;
+}
+.error__page__block .error__page__wrapper__img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+@media screen and (max-width: 800px) {
+  .error__page__block .error__page__wrapper__img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: -1;
+  }
+}
+.error__page__block .error__page__message {
+  gap: 1vh;
+}
+.error__page__block .error__page__message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: unset;
+}
+@media screen and (max-width: 800px) {
+  .error__page__block .error__page__message {
+    align-items: center;
+  }
+}
+.error__page__block span {
+  font-size: 225%;
+  font-family: "Montserrat";
+  font-weight: 600;
+  color: red;
+}
+@media screen and (max-width: 800px) {
+  .error__page__block span {
+    font-size: 5.25vw;
+  }
+}
+.error__page__block .error__page__home__btn {
+  text-transform: uppercase;
+  padding: 1vh 1.5vw;
+  background-color: #333333;
+  box-shadow: 5px 5px 0px #1A1A1A;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+.error__page__block .error__page__home__btn {
+  font-size: 144%;
+  font-family: "Montserrat";
+  font-weight: 800;
+  color: #FFF;
+}
+@media screen and (max-width: 800px) {
+  .error__page__block .error__page__home__btn {
+    font-size: 4.2vw;
+  }
+}
+@media screen and (max-width: 800px) {
+  .error__page__block .error__page__home__btn {
+    padding: 2vw 3vw;
+    box-shadow: 10px 10px 0px #1A1A1A;
+  }
+}
+.error__page__block .error__page__home__btn:hover {
+  box-shadow: unset;
+  color: #08E7C5;
+}

@@ -9,8 +9,7 @@ import parallax from "./moduls/parallax.js";
 const mql = window.matchMedia("(min-width: 800px)");
 
 jQuery(document).ready(function ($) {
-    //interSection API (Services)
-    createIntersectionObserverServices(mql);
+    const currentPage = $('[data-page]').data('page');
 
     //burger for mobile
     const burger = $('.burger__menu');
@@ -30,27 +29,46 @@ jQuery(document).ready(function ($) {
     //header line
     headerLineScroll(mql);
 
-    //observeSection
-    const sectionIds = ["Home", "About", "Services", "Work", "Clients", "Contact"];
-    const sectionArray = sectionIds.map(id => document.getElementById(id)).filter(Boolean)
-    const sectionObserveObj = new ObserveSections(sectionArray);
+    const modulesToInit = [
+        {
+            pages: ['front'],
+            init: () => createIntersectionObserverServices(mql)
+        },
+        {
+            pages: ['front'],
+            init: () => {
+                const sectionIds = ["Home", "About", "Services", "Work", "Clients", "Contact"];
+                const sectionArray = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+                new ObserveSections(sectionArray);
+            }
+        },
+        {
+            pages: ['front'],
+            init: () => {
+                if (mql.matches) new Advantages($('.advantages__circle'));
+            }
+        },
+        {
+            pages: ['front'],
+            init: () => parallax()
+        },
+        {
+            pages: ['front', 'archive-products'],
+            init: () => {
+                $('.category__item__title').on('click', function () {
+                    new Filter($(this), mql);
+                });
+            }
+        },
+        {
+            pages: ['front'],
+            init: () => new Reviews($('.customers__img__box'))
+        }
+    ];
 
-    //advantages
-    if (mql.matches) {
-        const advantages = new Advantages($('.advantages__circle'));
-    }
-
-    //why us parallax
-    parallax();
-
-    //portfolio
-    $('.category__item__title').on('click', function () {
-        const category = new Filter($(this), mql);
-    })
-
-    //reviews
-    const reviewsObj = new Reviews($('.customers__img__box'));
+    modulesToInit.forEach(({ pages, init }) => {
+        if (pages.includes(currentPage)) {
+            init();
+        }
+    });
 });
-
-//сделать отдельное меню для архивной страницы с продуктами и для продуктов
-

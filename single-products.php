@@ -7,7 +7,7 @@ $prev_post = get_previous_post(false);
 $next_post = get_next_post(false);
 ?>
 
-<main class="single__product">
+<main data-page="single-products" class="single__product">
     <?php
     while (have_posts()):
         the_post(); ?>

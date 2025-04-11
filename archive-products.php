@@ -1,7 +1,7 @@
-<?php get_header(); ?>
+<?php get_header('front__page__links'); ?>
 
 <?php if (have_posts()): ?>
-    <main class="portfolio__categories__box">
+    <main data-page="archive-products" class="portfolio__categories__box">
         <div class="category__line">
             <?php
             $categories = get_categories(array(

@@ -7,7 +7,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('slick-css', get_template_directory_uri() . '/assets/slick/slick.css');
     wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/assets/slick/slick-theme.css');
     wp_enqueue_style('fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css');
-    
+
     wp_enqueue_script('fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js', array(), null, true);
     wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
     $script_id = 'main-js';
@@ -50,23 +50,35 @@ add_action('wp_enqueue_scripts', function () {
 
     //slick settings Single-Product Page
     wp_add_inline_script('slick-js', "
-        jQuery('.single__product__slider-for').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            fade: true,
-            asNavFor: '.single__product__slider-nav'
-        });
+    jQuery(document).ready(function($) {
+        const \$sliderFor = $('.single__product__slider-for');
+        const \$sliderNav = $('.single__product__slider-nav');
+        const slideCount = \$sliderNav.find('.product__slider-nav__img').length;
 
-        jQuery('.single__product__slider-nav').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            asNavFor: '.single__product__slider-for',
-            dots: true,
-            arrows: false,
-            centerMode: true,
-            focusOnSelect: true
-        });
+        if (slideCount > 1) {
+            \$sliderFor.slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                dots: false,
+                infinite: false,
+                swipe: false,
+                asNavFor: '.single__product__slider-nav'
+            });
+
+            \$sliderNav.slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                asNavFor: '.single__product__slider-for',
+                dots: slideCount > 3,
+                arrows: false,
+                centerMode: false,
+                infinite: false,
+                centerPadding: '0px',
+                focusOnSelect: true
+            });
+        }
 
         // Fancybox init
         Fancybox.bind('[data-fancybox=\"gallery\"]', {
@@ -74,7 +86,8 @@ add_action('wp_enqueue_scripts', function () {
                 autoStart: true
             }
         });
-    ");
+    });
+");
 });
 
 add_action('after_setup_theme', function () {

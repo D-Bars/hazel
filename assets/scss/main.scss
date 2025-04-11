@@ -1779,8 +1779,8 @@ footer{
 
 // ******************************** SINGLE PRODUCT PAGE ******************************** \\
 
-.single__product__item{
-  @include box(100%, 2.5%, auto, 3vh);
+.single__product{
+  @include box(100%, 0, auto, 3vh);
   @include flex__box(column, center);
 
   & h1{
@@ -1821,15 +1821,21 @@ footer{
 .single__product__slider-nav{
   @include box(100%, 0, auto, 3vh);
 
-  & .slick-list.draggable{
-    padding: 0 !important;
+  & .slick-list,
+  & .slick-track{
+    height: 100%;
+  }
+
+  & .slick-list{
+    margin-bottom: 1vw;
   }
 
   & .product__slider-nav__img{
-    @include img_box(30%, 20vh);
+    @include img_box(auto, 20vh);  
   }
   
   & img {
+    width: 98% !important;
     border-radius: 10px 10px 0 0;
     cursor: grab;
     opacity: 0.6;
@@ -1842,17 +1848,37 @@ footer{
     opacity: 1;
   }
 
-  & .slick-dots{
-    
+  & .slick-dots li button:before{
+    font-size: 2vw;
   }
 }
 
+.single__product__item__content{
+  @include box(50%);
+  @include text(120%, 600, $basicColor);
+}
 
-// .slider-for img,
-// .slider-nav img {
-//   max-width: 100%;
-//   display: block;
-//   margin: 0 auto;
-// }
+.nav__products__panel{
+  position: relative;
+  background-color: #000;
+
+  @include box(100%, 2.5%, 10vh, 10vh);
+  @include flex__box(row, center, space-between);
+}
+
+.nav__products__arrow{
+  position: absolute;
+  font-size: 2vw;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.product__prev{
+  left: 2vw;
+}
+
+.product__next{
+  right: 2vw;
+}
 
 // ******************************** SINGLE PRODUCT PAGE ******************************** \\

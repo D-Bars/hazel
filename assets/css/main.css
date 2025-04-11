@@ -2685,36 +2685,36 @@ footer {
   color: #DBDBDA;
 }
 
-.single__product__item {
-  width: 95%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
+.single__product {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
   margin-top: 3vh;
   height: auto;
 }
 @media screen and (max-width: 800px) {
-  .single__product__item {
+  .single__product {
     width: 100%;
     padding: 0;
   }
 }
-.single__product__item {
+.single__product {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: unset;
 }
-.single__product__item h1 {
+.single__product h1 {
   text-transform: uppercase;
 }
-.single__product__item h1 {
+.single__product h1 {
   font-size: 256%;
   font-family: "Montserrat";
   font-weight: 800;
   color: #1A1A1A;
 }
 @media screen and (max-width: 800px) {
-  .single__product__item h1 {
+  .single__product h1 {
     font-size: 5.6vw;
   }
 }
@@ -2821,11 +2821,14 @@ footer {
     padding: 0;
   }
 }
-.single__product__slider-nav .slick-list.draggable {
-  padding: 0 !important;
+.single__product__slider-nav .slick-list, .single__product__slider-nav .slick-track {
+  height: 100%;
+}
+.single__product__slider-nav .slick-list {
+  margin-bottom: 1vw;
 }
 .single__product__slider-nav .product__slider-nav__img {
-  width: 30%;
+  width: auto;
   height: 20vh;
   outline: unset;
   outline-offset: -2px;
@@ -2845,6 +2848,7 @@ footer {
   }
 }
 .single__product__slider-nav img {
+  width: 98% !important;
   border-radius: 10px 10px 0 0;
   cursor: grab;
   opacity: 0.6;
@@ -2854,4 +2858,71 @@ footer {
   outline: 2px solid #08E7C5;
   outline-offset: -2px;
   opacity: 1;
+}
+.single__product__slider-nav .slick-dots li button:before {
+  font-size: 2vw;
+}
+
+.single__product__item__content {
+  width: 50%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .single__product__item__content {
+    width: 100%;
+    padding: 0;
+  }
+}
+.single__product__item__content {
+  font-size: 144%;
+  font-family: "Montserrat";
+  font-weight: 600;
+  color: #1A1A1A;
+}
+@media screen and (max-width: 800px) {
+  .single__product__item__content {
+    font-size: 4.2vw;
+  }
+}
+
+.nav__products__panel {
+  position: relative;
+  background-color: #000;
+}
+.nav__products__panel {
+  width: 95%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  margin-top: 10vh;
+  height: 10vh;
+}
+@media screen and (max-width: 800px) {
+  .nav__products__panel {
+    width: 100%;
+    padding: 0;
+  }
+}
+.nav__products__panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__products__arrow {
+  position: absolute;
+  font-size: 2vw;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.product__prev {
+  left: 2vw;
+}
+
+.product__next {
+  right: 2vw;
 }

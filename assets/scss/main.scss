@@ -1754,6 +1754,10 @@ footer{
 
   @include flex__box(row, stretch);
 
+  @media screen and (max-width: 800px) {
+    gap: 1.5vw;
+  }
+
   & a{
     display: block;
   }
@@ -1765,7 +1769,7 @@ footer{
     transition: .4s;
 
     @media screen and (max-width: 800px) {
-      font-size: 2.5vw;
+      font-size: 4.5vw;
     }
 
     &:hover{
@@ -1779,22 +1783,99 @@ footer{
 
 // ******************************** SINGLE PRODUCT PAGE ******************************** \\
 
-.single__product{
-  @include box(100%, 0, auto, 3vh);
-  @include flex__box(column, center);
 
+.single__product{
+  @include box(100%);
+  @include flex__box(column, center);
+}
+
+.single__product__header__box{
+  position: relative;
+  padding: 1vh 2.5%;
+
+  @include flex__box(row, stretch, center);
+  @include box(100%, 2.5%);
+
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding: 10vh 2.5%;
+  }
+  
   & h1{
     text-transform: uppercase;
+    
+    @include h2__decor(#000, #000);
+  }
+  
+  & .back__to__panel{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    gap: 2vw;
+    padding-right: 2.5%;
+    z-index: 1;
+  
+    @include flex__box(row, center);
+  
+    @media screen and (max-width: 800px) {
+      padding: 0;
+    }
+  
+    & .back__to__btn{
+      position: relative;
+      bottom: -1vh;
+      width: auto;
+      padding: 1vh 1vw;
+      padding-bottom: 2vh;
+      border-radius: 20px 20px 0 0;
+      background-color: #333333;
+      gap: 1vw;
+      transition: .4s;
+      
+      @include text(110%, 600, #FFF);
+      @include flex__box(row, center);
 
-    @include text(160%, 800, $basicColor);
+      &:hover{
+        bottom: 0;
+        color: $accentColor;
+
+        &::before{
+          color: $accentColor;
+        }
+      }
+    }
+
+    & .back__to__archive::before{
+      content: '\f060';
+      transition: .4s;
+
+      @include text(100%, 600, #FFF, 'Font Awesome 6 Free')
+    }
+
+    & .back__to__home::before{
+      content: '\f015';
+      transition: .4s;
+
+      @include text(100%, 600, #FFF, 'Font Awesome 6 Free')
+    }
   }
 }
 
 .single__product__item__box{
+  position: relative;
+  background: linear-gradient(135deg, #333333, #1a1a1a);
+  padding: 5vh 15%;
   gap: 5%;
+  z-index: 2;
 
-  @include box(70%, 0, auto, 5vh);
+  @include box(100%, 15%);
   @include flex__box(row, stretch);
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    width: 95%;
+    padding: 5vh 2.5%;
+  }
 }
 
 .product__slider__container{
@@ -1815,6 +1896,10 @@ footer{
     overflow: hidden;
 
     @include img_box(100%, 100%);
+
+    & img{
+      border-radius: 20px
+    }
   }
 }
 
@@ -1832,6 +1917,10 @@ footer{
 
   & .product__slider-nav__img{
     @include img_box(auto, 20vh);  
+
+    @media screen and (max-width: 800px) {
+      height: 20vh;
+    }
   }
   
   & img {
@@ -1850,35 +1939,91 @@ footer{
 
   & .slick-dots li button:before{
     font-size: 2vw;
+    color: rgba($accentColor, 0.7);
+
+    @media screen and (max-width: 800px) {
+      font-size: 4vw;
+    }
+  }
+
+  & .slick-dots li.slick-active button:before{
+    color: $accentColor;
   }
 }
 
 .single__product__item__content{
+  gap: 2vh;
+
   @include box(50%);
-  @include text(120%, 600, $basicColor);
+  @include text(120%, 600, #FFF8);
+  @include flex__box(column);
+
+  @media screen and (max-width: 800px) {
+    margin-top: 5vh;
+  }
 }
 
 .nav__products__panel{
   position: relative;
   background-color: #000;
 
-  @include box(100%, 2.5%, 10vh, 10vh);
+  @include box(100%, 2.5%, 10vh);
   @include flex__box(row, center, space-between);
 }
 
 .nav__products__arrow{
   position: absolute;
-  font-size: 2vw;
-  color: #FFF;
+  text-align: center;
+  gap: 1vw;
   cursor: pointer;
+  transition: .4s;
+
+  @include text(150%, 600, #FFF8);
+  @include flex__box(row, center);
+
+  &:hover{
+    gap: 0.7vw;
+    color: #FFF;
+  }
 }
 
 .product__prev{
   left: 2vw;
+  transition: .4s;
+  
+
+  &:hover{
+    left: 1.5vw;
+  }
+
+  &::before{
+    content: '\f191';
+
+    @include text(100%, 600, #FFF, 'Font Awesome 6 Free');
+    
+    @media screen and (max-width: 800px) {
+      font-size: 4.5vw;
+    }
+  }
 }
 
 .product__next{
   right: 2vw;
+  transition: .4s;
+
+  &:hover{
+    right: 1.5vw;
+  }
+
+  &::after{
+    content: '\f152';
+
+    @include text(100%, 600, #FFF, 'Font Awesome 6 Free');
+    
+    @media screen and (max-width: 800px) {
+      font-size: 4.5vw;
+    }
+  }
 }
 
 // ******************************** SINGLE PRODUCT PAGE ******************************** \\

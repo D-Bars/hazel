@@ -6,11 +6,22 @@ $item_image = get_the_post_thumbnail(get_the_ID(), 'full');
 $prev_post = get_previous_post(false);
 $next_post = get_next_post(false);
 ?>
+
 <main class="single__product">
     <?php
     while (have_posts()):
         the_post(); ?>
-        <h1><?php the_title(); ?></h1>
+        <div class="single__product__header__box">
+            <h1><?php the_title(); ?></h1>
+            <div class="back__to__panel">
+                <a class="back__to__btn back__to__archive" href="<?php echo get_post_type_archive_link('products'); ?>">
+                    <?php _e('Back to archive', 'hazel'); ?>
+                </a>
+                <a href="<?php echo home_url(); ?>" class="back__to__btn back__to__home">
+                    <?php _e('Back to home', 'hazel'); ?>
+                </a>
+            </div>
+        </div>
         <div class="single__product__item__box">
             <?php
             $gallery_ids = get_post_meta(get_the_ID(), '_product_gallery', true);

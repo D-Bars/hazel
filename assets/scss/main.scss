@@ -311,13 +311,13 @@ html {
 }
 
 .header__line__box {
-  width: auto;
+  width: 100%;
 
   @include flex__box(row, center, space-between);
+}
 
-  @media screen and (max-width: 800px) {
-    width: 100%;
-  }
+.language__box{
+  padding-right: 4%;
 }
 
 .burger__menu {
@@ -389,7 +389,7 @@ html {
   padding: 0;
   gap: 2vw;
 
-  @include box(100%, 2%);
+  // @include box(100%, 2%);
   @include flex__box(row, center, flex-end);
 
   @media screen and (max-width: 800px) {
@@ -401,7 +401,7 @@ html {
 
     @include text(100%, 600, $fontColor);
 
-    &:hover{
+    &:hover {
       color: #FFF;
     }
   }
@@ -484,6 +484,215 @@ html {
 }
 
 // ******************************** HEADER ******************************** \\
+
+// ******************************** HEADER MODAL ******************************** \\
+
+.modal__window__block {
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  width: 100%;
+  height: 100dvh;
+  z-index: 998;
+
+  @include flex__box(column, center, center);
+
+  & .modal__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#000, 0.6);
+  }
+
+}
+
+.modal__window__box {
+  @include box(70%, 0, 60dvh);
+
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding: 0 2.5%;
+  }
+
+  & .modal__closer {
+    @include box(100%);
+    @include flex__box(column, flex-end, flex-end);
+
+    & i {
+      position: relative;
+      bottom: -0.5vh;
+      right: 0;
+      padding: 0.5vh 1vw;
+      padding-bottom: 1vh;
+      border-radius: 10px 10px 0 0;
+      background: linear-gradient(to right,
+          #555,
+          #666);
+      z-index: 998;
+      cursor: pointer;
+      transition: .2s;
+
+      @include text(150%, 800, #FFF, "Font Awesome 6 Free");
+
+      @media screen and (max-width: 800px) {
+        padding: 0.5vh 2.5vw;
+      }
+
+      &:hover {
+        bottom: 0;
+        color: red;
+      }
+    }
+  }
+}
+
+.modal__window__form {
+  position: relative;
+  background: linear-gradient(to right,
+      #222,
+      #333,
+      #444,
+      #555,
+      #666);
+  padding: 1vh 2.5%;
+  overflow: auto;
+  z-index: 999;
+
+  @include box(100%, 2.5%, 100%);
+
+  @media screen and (max-width: 800px) {
+    width: 95%;
+    padding: 3vh 2.5%;
+  }
+
+  & .wpforms-container-full {
+    margin: unset !important;
+  }
+
+  & form {
+    @include box(100%);
+    @include flex__box(column, center);
+
+
+
+    & .wpforms-field-container {
+      flex-wrap: wrap;
+      gap: 1vh;
+
+      @include flex__box(row, center, space-between);
+    }
+
+    & .contact__form__input {
+      @include box(32%);
+
+      @media screen and (max-width: 1200px) {
+        width: 100%;
+      }
+    }
+
+    & .contact__form__textarea {
+      @include box(100%);
+
+      @media screen and (max-width: 1200px) {
+        width: 100%;
+      }
+    }
+
+    & .wpforms-field {
+      padding: 0;
+    }
+
+    & .wpforms-field>textarea {
+      resize: unset !important;
+    }
+
+    & .wpforms-field>input,
+    & .wpforms-field>textarea {
+      margin: 2vh 0;
+      padding: 1vh 2% !important;
+      height: 100%;
+      font-size: 1.3vw !important;
+      font-weight: 600;
+      color: #FFF !important;
+      background-color: unset !important;
+      outline: 1px solid #FFF7;
+      outline-offset: -1px;
+      transition: .4s !important;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 2vw !important;
+      }
+    }
+
+    & input::placeholder,
+    & textarea::placeholder {
+      color: #FFF !important;
+    }
+
+    & input:focus,
+    & textarea:focus {
+      outline: 1px solid #FFF !important;
+      outline-offset: -1px !important;
+      border: unset !important;
+      background-color: #FFF1 !important;
+    }
+
+    & em.wpforms-error {
+      position: absolute !important;
+      bottom: -5px;
+    }
+
+    & .wpforms-field-gdpr-checkbox {
+
+      & label {
+        color: #FFF !important;
+      }
+
+      & .wpforms-field-required {
+        margin-bottom: 1.5vw;
+      }
+    }
+
+    & .wpforms-submit {
+      margin-top: 5vh;
+      height: 100%;
+      padding: 2vh 2vw;
+      text-transform: uppercase;
+      font-weight: 800;
+      background-color: unset !important;
+      outline: 1px solid #FFF3;
+      outline-offset: -1px;
+      transition: .4s;
+
+      @media screen and (max-width: 800px) {
+        padding: 2vh 4vw;
+      }
+
+      &:hover {
+        color: #000;
+        background-color: #D8D8D8 !important;
+      }
+
+      &:focus::after {
+        border: unset !important;
+        outline: 1px solid #FFF3;
+        outline-offset: -1px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      &:focus {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+// ******************************** HEADER MODAL ******************************** \\
 
 // ******************************** ABOUT__US ******************************** \\
 
@@ -1210,7 +1419,7 @@ html {
   @include text(90%, 600, $fontColor);
 }
 
-.portfolio__archive__link{
+.portfolio__archive__link {
   margin-top: 3vh;
   text-transform: uppercase;
   box-shadow: 10px 5px 5px #1A1A1A;
@@ -1727,7 +1936,7 @@ html {
 
 // ******************************** FOOTER ******************************** \\
 
-footer{
+footer {
   padding: 5vh 2.5%;
   gap: 3vh;
 
@@ -1740,16 +1949,16 @@ footer{
   }
 }
 
-.footer__logo__link__wrapper{
+.footer__logo__link__wrapper {
   width: auto;
   height: auto;
 
-  & a{
+  & a {
     display: block;
   }
 }
 
-.footer__social__media__box{
+.footer__social__media__box {
   gap: 0.7vw;
 
   @include flex__box(row, stretch);
@@ -1758,11 +1967,11 @@ footer{
     gap: 1.5vw;
   }
 
-  & a{
+  & a {
     display: block;
   }
 
-  & i{
+  & i {
     padding: 0.2vw;
     font-size: 1vw;
     color: #000;
@@ -1772,7 +1981,7 @@ footer{
       font-size: 4.5vw;
     }
 
-    &:hover{
+    &:hover {
       color: #DBDBDA;
     }
   }
@@ -1784,12 +1993,12 @@ footer{
 // ******************************** SINGLE PRODUCT PAGE ******************************** \\
 
 
-.single__product{
+.single__product {
   @include box(100%);
   @include flex__box(column, center);
 }
 
-.single__product__header__box{
+.single__product__header__box {
   position: relative;
   padding: 15vh 2.5%;
 
@@ -1800,28 +2009,30 @@ footer{
     width: 95%;
     padding: 10vh 2.5%;
   }
-  
-  & h1{
+
+  & h1 {
     text-transform: uppercase;
-    
+
     @include h2__decor(#000, #000);
   }
-  
-  & .back__to__panel{
+
+  & .back__to__panel {
     position: absolute;
     bottom: 0;
     right: 0;
     gap: 2vw;
     padding-right: 2.5%;
     z-index: 1;
-  
+
     @include flex__box(row, center);
-  
+
     @media screen and (max-width: 800px) {
+      width: 100%;
       padding: 0;
+      justify-content: center;
     }
-  
-    & .back__to__btn{
+
+    & .back__to__btn {
       position: relative;
       bottom: -1vh;
       width: auto;
@@ -1831,28 +2042,28 @@ footer{
       background-color: #333333;
       gap: 1vw;
       transition: .4s;
-      
+
       @include text(110%, 600, #FFF);
       @include flex__box(row, center);
 
-      &:hover{
+      &:hover {
         bottom: 0;
         color: $accentColor;
 
-        &::before{
+        &::before {
           color: $accentColor;
         }
       }
     }
 
-    & .back__to__archive::before{
+    & .back__to__archive::before {
       content: '\f060';
       transition: .4s;
 
       @include text(100%, 600, #FFF, 'Font Awesome 6 Free')
     }
 
-    & .back__to__home::before{
+    & .back__to__home::before {
       content: '\f015';
       transition: .4s;
 
@@ -1861,7 +2072,7 @@ footer{
   }
 }
 
-.single__product__item__box{
+.single__product__item__box {
   position: relative;
   background: linear-gradient(135deg, #333333, #1a1a1a);
   padding: 5vh 15%;
@@ -1879,51 +2090,51 @@ footer{
   }
 }
 
-.product__slider__container{
+.product__slider__container {
   @include box(45%);
   @include flex__box(column);
 }
 
-.single__product__slider-for{
+.single__product__slider-for {
   @include box(100%, 0, 50vh);
   @include flex__box(row);
 
   & .slick-list,
-  & .slick-track{
+  & .slick-track {
     height: 100%;
   }
-  
-  & .product__slider-for__img{
+
+  & .product__slider-for__img {
     overflow: hidden;
 
     @include img_box(100%, 100%);
 
-    & img{
+    & img {
       border-radius: 20px
     }
   }
 }
 
-.single__product__slider-nav{
+.single__product__slider-nav {
   @include box(100%, 0, auto, 3vh);
 
   & .slick-list,
-  & .slick-track{
+  & .slick-track {
     height: 100%;
   }
 
-  & .slick-list{
+  & .slick-list {
     margin-bottom: 1vw;
   }
 
-  & .product__slider-nav__img{
-    @include img_box(auto, 20vh);  
+  & .product__slider-nav__img {
+    @include img_box(auto, 20vh);
 
     @media screen and (max-width: 800px) {
       height: 20vh;
     }
   }
-  
+
   & img {
     width: 98% !important;
     border-radius: 10px 10px 0 0;
@@ -1931,14 +2142,14 @@ footer{
     opacity: 0.6;
     transition: 0.3s ease;
   }
-  
+
   & .slick-current img {
     outline: 2px solid $accentColor;
     outline-offset: -2px;
     opacity: 1;
   }
 
-  & .slick-dots li button:before{
+  & .slick-dots li button:before {
     font-size: 2vw;
     color: rgba($accentColor, 0.7);
 
@@ -1947,12 +2158,12 @@ footer{
     }
   }
 
-  & .slick-dots li.slick-active button:before{
+  & .slick-dots li.slick-active button:before {
     color: $accentColor;
   }
 }
 
-.single__product__item__content{
+.single__product__item__content {
   gap: 2vh;
 
   @include box(50%);
@@ -1964,7 +2175,7 @@ footer{
   }
 }
 
-.nav__products__panel{
+.nav__products__panel {
   position: relative;
   background-color: #000;
 
@@ -1972,7 +2183,7 @@ footer{
   @include flex__box(row, center, space-between);
 }
 
-.nav__products__arrow{
+.nav__products__arrow {
   position: absolute;
   text-align: center;
   gap: 1vw;
@@ -1982,45 +2193,45 @@ footer{
   @include text(150%, 600, #FFF8);
   @include flex__box(row, center);
 
-  &:hover{
+  &:hover {
     gap: 0.7vw;
     color: #FFF;
   }
 }
 
-.product__prev{
+.product__prev {
   left: 2vw;
   transition: .4s;
-  
 
-  &:hover{
+
+  &:hover {
     left: 1.5vw;
   }
 
-  &::before{
+  &::before {
     content: '\f191';
 
     @include text(100%, 600, #FFF, 'Font Awesome 6 Free');
-    
+
     @media screen and (max-width: 800px) {
       font-size: 4.5vw;
     }
   }
 }
 
-.product__next{
+.product__next {
   right: 2vw;
   transition: .4s;
 
-  &:hover{
+  &:hover {
     right: 1.5vw;
   }
 
-  &::after{
+  &::after {
     content: '\f152';
 
     @include text(100%, 600, #FFF, 'Font Awesome 6 Free');
-    
+
     @media screen and (max-width: 800px) {
       font-size: 4.5vw;
     }
@@ -2032,7 +2243,7 @@ footer{
 
 // ******************************** 404 PAGE ******************************** \\
 
-.error__page__block{
+.error__page__block {
   @include box(100%, 0, 85dvh);
   @include flex__box(row, center);
 
@@ -2040,11 +2251,11 @@ footer{
     flex-direction: column;
   }
 
-  & .error__page__wrapper__img{
+  & .error__page__wrapper__img {
     @include img_box(50%, auto);
   }
 
-  & .error__page__message{
+  & .error__page__message {
     gap: 1vh;
 
     @include flex__box(column, flex-start);
@@ -2054,11 +2265,11 @@ footer{
     }
   }
 
-  & span{
+  & span {
     @include text(150%, 600, red);
   }
 
-  & .error__page__home__btn{
+  & .error__page__home__btn {
     text-transform: uppercase;
     padding: 1vh 1.5vw;
     background-color: $contrastColor;
@@ -2073,7 +2284,7 @@ footer{
       box-shadow: 10px 10px 0px $basicColor;
     }
 
-    &:hover{
+    &:hover {
       box-shadow: unset;
       color: $accentColor;
     }

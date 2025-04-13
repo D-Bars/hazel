@@ -23,6 +23,10 @@
                     <?php endif; ?>
                 </div>
 
+                <div class="language__box">
+                    <?php echo do_shortcode('[language-switcher]') ?>
+                </div>
+
                 <div class="burger__menu">
                     <span></span>
                     <span></span>
@@ -49,7 +53,7 @@
                 <div class="header__company__description">
                     <?php _e('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, vel. A fuga eveniet minima sunt placeat odit atque labore. Ad explicabo ducimus quibusdam laborum a reprehenderit, inventore impedit modi beatae.', 'hazel'); ?>
                 </div>
-                <div class="header__company__btn"><?php _e('Contact us here', 'hazel'); ?></div>
+                <div class="header__company__btn"><a href="#Contact"><?php _e('Contact us here', 'hazel'); ?></a></div>
             </div>
         </div>
     </header>

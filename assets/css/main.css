@@ -174,7 +174,7 @@ html {
   }
 }
 .header__line__box {
-  width: auto;
+  width: 100%;
 }
 .header__line__box {
   display: flex;
@@ -182,10 +182,9 @@ html {
   align-items: center;
   justify-content: space-between;
 }
-@media screen and (max-width: 800px) {
-  .header__line__box {
-    width: 100%;
-  }
+
+.language__box {
+  padding-right: 4%;
 }
 
 .burger__menu {
@@ -251,19 +250,6 @@ html {
   margin: 0;
   padding: 0;
   gap: 2vw;
-}
-.header__menu__box {
-  width: 96%;
-  padding-left: 2%;
-  padding-right: 2%;
-  margin-top: 0;
-  height: auto;
-}
-@media screen and (max-width: 800px) {
-  .header__menu__box {
-    width: 100%;
-    padding: 0;
-  }
 }
 .header__menu__box {
   display: flex;
@@ -437,6 +423,269 @@ html {
     padding: 2vw 3vw;
     box-shadow: 10px 10px 0px #1A1A1A;
   }
+}
+
+.modal__window__block {
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  width: 100%;
+  height: 100dvh;
+  z-index: 998;
+}
+.modal__window__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal__window__block .modal__mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__window__box {
+  width: 70%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  height: 60dvh;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__box {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 800px) {
+  .modal__window__box {
+    width: 95%;
+    padding: 0 2.5%;
+  }
+}
+.modal__window__box .modal__closer {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__box .modal__closer {
+    width: 100%;
+    padding: 0;
+  }
+}
+.modal__window__box .modal__closer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.modal__window__box .modal__closer i {
+  position: relative;
+  bottom: -0.5vh;
+  right: 0;
+  padding: 0.5vh 1vw;
+  padding-bottom: 1vh;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(to right, #555, #666);
+  z-index: 998;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.modal__window__box .modal__closer i {
+  font-size: 225%;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 800;
+  color: #FFF;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__box .modal__closer i {
+    font-size: 5.25vw;
+  }
+}
+@media screen and (max-width: 800px) {
+  .modal__window__box .modal__closer i {
+    padding: 0.5vh 2.5vw;
+  }
+}
+.modal__window__box .modal__closer i:hover {
+  bottom: 0;
+  color: red;
+}
+
+.modal__window__form {
+  position: relative;
+  background: linear-gradient(to right, #222, #333, #444, #555, #666);
+  padding: 1vh 2.5%;
+  overflow: auto;
+  z-index: 999;
+}
+.modal__window__form {
+  width: 95%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  margin-top: 0;
+  height: 100%;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__form {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 800px) {
+  .modal__window__form {
+    width: 95%;
+    padding: 3vh 2.5%;
+  }
+}
+.modal__window__form .wpforms-container-full {
+  margin: unset !important;
+}
+.modal__window__form form {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__form form {
+    width: 100%;
+    padding: 0;
+  }
+}
+.modal__window__form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+}
+.modal__window__form form .wpforms-field-container {
+  flex-wrap: wrap;
+  gap: 1vh;
+}
+.modal__window__form form .wpforms-field-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal__window__form form .contact__form__input {
+  width: 32%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__form form .contact__form__input {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .modal__window__form form .contact__form__input {
+    width: 100%;
+  }
+}
+.modal__window__form form .contact__form__textarea {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-top: 0;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__form form .contact__form__textarea {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .modal__window__form form .contact__form__textarea {
+    width: 100%;
+  }
+}
+.modal__window__form form .wpforms-field {
+  padding: 0;
+}
+.modal__window__form form .wpforms-field > textarea {
+  resize: unset !important;
+}
+.modal__window__form form .wpforms-field > input, .modal__window__form form .wpforms-field > textarea {
+  margin: 2vh 0;
+  padding: 1vh 2% !important;
+  height: 100%;
+  font-size: 1.3vw !important;
+  font-weight: 600;
+  color: #FFF !important;
+  background-color: unset !important;
+  outline: 1px solid rgba(255, 255, 255, 0.4666666667);
+  outline-offset: -1px;
+  transition: 0.4s !important;
+}
+@media screen and (max-width: 1200px) {
+  .modal__window__form form .wpforms-field > input, .modal__window__form form .wpforms-field > textarea {
+    font-size: 2vw !important;
+  }
+}
+.modal__window__form form input::placeholder, .modal__window__form form textarea::placeholder {
+  color: #FFF !important;
+}
+.modal__window__form form input:focus, .modal__window__form form textarea:focus {
+  outline: 1px solid #FFF !important;
+  outline-offset: -1px !important;
+  border: unset !important;
+  background-color: rgba(255, 255, 255, 0.0666666667) !important;
+}
+.modal__window__form form em.wpforms-error {
+  position: absolute !important;
+  bottom: -5px;
+}
+.modal__window__form form .wpforms-field-gdpr-checkbox label {
+  color: #FFF !important;
+}
+.modal__window__form form .wpforms-field-gdpr-checkbox .wpforms-field-required {
+  margin-bottom: 1.5vw;
+}
+.modal__window__form form .wpforms-submit {
+  margin-top: 5vh;
+  height: 100%;
+  padding: 2vh 2vw;
+  text-transform: uppercase;
+  font-weight: 800;
+  background-color: unset !important;
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+  outline-offset: -1px;
+  transition: 0.4s;
+}
+@media screen and (max-width: 800px) {
+  .modal__window__form form .wpforms-submit {
+    padding: 2vh 4vw;
+  }
+}
+.modal__window__form form .wpforms-submit:hover {
+  color: #000;
+  background-color: #D8D8D8 !important;
+}
+.modal__window__form form .wpforms-submit:focus::after {
+  border: unset !important;
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+  outline-offset: -1px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.modal__window__form form .wpforms-submit:focus {
+  transform: scale(0.9);
 }
 
 .about__us__block {
@@ -2772,7 +3021,9 @@ footer {
 }
 @media screen and (max-width: 800px) {
   .single__product__header__box .back__to__panel {
+    width: 100%;
     padding: 0;
+    justify-content: center;
   }
 }
 .single__product__header__box .back__to__panel .back__to__btn {

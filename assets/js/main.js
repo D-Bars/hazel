@@ -5,6 +5,7 @@ import { Advantages } from "./moduls/classAdvantages.js";
 import { Filter } from "./moduls/classFilter.js";
 import { Reviews } from "./moduls/classReviews.js";
 import parallax from "./moduls/parallax.js";
+import { modalWindow } from "./moduls/classModalWindow.js";
 
 const mql = window.matchMedia("(min-width: 800px)");
 
@@ -63,6 +64,10 @@ jQuery(document).ready(function ($) {
         {
             pages: ['front'],
             init: () => new Reviews($('.customers__img__box'))
+        },
+        {
+            pages: ['archive-products', 'single-products'],
+            init: () => new modalWindow('.header__company__btn')
         }
     ];
 
@@ -72,3 +77,4 @@ jQuery(document).ready(function ($) {
         }
     });
 });
+

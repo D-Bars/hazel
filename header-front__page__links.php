@@ -55,7 +55,17 @@
                 <div class="header__company__description">
                     <?php _e('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, vel. A fuga eveniet minima sunt placeat odit atque labore. Ad explicabo ducimus quibusdam laborum a reprehenderit, inventore impedit modi beatae.', 'hazel'); ?>
                 </div>
-                <div class="header__company__btn"><?php _e('Contact us here', 'hazel'); ?></div>
+                <button class="header__company__btn"><?php _e('Contact us here', 'hazel'); ?></button>
+            </div>
+        </div>
+
+        <div class="modal__window__block" modal_wrapper>
+            <div class="modal__mask" mask></div>
+            <div class="modal__window__box">
+                <div class="modal__closer" closer><i class="fa-solid fa-xmark"></i></div>
+                <div class="modal__window__form">
+                    <?php echo do_shortcode('[wpforms id="81" title="false"]'); ?>
+                </div>
             </div>
         </div>
     </header>

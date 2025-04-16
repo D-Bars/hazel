@@ -24,6 +24,7 @@
                 </div>
 
                 <div class="language__box">
+                    <i class="fa-solid fa-globe"></i>
                     <?php echo do_shortcode('[language-switcher]') ?>
                 </div>
 
